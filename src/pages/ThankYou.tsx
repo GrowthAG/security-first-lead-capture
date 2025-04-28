@@ -1,8 +1,11 @@
 
 import React, { useEffect, useRef } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const ThankYou = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
+  const location = useLocation();
+  const userName = location.state?.userName || '';
 
   useEffect(() => {
     // Load the script dynamically
@@ -21,10 +24,10 @@ const ThankYou = () => {
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-lg">
           <h1 className="text-3xl md:text-4xl font-bold text-center text-security-blue mb-6">
-            Obrigado! Sua solicitação foi recebida.
+            {userName ? `Obrigado, ${userName}!` : 'Obrigado!'} Sua solicitação foi recebida.
           </h1>
           <p className="text-xl text-center text-gray-700 mb-10">
-            Agora é só agendar seu melhor horário com nossos especialistas.
+            Agora é só agendar o melhor horário para falar com nossos especialistas.
           </p>
           
           <div className="calendar-container">

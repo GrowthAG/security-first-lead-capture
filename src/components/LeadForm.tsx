@@ -67,8 +67,12 @@ const LeadForm = () => {
       
       console.log('Dados enviados com sucesso:', finalValues);
       
-      // Navigate to the thank you page after successful submission
-      navigate('/obrigado');
+      // Navigate to the thank you page after successful submission with the user's name
+      navigate('/obrigado', { 
+        state: { 
+          userName: values.fullName 
+        } 
+      });
     } catch (error) {
       console.error('Erro ao enviar dados para o CRM:', error);
       toast.error("Erro ao enviar formulário. Por favor, tente novamente.");
