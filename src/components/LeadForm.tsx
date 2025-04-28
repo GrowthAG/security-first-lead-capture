@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useNavigate } from 'react-router-dom';
+import { toast } from "sonner";
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -20,9 +21,12 @@ const formSchema = z.object({
   customPosition: z.string().optional(),
 });
 
+const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/5C2Mxuu479dGArGRG36G/webhook-trigger/c26d3294-bffe-4bdd-9fbd-5b54fa8e5f24";
+
 const LeadForm = () => {
   const navigate = useNavigate();
   const [showCustomPosition, setShowCustomPosition] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -37,7 +41,9 @@ const LeadForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    
     // Prepare the final data to be submitted
     const finalValues = {
       ...values,
@@ -45,9 +51,29 @@ const LeadForm = () => {
       position: values.position === "Outro" ? values.customPosition : values.position,
     };
 
-    console.log(finalValues);
-    // Navigate to the thank you page after submission
-    navigate('/obrigado');
+    try {
+      // Send the data to the webhook
+      const response = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(finalValues),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Falha ao enviar os dados');
+      }
+      
+      console.log('Dados enviados com sucesso:', finalValues);
+      
+      // Navigate to the thank you page after successful submission
+      navigate('/obrigado');
+    } catch (error) {
+      console.error('Erro ao enviar dados para o CRM:', error);
+      toast.error("Erro ao enviar formulário. Por favor, tente novamente.");
+      setIsSubmitting(false);
+    }
   }
 
   // Handle position change to show/hide custom position field
@@ -190,9 +216,10 @@ const LeadForm = () => {
 
               <Button 
                 type="submit" 
+                disabled={isSubmitting}
                 className="w-full bg-security-red hover:bg-security-red/90 text-white font-semibold py-3 text-lg"
               >
-                Solicitar Atendimento Especializado
+                {isSubmitting ? "Enviando..." : "Solicitar Atendimento Especializado"}
               </Button>
             </form>
           </Form>
