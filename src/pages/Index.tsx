@@ -6,8 +6,7 @@ import Benefits from '@/components/Benefits';
 import Authority from '@/components/Authority';
 import HowItWorks from '@/components/HowItWorks';
 import Testimonials from '@/components/Testimonials';
-import LeadMagnet from '@/components/LeadMagnet';
-import Footer from '@/components/Footer';
+import LeadForm from '@/components/LeadForm';
 import FloatingCTA from '@/components/FloatingCTA';
 
 const Index = () => {
@@ -19,8 +18,7 @@ const Index = () => {
       <Authority />
       <HowItWorks />
       <Testimonials />
-      <LeadMagnet />
-      <Footer />
+      <LeadForm />
       <FloatingCTA />
     </div>
   );
