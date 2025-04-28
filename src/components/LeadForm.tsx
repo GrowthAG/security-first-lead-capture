@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -21,7 +20,7 @@ const formSchema = z.object({
   customPosition: z.string().optional(),
 });
 
-const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/5C2Mxuu479dGArGRG36G/webhook-trigger/c26d3294-bffe-4bdd-9fbd-5b54fa8e5f24";
+const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/5C2Mxuu479dGArGRG36G/webhook-trigger/53bba7ba-599a-4c29-afa3-2a82930af303";
 
 const LeadForm = () => {
   const navigate = useNavigate();

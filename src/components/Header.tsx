@@ -4,6 +4,10 @@ import { Button } from '@/components/ui/button';
 import { PhoneCall } from 'lucide-react';
 
 const Header = () => {
+  const scrollToForm = () => {
+    document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/5511000000000?text=Olá! Gostaria de saber mais sobre os serviços de SOC da Security First.", "_blank");
   };
@@ -24,10 +28,11 @@ const Header = () => {
               <li><a href="#beneficios" className="text-security-blue hover:text-security-red font-medium transition-colors">Benefícios</a></li>
               <li><a href="#como-funciona" className="text-security-blue hover:text-security-red font-medium transition-colors">Como Funciona</a></li>
               <li><a href="#depoimentos" className="text-security-blue hover:text-security-red font-medium transition-colors">Depoimentos</a></li>
+              <li><a href="#formulario" className="text-security-blue hover:text-security-red font-medium transition-colors">Contato</a></li>
             </ul>
           </nav>
           <Button 
-            onClick={handleWhatsAppClick}
+            onClick={scrollToForm}
             className="bg-security-red hover:bg-security-red/90 text-white flex items-center"
           >
             <PhoneCall size={18} className="mr-2" />
@@ -36,7 +41,7 @@ const Header = () => {
         </div>
         <div className="md:hidden">
           <Button 
-            onClick={handleWhatsAppClick}
+            onClick={scrollToForm}
             className="bg-security-red hover:bg-security-red/90 text-white"
             size="sm"
           >

@@ -21,6 +21,10 @@ const steps = [
 ];
 
 const HowItWorks = () => {
+  const scrollToForm = () => {
+    document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section id="como-funciona" className="py-20 gradient-bg text-white">
       <div className="container mx-auto px-4">
@@ -57,7 +61,7 @@ const HowItWorks = () => {
             eficiente e alinhado às suas necessidades.
           </p>
           <button 
-            onClick={() => window.open("https://wa.me/5511000000000?text=Olá! Gostaria de saber mais sobre os serviços de SOC da Security First.", "_blank")}
+            onClick={scrollToForm}
             className="cta-button"
           >
             Solicitar Diagnóstico Gratuito

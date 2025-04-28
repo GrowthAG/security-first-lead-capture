@@ -4,6 +4,10 @@ import { Button } from '@/components/ui/button';
 import { ShieldCheck } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToForm = () => {
+    document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const handleWhatsAppClick = () => {
     window.open("https://wa.me/5511000000000?text=Olá! Gostaria de saber mais sobre os serviços de SOC da Security First.", "_blank");
   };
@@ -21,7 +25,7 @@ const Hero = () => {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={handleWhatsAppClick}
+                onClick={scrollToForm}
                 className="bg-security-red hover:bg-security-red/90 text-white text-lg py-6 px-8"
                 size="lg"
               >
