@@ -2,8 +2,11 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ShieldCheck } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Hero = () => {
+  const isMobile = useIsMobile();
+  
   const scrollToForm = () => {
     document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -16,14 +19,14 @@ const Hero = () => {
     <section className="gradient-bg py-20 md:py-28">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="text-white">
+          <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
             <h1 className="font-montserrat text-4xl md:text-5xl font-bold leading-tight">
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
             <p className="mt-6 text-xl md:text-2xl font-light opacity-90">
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não.
             </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <div className={`mt-8 flex ${isMobile ? 'flex-col items-center' : 'flex-col sm:flex-row'} gap-4`}>
               <Button 
                 onClick={scrollToForm}
                 className="bg-security-red hover:bg-security-red/90 text-white text-lg py-6 px-8"
