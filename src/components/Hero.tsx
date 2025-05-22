@@ -41,7 +41,8 @@ const Hero = () => {
                 className="bg-transparent border-white text-white hover:bg-white/10 text-base md:text-lg py-5 md:py-6 px-6 md:px-8 w-full sm:w-auto"
                 size="lg"
               >
-                Saiba Mais
+                <span className="md:block">Saiba Mais</span>
+                <span className="block md:hidden">Mais</span>
               </Button>
             </div>
           </div>

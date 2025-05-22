@@ -7,11 +7,6 @@ const certificates = [
   "ISO 27001", "CISSP", "CEH", "OSCP", "CISM", "CCSP"
 ];
 
-// Logos seriam de empresas parceiras ou certificações
-const logos = [
-  "Oracle", "Microsoft", "AWS", "Google Cloud", "IBM", "Fortinet"
-];
-
 const Authority = () => {
   return (
     <section className="py-20 bg-white">
@@ -58,11 +53,59 @@ const Authority = () => {
           <div>
             <h3 className="subsection-title mb-6">Tecnologias Parceiras</h3>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
-              {logos.map((logo, index) => (
-                <div key={index} className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
-                  <span className="font-semibold text-gray-500">{logo}</span>
-                </div>
-              ))}
+              {/* Oracle Logo */}
+              <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
+                <img 
+                  src="/lovable-uploads/c4a1892f-b4aa-454a-94af-2141b53c962d.png" 
+                  alt="Oracle" 
+                  className="h-10 object-contain"
+                />
+              </div>
+              
+              {/* Microsoft Logo */}
+              <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
+                <img 
+                  src="/lovable-uploads/06e57fb8-4d48-486a-a4c7-fb22d7a2adcb.png" 
+                  alt="Microsoft" 
+                  className="h-8 object-contain"
+                />
+              </div>
+              
+              {/* AWS Logo */}
+              <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
+                <img 
+                  src="/lovable-uploads/c1957844-81b6-4e34-adcf-7ae6f096b135.png" 
+                  alt="AWS" 
+                  className="h-8 object-contain"
+                />
+              </div>
+              
+              {/* Google Cloud Logo */}
+              <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
+                <img 
+                  src="/lovable-uploads/5e36b1a5-0465-4252-b542-4a319a60ba72.png" 
+                  alt="Google Cloud" 
+                  className="h-8 object-contain"
+                />
+              </div>
+              
+              {/* IBM Logo */}
+              <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
+                <img 
+                  src="/lovable-uploads/12079eea-4385-45b2-b7a6-28124cdf1068.png" 
+                  alt="IBM" 
+                  className="h-8 object-contain"
+                />
+              </div>
+              
+              {/* Fortinet Logo */}
+              <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
+                <img 
+                  src="/lovable-uploads/9c7c89a5-5373-4e44-ae33-3fce1b3d9899.png" 
+                  alt="Fortinet" 
+                  className="h-6 object-contain"
+                />
+              </div>
             </div>
             <div className="mt-8 text-center">
               <p className="text-lg font-montserrat font-medium text-security-blue">
