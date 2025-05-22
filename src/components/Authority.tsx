@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle } from 'lucide-react';
@@ -18,7 +19,7 @@ const Authority = () => {
             <div className="space-y-4">
               <div className="flex items-start">
                 <CheckCircle className="text-security-red mr-2 flex-shrink-0 mt-1" size={20} />
-                <p>Mais de <span className="font-semibold">500 ataques</span> bloqueados em tempo real nos últimos 12 meses</p>
+                <p>+ de <span className="font-semibold">500 ataques</span> bloqueados em tempo real nos últimos 12 meses</p>
               </div>
               <div className="flex items-start">
                 <CheckCircle className="text-security-red mr-2 flex-shrink-0 mt-1" size={20} />

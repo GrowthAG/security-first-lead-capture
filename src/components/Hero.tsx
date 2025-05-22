@@ -16,11 +16,11 @@ const Hero = () => {
   };
 
   return (
-    <section className="gradient-bg py-20 md:py-28">
+    <section className="gradient-bg py-12 md:py-28">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
-            <h1 className="font-montserrat text-3xl md:text-5xl font-bold leading-tight">
+            <h1 className="font-montserrat text-2xl md:text-5xl font-bold leading-tight">
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
             <p className="mt-4 md:mt-6 text-lg md:text-2xl font-light opacity-90 line-clamp-3">
