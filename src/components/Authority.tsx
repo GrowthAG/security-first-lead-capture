@@ -58,16 +58,16 @@ const Authority = () => {
                 <img 
                   src="/lovable-uploads/c4a1892f-b4aa-454a-94af-2141b53c962d.png" 
                   alt="Oracle" 
-                  className="h-10 object-contain"
+                  className="h-8 w-auto object-contain"
                 />
               </div>
               
-              {/* Microsoft Logo */}
+              {/* Microsoft Logo - Substituída pela nova */}
               <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
                 <img 
-                  src="/lovable-uploads/06e57fb8-4d48-486a-a4c7-fb22d7a2adcb.png" 
+                  src="/lovable-uploads/171f432a-b09d-4d04-8afe-a97778b85fba.png" 
                   alt="Microsoft" 
-                  className="h-8 object-contain"
+                  className="h-8 w-auto object-contain"
                 />
               </div>
               
@@ -76,7 +76,7 @@ const Authority = () => {
                 <img 
                   src="/lovable-uploads/c1957844-81b6-4e34-adcf-7ae6f096b135.png" 
                   alt="AWS" 
-                  className="h-8 object-contain"
+                  className="h-8 w-auto object-contain"
                 />
               </div>
               
@@ -85,7 +85,7 @@ const Authority = () => {
                 <img 
                   src="/lovable-uploads/5e36b1a5-0465-4252-b542-4a319a60ba72.png" 
                   alt="Google Cloud" 
-                  className="h-8 object-contain"
+                  className="h-8 w-auto object-contain"
                 />
               </div>
               
@@ -94,7 +94,7 @@ const Authority = () => {
                 <img 
                   src="/lovable-uploads/12079eea-4385-45b2-b7a6-28124cdf1068.png" 
                   alt="IBM" 
-                  className="h-8 object-contain"
+                  className="h-8 w-auto object-contain"
                 />
               </div>
               
@@ -103,7 +103,7 @@ const Authority = () => {
                 <img 
                   src="/lovable-uploads/9c7c89a5-5373-4e44-ae33-3fce1b3d9899.png" 
                   alt="Fortinet" 
-                  className="h-6 object-contain"
+                  className="h-8 w-auto object-contain"
                 />
               </div>
             </div>
