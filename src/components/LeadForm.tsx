@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -222,7 +223,7 @@ const LeadForm = () => {
                 disabled={isSubmitting}
                 className="w-full bg-security-red hover:bg-security-red/90 text-white font-semibold py-3 text-lg"
               >
-                {isSubmitting ? "Enviando..." : "Solicitar Atendimento Especializado"}
+                {isSubmitting ? "Enviando..." : "Solicitar Atendimento"}
               </Button>
             </form>
           </Form>

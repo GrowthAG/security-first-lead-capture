@@ -58,7 +58,7 @@ const Authority = () => {
                 <img 
                   src="/lovable-uploads/c4a1892f-b4aa-454a-94af-2141b53c962d.png" 
                   alt="Oracle" 
-                  className="h-8 w-auto object-contain"
+                  className="h-12 w-auto object-contain"
                 />
               </div>
               
@@ -67,7 +67,7 @@ const Authority = () => {
                 <img 
                   src="/lovable-uploads/171f432a-b09d-4d04-8afe-a97778b85fba.png" 
                   alt="Microsoft" 
-                  className="h-8 w-auto object-contain"
+                  className="h-12 w-auto object-contain"
                 />
               </div>
               
@@ -76,7 +76,7 @@ const Authority = () => {
                 <img 
                   src="/lovable-uploads/c1957844-81b6-4e34-adcf-7ae6f096b135.png" 
                   alt="AWS" 
-                  className="h-8 w-auto object-contain"
+                  className="h-12 w-auto object-contain"
                 />
               </div>
               
