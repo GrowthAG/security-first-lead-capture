@@ -20,25 +20,25 @@ const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
-            <h1 className="font-montserrat text-4xl md:text-5xl font-bold leading-tight">
+            <h1 className="font-montserrat text-3xl md:text-5xl font-bold leading-tight">
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
-            <p className="mt-6 text-xl md:text-2xl font-light opacity-90">
+            <p className="mt-4 md:mt-6 text-lg md:text-2xl font-light opacity-90 line-clamp-3">
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não.
             </p>
-            <div className={`mt-8 flex ${isMobile ? 'flex-col items-center' : 'flex-col sm:flex-row'} gap-4`}>
+            <div className={`mt-6 md:mt-8 flex ${isMobile ? 'flex-col items-center' : 'flex-col sm:flex-row'} gap-4`}>
               <Button 
                 onClick={scrollToForm}
-                className="bg-security-red hover:bg-security-red/90 text-white text-lg py-6 px-8"
+                className="bg-security-red hover:bg-security-red/90 text-white text-base md:text-lg py-5 md:py-6 px-6 md:px-8 w-full sm:w-auto"
                 size="lg"
               >
-                <ShieldCheck className="mr-2 h-6 w-6" />
+                <ShieldCheck className="mr-2 h-5 w-5 md:h-6 md:w-6" />
                 Fale com um Especialista Agora
               </Button>
               <Button 
                 onClick={() => document.getElementById('beneficios')?.scrollIntoView({behavior: 'smooth'})}
                 variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/10 text-lg py-6 px-8"
+                className="bg-transparent border-white text-white hover:bg-white/10 text-base md:text-lg py-5 md:py-6 px-6 md:px-8 w-full sm:w-auto"
                 size="lg"
               >
                 Saiba Mais
