@@ -76,9 +76,7 @@ const Authority = () => {
               </div>
             </div>
             <div className="mt-8 text-center">
-              <p className="text-lg font-montserrat font-medium text-security-blue">
-                Trusted by empresas líderes do mercado.
-              </p>
+              <p className="text-lg font-montserrat font-medium text-security-blue">Empresas líderes do mercado que confiam em nós.</p>
             </div>
           </div>
         </div>
