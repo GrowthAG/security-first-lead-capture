@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { useNavigate } from 'react-router-dom';
 import { toast } from "sonner";
 
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -22,9 +21,9 @@ const formSchema = z.object({
 });
 
 const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/5C2Mxuu479dGArGRG36G/webhook-trigger/53bba7ba-599a-4c29-afa3-2a82930af303";
+const BOOKING_URL = "https://pages.securityfirst.com.br/booking";
 
 const LeadForm = () => {
-  const navigate = useNavigate();
   const [showCustomPosition, setShowCustomPosition] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -67,12 +66,17 @@ const LeadForm = () => {
       
       console.log('Dados enviados com sucesso:', finalValues);
       
-      // Navigate to the thank you page after successful submission with the user's name
-      navigate('/obrigado', { 
-        state: { 
-          userName: values.fullName 
-        } 
-      });
+      // Create URL parameters from form values
+      const params = new URLSearchParams();
+      params.append('name', finalValues.fullName);
+      params.append('email', finalValues.email);
+      params.append('phone', finalValues.phone);
+      params.append('company', finalValues.company);
+      params.append('sector', finalValues.sector);
+      params.append('position', finalValues.position);
+      
+      // Redirect to the booking page with parameters
+      window.location.href = `${BOOKING_URL}?${params.toString()}`;
     } catch (error) {
       console.error('Erro ao enviar dados para o CRM:', error);
       toast.error("Erro ao enviar formulário. Por favor, tente novamente.");
