@@ -1,15 +1,9 @@
-
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
 import { CheckCircle } from 'lucide-react';
-
-const certificates = [
-  "ISO 27001", "CISSP", "CEH", "OSCP", "CISM", "CCSP"
-];
-
+const certificates = ["ISO 27001", "CISSP", "CEH", "OSCP", "CISM", "CCSP"];
 const Authority = () => {
-  return (
-    <section className="py-20 bg-white">
+  return <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="section-title">Autoridade em Segurança</h2>
@@ -43,9 +37,7 @@ const Authority = () => {
             <div className="mt-6">
               <h4 className="font-montserrat font-medium text-lg mb-3">Certificações da nossa equipe:</h4>
               <div className="flex flex-wrap gap-2">
-                {certificates.map((cert, index) => (
-                  <Badge key={index} className="bg-security-blue text-white">{cert}</Badge>
-                ))}
+                {certificates.map((cert, index) => <Badge key={index} className="bg-security-blue text-white">{cert}</Badge>)}
               </div>
             </div>
           </div>
@@ -55,56 +47,32 @@ const Authority = () => {
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
               {/* Oracle Logo */}
               <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
-                <img 
-                  src="/lovable-uploads/c4a1892f-b4aa-454a-94af-2141b53c962d.png" 
-                  alt="Oracle" 
-                  className="h-12 w-auto object-contain"
-                />
+                <img src="/lovable-uploads/c4a1892f-b4aa-454a-94af-2141b53c962d.png" alt="Oracle" className="h-16 w-auto object-contain" />
               </div>
               
               {/* Microsoft Logo - Substituída pela nova */}
               <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
-                <img 
-                  src="/lovable-uploads/171f432a-b09d-4d04-8afe-a97778b85fba.png" 
-                  alt="Microsoft" 
-                  className="h-12 w-auto object-contain"
-                />
+                <img src="/lovable-uploads/171f432a-b09d-4d04-8afe-a97778b85fba.png" alt="Microsoft" className="h-16 w-auto object-contain" />
               </div>
               
               {/* AWS Logo */}
               <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
-                <img 
-                  src="/lovable-uploads/c1957844-81b6-4e34-adcf-7ae6f096b135.png" 
-                  alt="AWS" 
-                  className="h-12 w-auto object-contain"
-                />
+                <img src="/lovable-uploads/c1957844-81b6-4e34-adcf-7ae6f096b135.png" alt="AWS" className="h-14 w-auto object-contain" />
               </div>
               
               {/* Google Cloud Logo */}
               <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
-                <img 
-                  src="/lovable-uploads/5e36b1a5-0465-4252-b542-4a319a60ba72.png" 
-                  alt="Google Cloud" 
-                  className="h-8 w-auto object-contain"
-                />
+                <img src="/lovable-uploads/5e36b1a5-0465-4252-b542-4a319a60ba72.png" alt="Google Cloud" className="h-8 w-auto object-contain" />
               </div>
               
               {/* IBM Logo */}
               <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
-                <img 
-                  src="/lovable-uploads/12079eea-4385-45b2-b7a6-28124cdf1068.png" 
-                  alt="IBM" 
-                  className="h-8 w-auto object-contain"
-                />
+                <img src="/lovable-uploads/12079eea-4385-45b2-b7a6-28124cdf1068.png" alt="IBM" className="h-8 w-auto object-contain" />
               </div>
               
               {/* Fortinet Logo */}
               <div className="bg-gray-100 rounded-lg p-4 flex items-center justify-center h-24">
-                <img 
-                  src="/lovable-uploads/9c7c89a5-5373-4e44-ae33-3fce1b3d9899.png" 
-                  alt="Fortinet" 
-                  className="h-8 w-auto object-contain"
-                />
+                <img src="/lovable-uploads/9c7c89a5-5373-4e44-ae33-3fce1b3d9899.png" alt="Fortinet" className="h-8 w-auto object-contain" />
               </div>
             </div>
             <div className="mt-8 text-center">
@@ -115,8 +83,6 @@ const Authority = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Authority;
