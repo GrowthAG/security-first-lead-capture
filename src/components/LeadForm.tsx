@@ -66,17 +66,8 @@ const LeadForm = () => {
       
       console.log('Dados enviados com sucesso:', finalValues);
       
-      // Create URL parameters from form values
-      const params = new URLSearchParams();
-      params.append('name', finalValues.fullName);
-      params.append('email', finalValues.email);
-      params.append('phone', finalValues.phone);
-      params.append('company', finalValues.company);
-      params.append('sector', finalValues.sector);
-      params.append('position', finalValues.position);
-      
-      // Redirect to the booking page with parameters
-      window.location.href = `${BOOKING_URL}?${params.toString()}`;
+      // Redirect to the booking page without appending parameters
+      window.location.href = BOOKING_URL;
     } catch (error) {
       console.error('Erro ao enviar dados para o CRM:', error);
       toast.error("Erro ao enviar formulário. Por favor, tente novamente.");
