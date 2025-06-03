@@ -1,9 +1,11 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
-import { ExternalLink } from 'lucide-react';
+import { Download } from 'lucide-react';
+import MaterialModal from './MaterialModal';
 
 interface WordPressMaterial {
   id: number;
@@ -27,10 +29,23 @@ const fetchMaterials = async (): Promise<WordPressMaterial[]> => {
 };
 
 const MaterialsGrid = () => {
+  const [selectedMaterial, setSelectedMaterial] = useState<WordPressMaterial | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const { data: materials, isLoading, error } = useQuery({
     queryKey: ['materials'],
     queryFn: fetchMaterials,
   });
+
+  const handleMaterialClick = (material: WordPressMaterial) => {
+    setSelectedMaterial(material);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedMaterial(null);
+  };
 
   if (isLoading) {
     return (
@@ -43,7 +58,8 @@ const MaterialsGrid = () => {
               <Skeleton className="h-4 w-2/3" />
             </CardHeader>
             <CardContent>
-              <Skeleton className="h-20 w-full" />
+              <Skeleton className="h-20 w-full mb-4" />
+              <Skeleton className="h-10 w-full" />
             </CardContent>
           </Card>
         ))}
@@ -69,29 +85,42 @@ const MaterialsGrid = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {materials?.map((material) => (
-        <Card 
-          key={material.id} 
-          className="security-card cursor-pointer group"
-          onClick={() => window.open(material.link, '_blank')}
-        >
-          <CardHeader>
-            <CardTitle className="text-security-blue group-hover:text-security-red transition-colors duration-300 flex items-center justify-between">
-              <span className="line-clamp-2">
-                {cleanTitle(material.title.rendered)}
-              </span>
-              <ExternalLink className="h-4 w-4 ml-2 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CardDescription className="text-gray-600 line-clamp-4">
-              {cleanExcerpt(material.excerpt.rendered)}
-            </CardDescription>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
+    <>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {materials?.map((material) => (
+          <Card 
+            key={material.id} 
+            className="security-card group flex flex-col"
+          >
+            <CardHeader className="flex-grow">
+              <CardTitle className="text-security-blue group-hover:text-security-red transition-colors duration-300">
+                <span className="line-clamp-2">
+                  {cleanTitle(material.title.rendered)}
+                </span>
+              </CardTitle>
+              <CardDescription className="text-gray-600 line-clamp-3 flex-grow">
+                {cleanExcerpt(material.excerpt.rendered)}
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="pt-0">
+              <Button 
+                onClick={() => handleMaterialClick(material)}
+                className="w-full bg-security-red hover:bg-security-red/90 text-white flex items-center justify-center gap-2"
+              >
+                <Download size={16} />
+                Download Material
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      
+      <MaterialModal 
+        material={selectedMaterial}
+        isOpen={isModalOpen}
+        onClose={closeModal}
+      />
+    </>
   );
 };
 
