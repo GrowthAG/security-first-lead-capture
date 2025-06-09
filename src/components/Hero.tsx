@@ -29,9 +29,6 @@ const Hero = () => {
                 <ShieldCheck className="mr-2 h-5 w-5 md:h-6 md:w-6" />
                 Fale com um Especialista Agora
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-security-blue text-base md:text-lg py-5 md:py-6 px-6 md:px-8 w-full sm:w-auto" size="lg">
-                Saiba Mais
-              </Button>
             </div>
           </div>
           <div className="hidden md:flex justify-center">
