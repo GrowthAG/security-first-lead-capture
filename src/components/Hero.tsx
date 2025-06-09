@@ -36,7 +36,7 @@ const Hero = () => {
           </div>
           <div className="hidden md:flex justify-center">
             <div className="bg-white/10 p-8 rounded-lg border border-white/20 backdrop-blur-sm animate-float">
-              <img src="/lovable-uploads/5c8f6718-45e2-46b6-a0af-1f7cceeda211.png" alt="Cybersecurity Code" className="rounded-lg shadow-lg w-full max-w-md" />
+              <img src="/lovable-uploads/8994cf0b-3ecc-47f7-a0b8-6b8912da4e3e.png" alt="Cybersecurity Interface" className="rounded-lg shadow-lg w-full max-w-md" />
             </div>
           </div>
         </div>
