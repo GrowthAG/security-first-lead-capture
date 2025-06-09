@@ -30,7 +30,6 @@ const Header = () => {
             <ul className="flex space-x-6">
               <li><a href="#beneficios" className="text-security-blue hover:text-security-red font-medium transition-colors">Benefícios</a></li>
               <li><a href="#como-funciona" className="text-security-blue hover:text-security-red font-medium transition-colors">Como Funciona</a></li>
-              <li><a href="#depoimentos" className="text-security-blue hover:text-security-red font-medium transition-colors">Depoimentos</a></li>
               <li><Link to="/materiais" className="text-security-blue hover:text-security-red font-medium transition-colors">Materiais</Link></li>
               <li><a href="#formulario" className="text-security-blue hover:text-security-red font-medium transition-colors">Contato</a></li>
             </ul>
