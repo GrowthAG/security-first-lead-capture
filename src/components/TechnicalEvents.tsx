@@ -6,28 +6,33 @@ const events = [
   {
     icon: Lock,
     name: "CS4CA – Cyber Security For Critical Assets",
-    description: "Implantação de SOC em infraestrutura crítica, cobrindo mais de 10.000 ativos em 14 países."
+    description: "Apresentamos cases de clientes de infraestrutura crítica com a implantação de SOC no setor de energia e alimentação cobrindo mais de 10.000 ativos em 14 países, que puderam ter 95% redução.",
+    highlight: "Apresentamos cases de clientes de infraestrutura crítica com a implantação de SOC no setor de energia e alimentação"
   },
   {
     icon: Shield,
     name: "SDL – Security Design Lab",
-    description: "Apresentamos nossa solução de resposta a incidentes, capaz de conter crises cibernéticas em minutos."
+    description: "Somos patrocinadores da maior pesquisa nacional de segurança cibernética e contribuímos para o aumento da maturidade de processos e controles em diversos setores.",
+    highlight: "Somos patrocinadores da maior pesquisa nacional de segurança cibernética e contribuímos para o controle em diversos setores."
   },
   {
     icon: Settings,
     name: "IAM Tech Day 2025",
-    description: "Demonstração ao vivo da gestão de incidentes com tecnologias como Oracle Cloud, CrowdStrike e Claroty."
+    description: "Apresentamos nossa solução de resposta a incidentes, que está preparada para gerenciar crises de segurança cibernética em qualquer organização.",
+    highlight: "Apresentamos nossa solução de resposta a incidentes, que está preparada para gerenciar crises de segurança cibernética em qualquer organização."
   }
 ];
 
 const TechnicalEvents = () => {
   return (
-    <section className="py-20 bg-security-light">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="section-title">Participações Técnicas Estratégicas</h2>
+          <div className="bg-security-red text-white py-2 px-4 inline-block rounded mb-4">
+            <h2 className="font-montserrat font-bold text-lg">Securityfirst na mídia</h2>
+          </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Nossa expertise reconhecida em eventos técnicos internacionais
+            Empresas que já contam com nossa proteção 24x7 contra ameaças cibernéticas.
           </p>
         </div>
         
@@ -35,21 +40,42 @@ const TechnicalEvents = () => {
           {events.map((event, index) => {
             const IconComponent = event.icon;
             return (
-              <div key={index} className="security-card text-center">
-                <div className="flex justify-center mb-6">
-                  <div className="bg-security-red/10 p-4 rounded-full">
-                    <IconComponent className="h-8 w-8 text-security-red" />
+              <div key={index} className="security-card">
+                <div className="flex items-start mb-4">
+                  <div className="bg-security-red/10 p-2 rounded mr-3 flex-shrink-0">
+                    <IconComponent className="h-6 w-6 text-security-red" />
                   </div>
+                  <h3 className="font-montserrat font-semibold text-lg text-security-blue">
+                    {event.name}
+                  </h3>
                 </div>
-                <h3 className="font-montserrat font-semibold text-xl text-security-blue mb-4">
-                  {event.name}
-                </h3>
-                <p className="text-gray-700">
+                <div className="bg-security-red text-white p-3 rounded mb-3">
+                  <p className="text-sm font-medium">
+                    {event.highlight}
+                  </p>
+                </div>
+                <p className="text-gray-700 text-sm">
                   {event.description}
                 </p>
               </div>
             );
           })}
+        </div>
+        
+        <div className="mt-16 bg-security-red text-white p-6 rounded-lg text-center">
+          <p className="font-medium mb-4">
+            Levantar com o time ou trocar por outra coisa, eventos por exemplo, fizemos inúmeros no último ano que podem ser usados.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <span>CNPPD</span>
+            <span>QPeninnovation</span>
+            <span>GRM</span>
+            <span>CS4CA</span>
+            <span>SDL</span>
+            <span>HRMCON</span>
+            <span>IAMTechDay</span>
+            <span>CIELO</span>
+          </div>
         </div>
       </div>
     </section>

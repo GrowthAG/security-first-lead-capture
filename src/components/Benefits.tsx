@@ -27,13 +27,13 @@ const benefitItems = [
 
 const Benefits = () => {
   return (
-    <section id="beneficios" className="py-20 bg-security-light">
+    <section id="beneficios" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="section-title">Por que escolher nosso SOC 24x7</h2>
+          <h2 className="section-title text-security-blue">Por que escolher nosso SOC 24x7</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Oferecemos proteção completa contra ameaças cibernéticas com foco em agilidade, 
-            eficiência e alinhamento com suas necessidades de negócio.
+            eficiência e <span className="bg-security-red text-white px-2 py-1 rounded">personalizada para as</span> necessidades <span className="bg-security-red text-white px-2 py-1 rounded">do seu negócio.</span>
           </p>
         </div>
         
@@ -43,7 +43,7 @@ const Benefits = () => {
               <div className="mb-4 bg-security-blue/10 p-4 rounded-full">
                 <item.icon size={32} className="text-security-blue" />
               </div>
-              <h3 className="text-xl font-montserrat font-semibold mb-3">{item.title}</h3>
+              <h3 className="text-xl font-montserrat font-semibold mb-3 text-security-blue">{item.title}</h3>
               <p className="text-gray-600">{item.description}</p>
             </div>
           ))}
