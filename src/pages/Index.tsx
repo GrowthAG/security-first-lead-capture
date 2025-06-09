@@ -4,8 +4,10 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Benefits from '@/components/Benefits';
 import Authority from '@/components/Authority';
+import TechnologiesIntegration from '@/components/TechnologiesIntegration';
 import HowItWorks from '@/components/HowItWorks';
-import Testimonials from '@/components/Testimonials';
+import TechnicalEvents from '@/components/TechnicalEvents';
+import MediaPresence from '@/components/MediaPresence';
 import LeadForm from '@/components/LeadForm';
 import FloatingCTA from '@/components/FloatingCTA';
 
@@ -16,8 +18,10 @@ const Index = () => {
       <Hero />
       <Benefits />
       <Authority />
+      <TechnologiesIntegration />
       <HowItWorks />
-      <Testimonials />
+      <TechnicalEvents />
+      <MediaPresence />
       <LeadForm />
       <FloatingCTA />
     </div>
