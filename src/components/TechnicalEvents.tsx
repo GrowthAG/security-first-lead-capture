@@ -29,10 +29,10 @@ const TechnicalEvents = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="bg-security-red text-white py-2 px-4 inline-block rounded mb-4">
-            <h2 className="font-montserrat font-bold text-lg">Securityfirst na mídia</h2>
+            <h2 className="font-montserrat font-bold text-lg">Security First na mídia</h2>
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Empresas que já contam com nossa proteção 24x7 contra ameaças cibernéticas.
+            Participações técnicas estratégicas em eventos nacionais e internacionais de cybersecurity.
           </p>
         </div>
         
@@ -64,7 +64,7 @@ const TechnicalEvents = () => {
         
         <div className="mt-16 bg-security-red text-white p-6 rounded-lg text-center">
           <p className="font-medium mb-4">
-            Levantar com o time ou trocar por outra coisa, eventos por exemplo, fizemos inúmeros no último ano que podem ser usados.
+            Reconhecimento técnico em eventos de destaque na área de cybersecurity e infraestrutura crítica.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <span>CNPPD</span>

@@ -30,16 +30,16 @@ const Hero = () => {
             <div className={`mt-6 md:mt-8 flex ${isMobile ? 'flex-col items-center' : 'flex-row'} gap-4`}>
               <Button onClick={scrollToForm} className="bg-security-red hover:bg-security-red/90 text-white text-base md:text-lg py-5 md:py-6 px-6 md:px-8 w-full sm:w-auto" size="lg">
                 <ShieldCheck className="mr-2 h-5 w-5 md:h-6 md:w-6" />
-                Fale com um especialista e saiba se o seu ambiente está realmente seguro
+                Fale com um Especialista Agora
               </Button>
-              <Button variant="outline" className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-security-blue text-base md:text-lg py-5 md:py-6 px-6 md:px-8 w-full sm:w-auto font-semibold" size="lg">
+              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-security-blue text-base md:text-lg py-5 md:py-6 px-6 md:px-8 w-full sm:w-auto" size="lg">
                 Saiba Mais
               </Button>
             </div>
           </div>
           <div className="hidden md:flex justify-center">
             <div className="bg-white/10 p-8 rounded-lg border border-white/20 backdrop-blur-sm animate-float">
-              <img src="/lovable-uploads/c4a1892f-b4aa-454a-94af-2141b53c962d.png" alt="SOC Cybersecurity Dashboard" className="rounded-lg shadow-lg w-full max-w-md" />
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Cybersecurity Circuit Board" className="rounded-lg shadow-lg w-full max-w-md" />
             </div>
           </div>
         </div>
