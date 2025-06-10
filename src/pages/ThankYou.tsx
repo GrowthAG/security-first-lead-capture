@@ -1,12 +1,35 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Calendar, Clock, CheckCircle, ArrowDown } from 'lucide-react';
+import { Calendar, Clock, CheckCircle, ArrowDown, ExternalLink } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const ThankYou = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const location = useLocation();
   const userName = location.state?.userName || '';
+  const [iframeLoaded, setIframeLoaded] = useState(false);
+  const [showFallback, setShowFallback] = useState(false);
+
+  useEffect(() => {
+    // Mostrar botão de fallback após 5 segundos se o iframe não carregar
+    const timer = setTimeout(() => {
+      if (!iframeLoaded) {
+        setShowFallback(true);
+      }
+    }, 5000);
+
+    return () => clearTimeout(timer);
+  }, [iframeLoaded]);
+
+  const handleIframeLoad = () => {
+    setIframeLoaded(true);
+    setShowFallback(false);
+  };
+
+  const openCalendarInNewTab = () => {
+    window.open('https://app.gohighlevel.com/widget/bookings/securityfirst-diagnostico', '_blank');
+  };
 
   return (
     <div className="min-h-screen py-2 gradient-bg">
@@ -41,10 +64,26 @@ const ThankYou = () => {
             </div>
           </div>
 
-          {/* Calendário GoHighLevel otimizado */}
+          {/* Botão de fallback - sempre visível inicialmente */}
+          <div className="mb-4">
+            <Button 
+              onClick={openCalendarInNewTab}
+              className="w-full bg-security-red hover:bg-red-600 text-white py-4 text-lg font-bold"
+              size="lg"
+            >
+              <Calendar className="w-6 h-6 mr-2" />
+              AGENDAR AGORA
+              <ExternalLink className="w-4 h-4 ml-2" />
+            </Button>
+            <p className="text-center text-sm text-gray-600 mt-2">
+              Clique para abrir o calendário de agendamento
+            </p>
+          </div>
+
+          {/* Calendário GoHighLevel */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4">
             <div className="bg-security-blue text-white p-3 text-center">
-              <h2 className="text-base font-bold">📅 Selecione Data e Horário</h2>
+              <h2 className="text-base font-bold">📅 Ou agende diretamente aqui</h2>
             </div>
             
             <div className="p-2">
@@ -52,7 +91,7 @@ const ThankYou = () => {
                 <iframe 
                   src="https://app.gohighlevel.com/widget/bookings/securityfirst-diagnostico" 
                   width="100%" 
-                  height="800" 
+                  height="600" 
                   style={{ 
                     border: 'none', 
                     overflow: 'hidden',
@@ -62,8 +101,17 @@ const ThankYou = () => {
                   frameBorder="0"
                   allowFullScreen
                   ref={iframeRef}
+                  onLoad={handleIframeLoad}
                 ></iframe>
               </div>
+              
+              {/* Indicador de carregamento */}
+              {!iframeLoaded && (
+                <div className="flex justify-center items-center py-8">
+                  <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-security-blue"></div>
+                  <span className="ml-2 text-gray-600">Carregando calendário...</span>
+                </div>
+              )}
             </div>
           </div>
 
