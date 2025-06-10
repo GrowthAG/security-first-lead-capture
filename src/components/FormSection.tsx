@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ShieldCheck } from 'lucide-react';
@@ -11,7 +10,7 @@ const FormSection = () => {
 
   return (
     <>
-      <section id="formulario" className={`gradient-bg ${isMobile ? 'py-6 pb-12' : 'py-20 min-h-0'} flex items-center`}>
+      <section id="formulario" className={`gradient-bg ${isMobile ? 'py-6 pb-16' : 'py-20 min-h-0'} flex items-center`}>
         <div className={`container mx-auto w-full ${isMobile ? 'px-6' : 'px-4'}`}>
           <div className="max-w-4xl mx-auto text-center">
             <h2 className={`font-montserrat font-bold text-white leading-tight ${
