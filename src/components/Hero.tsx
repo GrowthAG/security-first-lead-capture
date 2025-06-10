@@ -12,13 +12,13 @@ const Hero = () => {
   };
 
   return (
-    <section className={`gradient-bg ${isMobile ? 'py-10' : 'py-28 min-h-0'} flex items-center`}>
-      <div className={`container mx-auto w-full ${isMobile ? 'px-4' : 'px-4'}`}>
+    <section className={`gradient-bg ${isMobile ? 'py-12' : 'py-28 min-h-0'} flex items-center`}>
+      <div className={`container mx-auto w-full ${isMobile ? 'px-6' : 'px-4'}`}>
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
             <h1 className={`font-montserrat font-bold leading-tight text-white ${
               isMobile 
-                ? 'text-2xl mb-4 leading-tight max-w-xs mx-auto' 
+                ? 'text-2xl mb-5 leading-tight max-w-xs mx-auto' 
                 : 'text-5xl mb-6'
             }`}>
               {isMobile ? (
@@ -34,7 +34,7 @@ const Hero = () => {
             </h1>
             <h2 className={`font-light opacity-90 leading-relaxed text-white ${
               isMobile 
-                ? 'text-lg mb-6 leading-normal max-w-xs mx-auto' 
+                ? 'text-lg mb-7 leading-normal max-w-xs mx-auto' 
                 : 'text-xl mb-8'
             }`}>
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não <span className="text-security-red font-bold">!</span>
@@ -57,7 +57,7 @@ const Hero = () => {
           <div className="hidden md:flex justify-center">
             <div className="relative w-full max-w-lg">
               <img 
-                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80" 
+                src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1000&q=80" 
                 alt="Cibersegurança - Proteção contra ataques hackers e ameaças digitais" 
                 className="w-full h-auto object-cover rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300" 
               />
