@@ -12,13 +12,13 @@ const Hero = () => {
   };
 
   return (
-    <section className={`gradient-bg ${isMobile ? 'py-12' : 'py-28 min-h-0'} flex items-center`}>
+    <section className={`gradient-bg ${isMobile ? 'py-8 min-h-screen flex' : 'py-28 min-h-0 flex'} items-center`}>
       <div className={`container mx-auto w-full ${isMobile ? 'px-6' : 'px-4'}`}>
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
             <h1 className={`font-montserrat font-bold leading-tight text-white ${
               isMobile 
-                ? 'text-2xl mb-5 leading-tight max-w-xs mx-auto' 
+                ? 'text-2xl mb-4 leading-tight max-w-xs mx-auto' 
                 : 'text-5xl mb-6'
             }`}>
               {isMobile ? (
@@ -34,12 +34,12 @@ const Hero = () => {
             </h1>
             <h2 className={`font-light opacity-90 leading-relaxed text-white ${
               isMobile 
-                ? 'text-lg mb-7 leading-normal max-w-xs mx-auto' 
+                ? 'text-lg mb-6 leading-normal max-w-xs mx-auto' 
                 : 'text-xl mb-8'
             }`}>
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não <span className="text-security-red font-bold">!</span>
             </h2>
-            <div className={isMobile ? '' : ''}>
+            <div className={isMobile ? 'pb-8' : ''}>
               <Button 
                 onClick={scrollToForm}
                 className={`bg-security-red hover:bg-security-red/90 text-white shadow-lg rounded-lg font-medium ${
