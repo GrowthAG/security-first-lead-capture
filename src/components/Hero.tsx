@@ -41,8 +41,8 @@ const Hero = () => {
           <div className="hidden md:flex justify-center">
             <div className="relative w-full max-w-lg animate-float">
               <img 
-                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1000&q=80" 
-                alt="Cybersecurity Technology" 
+                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=80" 
+                alt="Data Protection Technology" 
                 className="w-full h-auto object-cover rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
