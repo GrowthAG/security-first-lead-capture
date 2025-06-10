@@ -23,7 +23,7 @@ const FormSection = () => {
               size="lg"
             >
               <ShieldCheck className="mr-2 h-6 w-6" />
-              Abrir Formulário de Avaliação
+              Solicitar um Diagnóstico
             </Button>
           </div>
         </div>
