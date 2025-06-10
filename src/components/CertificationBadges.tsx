@@ -20,7 +20,7 @@ const CertificationBadges = () => {
       type: "security", 
       icon: Shield, 
       description: "Gestão de Segurança da Informação",
-      badgeUrl: "https://images.credly.com/size/340x340/images/6e90cfad-1e05-4c1b-8a7e-4dcde1f6c27e/image.png"
+      badgeUrl: "/lovable-uploads/3c111a33-b999-4b0a-9be8-834ce5f636dc.png"
     },
     { 
       name: "ISO 22301", 
