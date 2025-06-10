@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ShieldCheck } from 'lucide-react';
@@ -16,11 +15,11 @@ const FormSection = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className={`font-montserrat font-bold text-white leading-tight ${
               isMobile 
-                ? 'text-xl mb-3 leading-tight' 
+                ? 'text-lg mb-3 leading-tight' 
                 : 'text-4xl mb-6 max-w-3xl'
             } mx-auto`}>
               {isMobile ? (
-                'Especialistas prontos para implementar um SOC eficiente para sua empresa'
+                'Especialistas prontos para garantir mais segurança'
               ) : (
                 'Nossos especialistas estão prontos para ajudar sua empresa a implementar um SOC eficiente e personalizado.'
               )}
