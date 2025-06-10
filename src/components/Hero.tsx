@@ -16,13 +16,6 @@ const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
-            <div className="mb-8">
-              <img 
-                src="/lovable-uploads/021f51b5-1f46-480a-9325-bf2dc11324ce.png" 
-                alt="Security First Logo" 
-                className="h-16 md:h-20 mx-auto md:mx-0"
-              />
-            </div>
             <h1 className="font-montserrat text-2xl md:text-5xl font-bold leading-tight">
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
