@@ -1,21 +1,16 @@
 
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Calendar, CheckCircle, ExternalLink } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Calendar, CheckCircle } from 'lucide-react';
 
 const ThankYou = () => {
   const location = useLocation();
   const userName = location.state?.userName || '';
 
-  const openCalendarInNewTab = () => {
-    window.open('https://app.gohighlevel.com/widget/bookings/securityfirst-diagnostico', '_blank');
-  };
-
   return (
     <div className="min-h-screen py-4 gradient-bg">
       <div className="container mx-auto px-4">
-        <div className="max-w-lg mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="bg-white rounded-lg shadow-lg p-6 mb-6 text-center">
             <div className="flex justify-center mb-4">
@@ -39,7 +34,7 @@ const ThankYou = () => {
               <span className="text-2xl font-bold">AGENDE AGORA</span>
             </div>
             <p className="text-lg opacity-95 mb-4">
-              👇 Clique no botão abaixo para escolher seu horário
+              👇 Escolha seu horário no calendário abaixo
             </p>
             <div className="flex justify-center items-center space-x-6 text-lg">
               <span>⏰ 30min</span>
@@ -48,47 +43,17 @@ const ThankYou = () => {
             </div>
           </div>
 
-          {/* Botão de Agendamento Principal */}
-          <div className="mb-6">
-            <Button 
-              onClick={openCalendarInNewTab}
-              className="w-full bg-security-red hover:bg-red-600 text-white py-6 text-xl font-bold"
-              size="lg"
-            >
-              <Calendar className="w-8 h-8 mr-3" />
-              AGENDAR MEU DIAGNÓSTICO
-              <ExternalLink className="w-5 h-5 ml-3" />
-            </Button>
-            <p className="text-center text-sm text-gray-600 mt-3">
-              * Clique para abrir o calendário de agendamento em uma nova aba
-            </p>
-          </div>
-
-          {/* Benefícios do Agendamento */}
-          <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 className="text-xl font-bold text-security-blue mb-4 text-center">
-              O que acontece após o agendamento?
-            </h3>
-            <div className="space-y-3">
-              <div className="flex items-center">
-                <div className="bg-green-100 p-2 rounded-full mr-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                </div>
-                <span className="text-gray-700">Confirmação automática por e-mail</span>
-              </div>
-              <div className="flex items-center">
-                <div className="bg-green-100 p-2 rounded-full mr-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                </div>
-                <span className="text-gray-700">Reunião com especialista em cibersegurança</span>
-              </div>
-              <div className="flex items-center">
-                <div className="bg-green-100 p-2 rounded-full mr-3">
-                  <CheckCircle className="w-5 h-5 text-green-600" />
-                </div>
-                <span className="text-gray-700">Relatório personalizado em 24 horas</span>
-              </div>
-            </div>
+          {/* GoHighLevel Calendar */}
+          <div className="bg-white rounded-lg shadow-lg p-4 mb-6">
+            <iframe 
+              src="https://app.gohighlevel.com/widget/bookings/securityfirst-diagnostico" 
+              width="100%" 
+              height="950" 
+              style={{border: 'none', overflow: 'hidden'}} 
+              scrolling="no" 
+              frameBorder="0"
+              allowFullScreen
+            />
           </div>
 
           {/* Urgência */}
