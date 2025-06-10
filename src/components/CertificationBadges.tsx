@@ -1,8 +1,15 @@
 
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Award, Shield, Star } from 'lucide-react';
+import { Award, Shield, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 const CertificationBadges = () => {
   const isMobile = useIsMobile();
@@ -13,7 +20,7 @@ const CertificationBadges = () => {
       type: "security", 
       icon: Shield, 
       description: "Gestão de Segurança da Informação",
-      badgeUrl: "/lovable-uploads/1c0f6be2-afb8-496c-90a6-68450512adc0.png"
+      badgeUrl: "https://images.credly.com/size/340x340/images/6e90cfad-1e05-4c1b-8a7e-4dcde1f6c27e/image.png"
     },
     { 
       name: "ISO 22301", 
@@ -56,6 +63,13 @@ const CertificationBadges = () => {
       icon: Award, 
       description: "Extreme Web Penetration Testing",
       badgeUrl: "https://images.credly.com/size/340x340/images/ec81134d-e80b-4eb5-ae07-0eb8e1a60fcd/elearnsecurity.png"
+    },
+    { 
+      name: "GCIH", 
+      type: "professional", 
+      icon: Award, 
+      description: "GIAC Certified Incident Handler",
+      badgeUrl: "https://images.credly.com/size/340x340/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png"
     }
   ];
 
@@ -107,44 +121,52 @@ const CertificationBadges = () => {
         </div>
 
         <div className="max-w-6xl mx-auto">
-          <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-2 lg:grid-cols-3 gap-6'} mb-8`}>
-            {certificates.map((cert, index) => {
-              const styles = getBadgeStyles(cert.type);
-              
-              return (
-                <div 
-                  key={index} 
-                  className="bg-white/10 backdrop-blur-sm border-white/20 border-2 rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:bg-white/15"
-                >
-                  <div className="flex flex-col items-center text-center space-y-4">
-                    <div className="relative">
-                      <img 
-                        src={cert.badgeUrl} 
-                        alt={`${cert.name} Certification Badge`}
-                        className="w-24 h-24 object-contain drop-shadow-lg"
-                        onError={(e) => {
-                          // Fallback para ícone se a imagem não carregar
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          const iconDiv = target.nextElementSibling as HTMLElement;
-                          if (iconDiv) iconDiv.style.display = 'flex';
-                        }}
-                      />
-                      <div className="w-24 h-24 rounded-full bg-white/20 border-4 border-white/30 shadow-lg hidden items-center justify-center">
-                        <cert.icon className="w-8 h-8 text-white" />
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            className="w-full mb-8"
+          >
+            <CarouselContent className="-ml-2 md:-ml-4">
+              {certificates.map((cert, index) => {
+                const styles = getBadgeStyles(cert.type);
+                
+                return (
+                  <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-full' : 'basis-1/2 lg:basis-1/3'}`}>
+                    <div className="bg-white/10 backdrop-blur-sm border-white/20 border-2 rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:bg-white/15 h-full">
+                      <div className="flex flex-col items-center text-center space-y-4">
+                        <div className="relative">
+                          <img 
+                            src={cert.badgeUrl} 
+                            alt={`${cert.name} Certification Badge`}
+                            className="w-24 h-24 object-contain drop-shadow-lg"
+                            onError={(e) => {
+                              const target = e.target as HTMLImageElement;
+                              target.style.display = 'none';
+                              const iconDiv = target.nextElementSibling as HTMLElement;
+                              if (iconDiv) iconDiv.style.display = 'flex';
+                            }}
+                          />
+                          <div className="w-24 h-24 rounded-full bg-white/20 border-4 border-white/30 shadow-lg hidden items-center justify-center">
+                            <cert.icon className="w-8 h-8 text-white" />
+                          </div>
+                        </div>
+                        <Badge className={`${styles.badge} text-sm font-bold px-4 py-2 min-w-0`}>
+                          {cert.name}
+                        </Badge>
+                        <p className="text-xs text-white/80 leading-tight">
+                          {cert.description}
+                        </p>
                       </div>
                     </div>
-                    <Badge className={`${styles.badge} text-sm font-bold px-4 py-2 min-w-0`}>
-                      {cert.name}
-                    </Badge>
-                    <p className="text-xs text-white/80 leading-tight">
-                      {cert.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious className="text-white border-white/30 hover:bg-white/10 hover:text-white -left-12" />
+            <CarouselNext className="text-white border-white/30 hover:bg-white/10 hover:text-white -right-12" />
+          </Carousel>
 
           <div className="text-center">
             <div className="inline-flex items-center bg-white/10 backdrop-blur-sm text-white px-6 py-4 rounded-lg border border-white/20">
