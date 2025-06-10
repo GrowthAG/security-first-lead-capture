@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -21,6 +22,32 @@ const formSchema = z.object({
 
 const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/5C2Mxuu479dGArGRG36G/webhook-trigger/53bba7ba-599a-4c29-afa3-2a82930af303";
 const BOOKING_URL = "https://pages.securityfirst.com.br/booking";
+
+const sectorOptions = [
+  { value: "bancos-instituicoes-financeiras", label: "🏦 Bancos e Instituições Financeiras" },
+  { value: "fintechs-meios-pagamento", label: "🏦 Fintechs e Meios de Pagamento" },
+  { value: "cooperativas-credito-consorcios", label: "🏦 Cooperativas de Crédito / Consórcios" },
+  { value: "hospitais-clinicas", label: "🏥 Hospitais / Clínicas" },
+  { value: "laboratorios-operadoras-plano-saude", label: "🏥 Laboratórios / Operadoras de Plano de Saúde" },
+  { value: "healthtechs", label: "🏥 HealthTechs" },
+  { value: "industria-geral", label: "🏭 Indústria Geral" },
+  { value: "industria-farmaceutica", label: "🏭 Indústria Farmacêutica" },
+  { value: "industria-alimentos-bebidas", label: "🏭 Indústria de Alimentos / Bebidas" },
+  { value: "marketplaces-lojas-virtuais", label: "🛒 Marketplaces / Lojas Virtuais" },
+  { value: "plataformas-logistica-transporte", label: "🛒 Plataformas de Logística / Transporte" },
+  { value: "universidades-ensino-superior", label: "🎓 Universidades / Ensino Superior" },
+  { value: "plataformas-ead-edtechs", label: "🎓 Plataformas EAD / EdTechs" },
+  { value: "energia-saneamento-telecom", label: "⚡ Energia / Saneamento / Telecom" },
+  { value: "concessionarias-servicos-publicos", label: "⚡ Concessionárias de Serviços Públicos" },
+  { value: "seguradoras", label: "🔐 Seguradoras" },
+  { value: "previdencia-complementar", label: "🔐 Previdência Complementar" },
+  { value: "transportadoras", label: "🚛 Transportadoras" },
+  { value: "plataformas-rastreamento", label: "🚛 Plataformas de Rastreamento" },
+  { value: "saas-plataformas-digitais", label: "🏢 SaaS / Plataformas Digitais" },
+  { value: "consultorias-ti", label: "🏢 Consultorias de TI" },
+  { value: "governo-setor-publico", label: "🏛 Governo e Setor Público" },
+  { value: "outro", label: "🧩 Outro (especificar no campo de mensagem)" }
+];
 
 const LeadForm = () => {
   const [showCustomPosition, setShowCustomPosition] = useState(false);
@@ -155,9 +182,20 @@ const LeadForm = () => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Setor da Empresa</FormLabel>
-                <FormControl>
-                  <Input placeholder="Ex: Tecnologia, Finanças, Saúde" {...field} />
-                </FormControl>
+                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione o setor da sua empresa" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {sectorOptions.map((option) => (
+                      <SelectItem key={option.value} value={option.value}>
+                        {option.label}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
                 <FormMessage />
               </FormItem>
             )}
