@@ -13,49 +13,49 @@ const CertificationBadges = () => {
       type: "security", 
       icon: Shield, 
       description: "Gestão de Segurança da Informação",
-      badgeUrl: "https://images.unsplash.com/photo-1606868306217-dbf5046868d2?w=200&h=200&fit=crop&crop=center"
+      badgeUrl: "/lovable-uploads/1c0f6be2-afb8-496c-90a6-68450512adc0.png"
     },
     { 
       name: "ISO 22301", 
       type: "business", 
       icon: Shield, 
       description: "Continuidade de Negócios",
-      badgeUrl: "https://images.unsplash.com/photo-1606868306217-dbf5046868d2?w=200&h=200&fit=crop&crop=center"
+      badgeUrl: "https://images.credly.com/size/340x340/images/e7da8c96-b3d8-4a3b-9cfa-0ebad1cc2a1c/ISO_22301_Lead_Implementer.png"
     },
     { 
       name: "CISSP", 
       type: "professional", 
       icon: Award, 
       description: "Certified Information Systems Security Professional",
-      badgeUrl: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=200&h=200&fit=crop&crop=center"
+      badgeUrl: "https://images.credly.com/size/340x340/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cisscp.png"
     },
     { 
       name: "CEH", 
       type: "professional", 
       icon: Award, 
       description: "Certified Ethical Hacker",
-      badgeUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=200&h=200&fit=crop&crop=center"
+      badgeUrl: "https://images.credly.com/size/340x340/images/9c24335b-76b7-4f91-b96b-68a70d9a56e0/ceh.png"
     },
     { 
       name: "CISM", 
       type: "professional", 
       icon: Award, 
       description: "Certified Information Security Manager",
-      badgeUrl: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=200&h=200&fit=crop&crop=center"
+      badgeUrl: "https://images.credly.com/size/340x340/images/ae2f5bae-b110-4ea1-8e26-77cf5f76c81e/CISM.png"
     },
     { 
       name: "C-CISO", 
       type: "executive", 
       icon: Star, 
       description: "Chief Information Security Officer",
-      badgeUrl: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=200&h=200&fit=crop&crop=center"
+      badgeUrl: "https://images.credly.com/size/340x340/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cciso.png"
     },
     { 
       name: "EWPTX", 
       type: "technical", 
       icon: Award, 
       description: "Extreme Web Penetration Testing",
-      badgeUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=200&h=200&fit=crop&crop=center"
+      badgeUrl: "https://images.credly.com/size/340x340/images/ec81134d-e80b-4eb5-ae07-0eb8e1a60fcd/elearnsecurity.png"
     }
   ];
 
@@ -121,7 +121,7 @@ const CertificationBadges = () => {
                       <img 
                         src={cert.badgeUrl} 
                         alt={`${cert.name} Certification Badge`}
-                        className="w-20 h-20 rounded-full object-cover border-4 border-white/30 shadow-lg"
+                        className="w-24 h-24 object-contain drop-shadow-lg"
                         onError={(e) => {
                           // Fallback para ícone se a imagem não carregar
                           const target = e.target as HTMLImageElement;
@@ -130,7 +130,7 @@ const CertificationBadges = () => {
                           if (iconDiv) iconDiv.style.display = 'flex';
                         }}
                       />
-                      <div className="w-20 h-20 rounded-full bg-white/20 border-4 border-white/30 shadow-lg hidden items-center justify-center">
+                      <div className="w-24 h-24 rounded-full bg-white/20 border-4 border-white/30 shadow-lg hidden items-center justify-center">
                         <cert.icon className="w-8 h-8 text-white" />
                       </div>
                     </div>
