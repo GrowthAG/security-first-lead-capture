@@ -12,30 +12,30 @@ const Hero = () => {
   };
 
   return (
-    <section className={`gradient-bg ${isMobile ? 'pt-0 pb-4 min-h-[calc(100vh-4rem)]' : 'py-28 min-h-0'} flex items-center`}>
+    <section className={`gradient-bg ${isMobile ? 'py-2 min-h-[calc(100vh-3rem)]' : 'py-28 min-h-0'} flex items-center`}>
       <div className="container mx-auto px-4 w-full">
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
-          <div className={`text-white ${isMobile ? 'text-center px-2 -mt-4' : ''}`}>
+          <div className={`text-white ${isMobile ? 'text-center px-1' : ''}`}>
             <h1 className={`font-montserrat font-bold leading-tight text-white ${
               isMobile 
-                ? 'text-xl mb-3 leading-[1.2]' 
+                ? 'text-lg mb-2 leading-[1.1]' 
                 : 'text-5xl mb-6'
             }`}>
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
             <h2 className={`font-light opacity-90 leading-relaxed text-white ${
               isMobile 
-                ? 'text-sm mb-4 px-1 leading-[1.3]' 
+                ? 'text-sm mb-3 leading-[1.2]' 
                 : 'text-xl mb-8'
             }`}>
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não <span className="text-security-red font-bold">!</span>
             </h2>
-            <div className={isMobile ? 'px-4' : ''}>
+            <div className={isMobile ? 'px-2' : ''}>
               <Button 
                 onClick={scrollToForm}
                 className={`bg-security-red hover:bg-security-red/90 text-white shadow-lg rounded-lg font-medium ${
                   isMobile 
-                    ? 'text-sm py-3 px-5 w-full max-w-xs mx-auto' 
+                    ? 'text-sm py-2 px-4 w-full max-w-xs mx-auto' 
                     : 'text-lg py-6 px-8 w-auto'
                 }`}
                 size="lg"
