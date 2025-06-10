@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Shield, Users, Code, Zap } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const benefitItems = [
   {
@@ -26,6 +27,8 @@ const benefitItems = [
 ];
 
 const Benefits = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section id="beneficios" className="py-20 bg-white">
       <div className="container mx-auto px-4">
@@ -33,7 +36,13 @@ const Benefits = () => {
           <h2 className="section-title text-security-blue">Por que escolher nosso SOC 24x7</h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Oferecemos proteção completa contra ameaças cibernéticas com foco em agilidade, 
-            eficiência e <span className="bg-security-red text-white px-2 py-1 rounded">personalizada para as</span> necessidades <span className="bg-security-red text-white px-2 py-1 rounded">do seu negócio.</span>
+            eficiência e {isMobile ? (
+              <>personalizada para as necessidades do seu negócio.</>
+            ) : (
+              <>
+                <span className="bg-security-red text-white px-2 py-1 rounded">personalizada para as</span> necessidades <span className="bg-security-red text-white px-2 py-1 rounded">do seu negócio.</span>
+              </>
+            )}
           </p>
         </div>
         
