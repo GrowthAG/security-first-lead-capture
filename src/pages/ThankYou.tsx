@@ -21,53 +21,54 @@ const ThankYou = () => {
   }, []);
 
   return (
-    <div className="min-h-screen py-1 gradient-bg">
-      <div className="container mx-auto px-2">
-        <div className="max-w-2xl mx-auto">
-          {/* Header ultra compacto */}
-          <div className="bg-white rounded-lg shadow-lg p-2 mb-2 text-center">
-            <div className="flex justify-center mb-1">
-              <div className="bg-green-100 p-1 rounded-full">
-                <CheckCircle className="w-4 h-4 text-green-600" />
+    <div className="min-h-screen py-2 gradient-bg">
+      <div className="container mx-auto px-4">
+        <div className="max-w-lg mx-auto">
+          {/* Header compacto */}
+          <div className="bg-white rounded-lg shadow-lg p-3 mb-3 text-center">
+            <div className="flex justify-center mb-2">
+              <div className="bg-green-100 p-2 rounded-full">
+                <CheckCircle className="w-5 h-5 text-green-600" />
               </div>
             </div>
-            <h1 className="text-base md:text-lg font-bold text-security-blue mb-1">
-              {userName ? `🎉 Perfeito, ${userName}!` : '🎉 Perfeito!'} Sua solicitação foi recebida
+            <h1 className="text-lg font-bold text-security-blue mb-1">
+              {userName ? `🎉 Perfeito, ${userName}!` : '🎉 Perfeito!'} 
             </h1>
+            <p className="text-sm text-gray-600">Sua solicitação foi recebida</p>
           </div>
 
-          {/* CTA principal super destacado */}
-          <div className="bg-gradient-to-r from-security-red to-red-600 text-white p-3 rounded-lg mb-2 text-center">
-            <div className="flex items-center justify-center mb-1">
-              <Calendar className="w-5 h-5 mr-2" />
-              <span className="text-lg font-bold">👇 AGENDE AGORA SEU DIAGNÓSTICO</span>
+          {/* CTA principal */}
+          <div className="bg-gradient-to-r from-security-red to-red-600 text-white p-4 rounded-lg mb-3 text-center">
+            <div className="flex items-center justify-center mb-2">
+              <Calendar className="w-6 h-6 mr-2" />
+              <span className="text-xl font-bold">AGENDE AGORA</span>
             </div>
-            <p className="text-sm opacity-95 mb-1">
-              🎯 Quase lá! Escolha o melhor horário abaixo
+            <p className="text-sm opacity-95 mb-2">
+              👇 Escolha seu horário abaixo
             </p>
-            <div className="flex justify-center items-center space-x-3 text-xs">
-              <span>⏰ 30 min</span>
+            <div className="flex justify-center items-center space-x-4 text-sm">
+              <span>⏰ 30min</span>
               <span>🆓 Gratuito</span>
-              <span>📊 Relatório em 24h</span>
+              <span>📊 Relatório 24h</span>
             </div>
           </div>
 
-          {/* Calendário ultra compacto para aparecer na primeira dobra */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <div className="bg-security-blue text-white p-2 text-center">
-              <h2 className="text-sm font-bold">📅 Clique para escolher data e horário</h2>
+          {/* Calendário otimizado */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4">
+            <div className="bg-security-blue text-white p-3 text-center">
+              <h2 className="text-base font-bold">📅 Selecione Data e Horário</h2>
             </div>
             
-            <div className="p-1">
-              <div className="calendar-container bg-gray-50 rounded-lg">
+            <div className="p-2">
+              <div className="calendar-container">
                 <iframe 
                   src="https://api.leadconnectorhq.com/widget/booking/aEhg9U7IoYjD9J0xdGKH" 
                   style={{ 
                     width: '100%', 
                     border: 'none', 
                     overflow: 'hidden', 
-                    height: '300px', // Reduzido drasticamente para 300px
-                    borderRadius: '8px'
+                    height: '280px',
+                    borderRadius: '6px'
                   }} 
                   scrolling="no" 
                   id="aEhg9U7IoYjD9J0xdGKH_1745871964043"
@@ -77,24 +78,24 @@ const ThankYou = () => {
             </div>
           </div>
 
-          {/* Instrução compacta */}
-          <div className="mt-2 text-center">
-            <div className="bg-white/95 backdrop-blur-sm rounded-lg shadow-lg p-2 inline-block">
-              <p className="text-xs text-gray-700 font-medium">
-                ✅ <span className="text-security-red">Confirmação:</span> Você receberá um e-mail após escolher o horário
+          {/* Confirmação */}
+          <div className="text-center mb-4">
+            <div className="bg-white rounded-lg shadow p-3">
+              <p className="text-sm text-gray-700 font-medium">
+                ✅ <span className="text-security-red">Após agendar:</span> Você receberá confirmação por e-mail
               </p>
             </div>
           </div>
           
-          {/* Footer minimalista */}
-          <div className="mt-3 text-center">
-            <div className="bg-white/90 rounded-lg shadow-lg p-2 inline-block">
+          {/* Footer */}
+          <div className="text-center">
+            <div className="bg-white/95 rounded-lg shadow p-3">
               <img 
                 src="/lovable-uploads/359006b6-e80f-4854-9503-167db1c6429d.png" 
                 alt="Security First Logo" 
-                className="h-5 mx-auto" 
+                className="h-6 mx-auto mb-1" 
               />
-              <p className="text-xs text-gray-500 mt-1">Security First - Proteção que você pode confiar</p>
+              <p className="text-xs text-gray-500">Security First - Proteção que você pode confiar</p>
             </div>
           </div>
         </div>
