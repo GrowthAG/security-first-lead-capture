@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="gradient-bg py-4 md:py-28 min-h-screen md:min-h-0 flex items-center">
+    <section className="gradient-bg py-2 md:py-28 min-h-screen md:min-h-0 flex items-center">
       <div className="container mx-auto px-4 w-full">
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
@@ -36,7 +36,7 @@ const Hero = () => {
           <div className="hidden md:flex justify-center">
             <div className="relative w-full max-w-lg">
               <img 
-                src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?auto=format&fit=crop&w=1000&q=80" 
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1000&q=80" 
                 alt="SOC Cybersecurity - Centro de Operações de Segurança com múltiplos monitores" 
                 className="w-full h-auto object-cover rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300" 
               />
