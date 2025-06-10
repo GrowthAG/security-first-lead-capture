@@ -1,15 +1,9 @@
 
 import React from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Button } from '@/components/ui/button';
-import { ShieldCheck } from 'lucide-react';
 
 const Hero = () => {
   const isMobile = useIsMobile();
-
-  const scrollToForm = () => {
-    document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section className="gradient-bg py-12 md:py-28">
@@ -22,23 +16,15 @@ const Hero = () => {
             <p className="mt-4 md:mt-6 text-lg md:text-xl font-light opacity-90">
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não <span className="text-security-red font-bold">!</span>
             </p>
-            <Button 
-              onClick={scrollToForm}
-              className="mt-8 bg-security-red hover:bg-security-red/90 text-white text-lg py-6 px-8"
-              size="lg"
-            >
-              <ShieldCheck className="mr-2 h-6 w-6" />
-              Solicitar um Diagnóstico
-            </Button>
           </div>
           <div className="hidden md:flex justify-center">
             <div className="relative w-full max-w-lg animate-float">
               <img 
                 src="/lovable-uploads/8994cf0b-3ecc-47f7-a0b8-6b8912da4e3e.png" 
                 alt="Cybersecurity Interface" 
-                className="w-full h-auto object-cover rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300" 
+                className="w-full h-auto object-cover shadow-2xl transform hover:scale-105 transition-transform duration-300" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </div>
         </div>
