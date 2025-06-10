@@ -11,8 +11,16 @@ const FormSection = () => {
     <>
       <section id="formulario" className="py-20 gradient-bg">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
-            <h2 className="section-title text-white mb-6">Solicite uma Avaliação Gratuita</h2>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="section-title text-white mb-6">
+              Nossos especialistas estão prontos para ajudar sua empresa a implementar um SOC eficiente e personalizado para as necessidades do seu negócio.
+            </h2>
+            <p className="text-white/90 text-lg mb-8">
+              Entre em contato conosco e descubra como podemos fortalecer a segurança da sua empresa.
+            </p>
+            <h3 className="text-white text-2xl font-semibold mb-4">
+              Solicite uma Avaliação Gratuita
+            </h3>
             <p className="text-white/90 text-lg mb-8">
               Preencha o formulário e nossa equipe entrará em contato para agendar uma 
               avaliação especializada para sua empresa.
