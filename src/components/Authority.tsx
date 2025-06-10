@@ -22,7 +22,7 @@ const Authority = () => {
             <div className="space-y-4">
               <div className="flex items-start">
                 <CheckCircle className="text-security-red mr-2 flex-shrink-0 mt-1" size={20} />
-                <p>+ de <span className="font-semibold">500 ataques</span> bloqueados em tempo real nos últimos 12 meses</p>
+                <p>Monitoramos <span className="font-semibold">milhares de ativos em 14 países</span></p>
               </div>
               <div className="flex items-start">
                 <CheckCircle className="text-security-red mr-2 flex-shrink-0 mt-1" size={20} />
@@ -34,7 +34,7 @@ const Authority = () => {
               </div>
               <div className="flex items-start">
                 <CheckCircle className="text-security-red mr-2 flex-shrink-0 mt-1" size={20} />
-                <p>Mais de <span className="font-semibold">100 clientes</span> protegidos em setores críticos</p>
+                <p><span className="font-semibold">+ de 10 Bilhões de eventos monitorados todos os meses</span></p>
               </div>
             </div>
             
