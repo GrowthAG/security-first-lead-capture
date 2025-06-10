@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Lock, Shield, Settings } from 'lucide-react';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const events = [
   {
@@ -24,8 +25,10 @@ const events = [
 ];
 
 const TechnicalEvents = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <section className="py-20 bg-white">
+    <section className={`${isMobile ? 'py-12' : 'py-20'} bg-white`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="bg-security-red text-white py-2 px-4 inline-block rounded mb-4">
