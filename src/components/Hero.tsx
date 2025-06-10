@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from '@/components/ui/button';
@@ -12,35 +11,35 @@ const Hero = () => {
   };
 
   return (
-    <section className={`gradient-bg ${isMobile ? 'py-1 min-h-[calc(100vh-2rem)]' : 'py-28 min-h-0'} flex items-center`}>
-      <div className={`container mx-auto w-full ${isMobile ? 'px-2' : 'px-4'}`}>
+    <section className={`gradient-bg ${isMobile ? 'py-4' : 'py-28 min-h-0'} flex items-center`}>
+      <div className={`container mx-auto w-full ${isMobile ? 'px-3' : 'px-4'}`}>
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
             <h1 className={`font-montserrat font-bold leading-tight text-white ${
               isMobile 
-                ? 'text-xl mb-3 leading-[1.1] px-1' 
+                ? 'text-2xl mb-2 leading-tight' 
                 : 'text-5xl mb-6'
             }`}>
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
             <h2 className={`font-light opacity-90 leading-relaxed text-white ${
               isMobile 
-                ? 'text-base mb-4 leading-[1.2] px-1' 
+                ? 'text-lg mb-3 leading-snug' 
                 : 'text-xl mb-8'
             }`}>
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não <span className="text-security-red font-bold">!</span>
             </h2>
-            <div className={isMobile ? 'px-1' : ''}>
+            <div className={isMobile ? '' : ''}>
               <Button 
                 onClick={scrollToForm}
                 className={`bg-security-red hover:bg-security-red/90 text-white shadow-lg rounded-lg font-medium ${
                   isMobile 
-                    ? 'text-base py-3 px-6 w-full max-w-sm mx-auto' 
+                    ? 'text-lg py-4 px-8 w-full max-w-sm mx-auto' 
                     : 'text-lg py-6 px-8 w-auto'
                 }`}
                 size="lg"
               >
-                <ShieldCheck className={`mr-2 ${isMobile ? 'h-5 w-5' : 'h-6 w-6'}`} />
+                <ShieldCheck className={`mr-2 ${isMobile ? 'h-6 w-6' : 'h-6 w-6'}`} />
                 Solicitar um Diagnóstico
               </Button>
             </div>
