@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="gradient-bg py-2 md:py-28 min-h-screen md:min-h-0 flex items-center">
+    <section className="gradient-bg pt-2 pb-4 md:py-28 min-h-screen md:min-h-0 flex items-center">
       <div className="container mx-auto px-4 w-full">
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
