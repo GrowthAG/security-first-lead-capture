@@ -20,20 +20,6 @@ const MediaPresence = () => {
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="flex items-center justify-center gap-4 mb-6">
-            <img 
-              src="/lovable-uploads/359006b6-e80f-4854-9503-167db1c6429d.png" 
-              alt="Security First Logo" 
-              className="h-12"
-            />
-            <h2 className="section-title mb-0">na mídia</h2>
-          </div>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Reconhecimento técnico e participação ativa no cenário nacional e internacional
-          </p>
-        </div>
-        
         <div className="grid md:grid-cols-3 gap-8">
           {mediaHighlights.map((highlight, index) => (
             <div key={index} className="text-center">
