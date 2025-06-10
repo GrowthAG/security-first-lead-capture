@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -86,145 +85,139 @@ const LeadForm = () => {
   };
 
   return (
-    <section id="formulario" className="py-20 gradient-bg">
-      <div className="container mx-auto px-4">
-        <div className="max-w-2xl mx-auto bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="section-title text-center">Solicite uma Avaliação Gratuita</h2>
-          <p className="text-center text-gray-600 mb-8">
-            Preencha o formulário abaixo e nossa equipe entrará em contato para agendar uma 
-            avaliação especializada para sua empresa.
-          </p>
+    <div className="p-4">
+      <p className="text-center text-gray-600 mb-6">
+        Preencha o formulário abaixo e nossa equipe entrará em contato para agendar uma 
+        avaliação especializada para sua empresa.
+      </p>
 
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="fullName"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nome Completo</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Digite seu nome completo" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+            control={form.control}
+            name="fullName"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nome Completo</FormLabel>
+                <FormControl>
+                  <Input placeholder="Digite seu nome completo" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>E-mail Corporativo</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="seu.nome@empresa.com.br" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>E-mail Corporativo</FormLabel>
+                <FormControl>
+                  <Input type="email" placeholder="seu.nome@empresa.com.br" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Telefone / WhatsApp</FormLabel>
-                    <FormControl>
-                      <Input placeholder="(00) 00000-0000" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          <FormField
+            control={form.control}
+            name="phone"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Telefone / WhatsApp</FormLabel>
+                <FormControl>
+                  <Input placeholder="(00) 00000-0000" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <FormField
-                control={form.control}
-                name="company"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Nome da Empresa</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Nome da sua empresa" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          <FormField
+            control={form.control}
+            name="company"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nome da Empresa</FormLabel>
+                <FormControl>
+                  <Input placeholder="Nome da sua empresa" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <FormField
-                control={form.control}
-                name="sector"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Setor da Empresa</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Ex: Tecnologia, Finanças, Saúde" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          <FormField
+            control={form.control}
+            name="sector"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Setor da Empresa</FormLabel>
+                <FormControl>
+                  <Input placeholder="Ex: Tecnologia, Finanças, Saúde" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              <FormField
-                control={form.control}
-                name="position"
-                render={() => (
-                  <FormItem>
-                    <FormLabel>Cargo</FormLabel>
-                    <Select onValueChange={handlePositionChange}>
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selecione seu cargo" />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        <SelectItem value="CTO (Chief Technology Officer)">CTO (Chief Technology Officer)</SelectItem>
-                        <SelectItem value="CISO (Chief Information Security Officer)">CISO (Chief Information Security Officer)</SelectItem>
-                        <SelectItem value="Gerente de TI">Gerente de TI</SelectItem>
-                        <SelectItem value="Gerente de Compliance">Gerente de Compliance</SelectItem>
-                        <SelectItem value="Diretor de Tecnologia">Diretor de Tecnologia</SelectItem>
-                        <SelectItem value="Coordenador de Infraestrutura">Coordenador de Infraestrutura</SelectItem>
-                        <SelectItem value="Especialista em Segurança Cibernética">Especialista em Segurança Cibernética</SelectItem>
-                        <SelectItem value="Responsável por LGPD">Responsável por LGPD</SelectItem>
-                        <SelectItem value="Outro">Outro</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+          <FormField
+            control={form.control}
+            name="position"
+            render={() => (
+              <FormItem>
+                <FormLabel>Cargo</FormLabel>
+                <Select onValueChange={handlePositionChange}>
+                  <FormControl>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Selecione seu cargo" />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    <SelectItem value="CTO (Chief Technology Officer)">CTO (Chief Technology Officer)</SelectItem>
+                    <SelectItem value="CISO (Chief Information Security Officer)">CISO (Chief Information Security Officer)</SelectItem>
+                    <SelectItem value="Gerente de TI">Gerente de TI</SelectItem>
+                    <SelectItem value="Gerente de Compliance">Gerente de Compliance</SelectItem>
+                    <SelectItem value="Diretor de Tecnologia">Diretor de Tecnologia</SelectItem>
+                    <SelectItem value="Coordenador de Infraestrutura">Coordenador de Infraestrutura</SelectItem>
+                    <SelectItem value="Especialista em Segurança Cibernética">Especialista em Segurança Cibernética</SelectItem>
+                    <SelectItem value="Responsável por LGPD">Responsável por LGPD</SelectItem>
+                    <SelectItem value="Outro">Outro</SelectItem>
+                  </SelectContent>
+                </Select>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-              {/* Show custom position input if "Outro" is selected */}
-              {showCustomPosition && (
-                <FormField
-                  control={form.control}
-                  name="customPosition"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel>Especifique seu Cargo</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Digite seu cargo" {...field} />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
+          {showCustomPosition && (
+            <FormField
+              control={form.control}
+              name="customPosition"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Especifique seu Cargo</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Digite seu cargo" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
               )}
+            />
+          )}
 
-              <Button 
-                type="submit" 
-                disabled={isSubmitting}
-                className="w-full bg-security-red hover:bg-security-red/90 text-white font-semibold py-3 text-lg"
-              >
-                {isSubmitting ? "Enviando..." : "Solicitar Atendimento"}
-              </Button>
-            </form>
-          </Form>
-        </div>
-      </div>
-    </section>
+          <Button 
+            type="submit" 
+            disabled={isSubmitting}
+            className="w-full bg-security-red hover:bg-security-red/90 text-white font-semibold py-3 text-lg"
+          >
+            {isSubmitting ? "Enviando..." : "Solicitar Atendimento"}
+          </Button>
+        </form>
+      </Form>
+    </div>
   );
 };
 

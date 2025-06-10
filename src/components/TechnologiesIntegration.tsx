@@ -11,7 +11,7 @@ import {
 const technologies = [
   {
     name: 'Oracle Cloud',
-    logo: '/lovable-uploads/80210640-1cc9-42c4-899a-5670ed41abf7.png'
+    logo: '/lovable-uploads/d8566ab9-6c67-4d93-861c-e2a731ebd624.png'
   },
   {
     name: 'Microsoft',
@@ -23,7 +23,7 @@ const technologies = [
   },
   {
     name: 'Cloudflare',
-    logo: '/lovable-uploads/88b5caaf-f9d5-4385-a781-3715a8695ab1.png'
+    logo: '/lovable-uploads/416ff149-d8fb-467f-ad9a-a8012b7866fa.png'
   },
   {
     name: 'Claroty',
@@ -39,7 +39,7 @@ const technologies = [
   },
   {
     name: 'Elastic Search',
-    logo: '/lovable-uploads/6534938c-4834-4492-ba6b-c3ce886e0ba1.png'
+    logo: '/lovable-uploads/668e6a79-1ffb-4125-a8e0-726acc072d60.png'
   },
   {
     name: 'Fortinet',
@@ -47,7 +47,7 @@ const technologies = [
   },
   {
     name: 'Trend Micro',
-    logo: '/lovable-uploads/de7fb406-c0c2-4c0a-ba93-e6a89479f512.png'
+    logo: '/lovable-uploads/4f0fdbc3-317f-437c-be0b-0e783b0f7a2f.png'
   },
   {
     name: 'CrowdStrike',
@@ -55,7 +55,7 @@ const technologies = [
   },
   {
     name: 'Kaspersky',
-    logo: '/lovable-uploads/ca5221ef-0943-4877-b799-3885394f0be1.png'
+    logo: '/lovable-uploads/a7364490-ee68-4fa7-bda4-30f433456db9.png'
   }
 ];
 
@@ -81,11 +81,11 @@ const TechnologiesIntegration = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {technologies.map((tech, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <div className="security-card text-center p-8 h-40 flex items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="security-card text-center p-8 h-40 flex items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-300 group">
                     <img 
                       src={tech.logo} 
                       alt={tech.name}
-                      className="max-h-20 max-w-full object-contain filter brightness-100 contrast-100"
+                      className="max-h-16 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
                     />
                   </div>
                 </CarouselItem>

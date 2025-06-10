@@ -9,7 +9,7 @@ import HowItWorks from '@/components/HowItWorks';
 import TechnicalEvents from '@/components/TechnicalEvents';
 import MediaPresence from '@/components/MediaPresence';
 import CallToAction from '@/components/CallToAction';
-import LeadForm from '@/components/LeadForm';
+import FormSection from '@/components/FormSection';
 import FloatingCTA from '@/components/FloatingCTA';
 
 const Index = () => {
@@ -24,7 +24,7 @@ const Index = () => {
       <TechnicalEvents />
       <MediaPresence />
       <CallToAction />
-      <LeadForm />
+      <FormSection />
       <FloatingCTA />
     </div>
   );
