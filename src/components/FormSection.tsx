@@ -27,29 +27,29 @@ const FormSection = () => {
             </h2>
             <p className={`text-white/90 leading-relaxed ${
               isMobile 
-                ? 'text-sm mb-4 leading-normal' 
+                ? 'text-sm mb-3 leading-normal' 
                 : 'text-lg mb-8 px-3'
             }`}>
               {isMobile ? (
-                'Entre em contato e fortaleça a segurança da sua empresa'
+                'Entre em contato e fortaleça a segurança'
               ) : (
                 'Entre em contato conosco e descubra como podemos fortalecer a segurança da sua empresa.'
               )}
             </p>
             <h3 className={`text-white font-semibold ${
               isMobile 
-                ? 'text-lg mb-2' 
+                ? 'text-base mb-2' 
                 : 'text-2xl mb-4 px-2'
             }`}>
               Solicite uma Avaliação Gratuita
             </h3>
             <p className={`text-white/90 leading-relaxed max-w-2xl mx-auto ${
               isMobile 
-                ? 'text-sm mb-6 leading-normal' 
+                ? 'text-sm mb-4 leading-normal' 
                 : 'text-lg mb-8 px-4'
             }`}>
               {isMobile ? (
-                'Preencha o formulário e nossa equipe entrará em contato'
+                'Preencha o formulário'
               ) : (
                 'Preencha o formulário e nossa equipe entrará em contato para agendar uma avaliação especializada para sua empresa.'
               )}
