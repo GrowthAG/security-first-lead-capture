@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ShieldCheck } from 'lucide-react';
@@ -32,7 +33,7 @@ const FormSection = () => {
               {isMobile ? (
                 'Entre em contato e fortaleça a segurança'
               ) : (
-                'Entre em contato conosco e descubra como podemos fortalecer a segurança da sua empresa.'
+                ''
               )}
             </p>
             <h3 className={`text-white font-semibold ${
