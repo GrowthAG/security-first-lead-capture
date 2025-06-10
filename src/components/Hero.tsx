@@ -12,24 +12,26 @@ const Hero = () => {
   };
 
   return (
-    <section className="gradient-bg py-12 md:py-28">
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+    <section className="gradient-bg py-8 md:py-28 min-h-screen md:min-h-0 flex items-center">
+      <div className="container mx-auto px-4 w-full">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
-            <h1 className="font-montserrat text-xl md:text-5xl font-bold leading-tight">
+            <h1 className="font-montserrat text-lg md:text-5xl font-bold leading-tight px-2">
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
-            <p className="mt-4 md:mt-6 text-base md:text-xl font-light opacity-90">
+            <p className="mt-4 md:mt-6 text-sm md:text-xl font-light opacity-90 px-3 leading-relaxed">
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não <span className="text-security-red font-bold">!</span>
             </p>
-            <Button 
-              onClick={scrollToForm}
-              className="mt-8 bg-security-red hover:bg-security-red/90 text-white text-base md:text-lg py-4 md:py-6 px-6 md:px-8"
-              size="lg"
-            >
-              <ShieldCheck className="mr-2 h-5 w-5 md:h-6 md:w-6" />
-              Solicitar um Diagnóstico
-            </Button>
+            <div className="mt-6 md:mt-8 px-4">
+              <Button 
+                onClick={scrollToForm}
+                className="bg-security-red hover:bg-security-red/90 text-white text-sm md:text-lg py-4 md:py-6 px-6 md:px-8 w-full max-w-sm md:w-auto shadow-lg rounded-lg font-medium"
+                size="lg"
+              >
+                <ShieldCheck className="mr-2 h-4 w-4 md:h-6 md:w-6" />
+                Solicitar um Diagnóstico
+              </Button>
+            </div>
           </div>
           <div className="hidden md:flex justify-center">
             <div className="relative w-full max-w-lg">
