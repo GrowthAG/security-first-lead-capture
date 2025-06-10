@@ -1,9 +1,6 @@
 
 import React from 'react';
-import { Badge } from '@/components/ui/badge';
-import { CheckCircle, Shield, Award } from 'lucide-react';
-
-const certificates = ["ISO 27001", "ISO 22301", "CISSP", "CEH", "CISM", "C-CISO", "EWPTX"];
+import { CheckCircle, Shield } from 'lucide-react';
 
 const Authority = () => {
   return (
@@ -43,18 +40,6 @@ const Authority = () => {
               <div className="flex items-start">
                 <CheckCircle className="text-security-red mr-2 flex-shrink-0 mt-1" size={20} />
                 <p><span className="font-semibold">+ de 10 Bilhões de eventos monitorados todos os meses</span></p>
-              </div>
-            </div>
-            
-            <div className="mt-6">
-              <h4 className="font-montserrat font-medium text-lg mb-3 flex items-center">
-                <Award className="text-security-blue mr-2" size={20} />
-                Certificações da nossa equipe:
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {certificates.map((cert, index) => (
-                  <Badge key={index} className="bg-security-blue text-white">{cert}</Badge>
-                ))}
               </div>
             </div>
           </div>

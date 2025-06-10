@@ -4,6 +4,8 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Benefits from '@/components/Benefits';
 import Authority from '@/components/Authority';
+import CertificationBadges from '@/components/CertificationBadges';
+import Comparison from '@/components/Comparison';
 import TechnologiesIntegration from '@/components/TechnologiesIntegration';
 import HowItWorks from '@/components/HowItWorks';
 import TechnicalEvents from '@/components/TechnicalEvents';
@@ -17,6 +19,8 @@ const Index = () => {
       <Hero />
       <Benefits />
       <Authority />
+      <CertificationBadges />
+      <Comparison />
       <TechnologiesIntegration />
       <HowItWorks />
       <TechnicalEvents />
