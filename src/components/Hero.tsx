@@ -16,18 +16,18 @@ const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
-            <h1 className="font-montserrat text-2xl md:text-5xl font-bold leading-tight">
+            <h1 className="font-montserrat text-xl md:text-5xl font-bold leading-tight">
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
-            <p className="mt-4 md:mt-6 text-lg md:text-xl font-light opacity-90">
+            <p className="mt-4 md:mt-6 text-base md:text-xl font-light opacity-90">
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não <span className="text-security-red font-bold">!</span>
             </p>
             <Button 
               onClick={scrollToForm}
-              className="mt-8 bg-security-red hover:bg-security-red/90 text-white text-lg py-6 px-8"
+              className="mt-8 bg-security-red hover:bg-security-red/90 text-white text-base md:text-lg py-4 md:py-6 px-6 md:px-8"
               size="lg"
             >
-              <ShieldCheck className="mr-2 h-6 w-6" />
+              <ShieldCheck className="mr-2 h-5 w-5 md:h-6 md:w-6" />
               Solicitar um Diagnóstico
             </Button>
           </div>
