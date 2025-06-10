@@ -9,19 +9,19 @@ const FormSection = () => {
 
   return (
     <>
-      <section id="formulario" className="py-8 md:py-20 gradient-bg min-h-screen md:min-h-0 flex items-center">
+      <section id="formulario" className="py-6 md:py-20 gradient-bg min-h-screen md:min-h-0 flex items-center">
         <div className="container mx-auto px-4 w-full">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="font-montserrat font-bold text-xl md:text-4xl text-white mb-4 md:mb-6 leading-tight px-2">
-              Nossos especialistas estão prontos para ajudar sua empresa a implementar um SOC eficiente e personalizado para as necessidades do seu negócio.
+            <h2 className="font-montserrat font-bold text-2xl md:text-4xl text-white mb-3 md:mb-6 leading-tight px-2 max-w-3xl mx-auto">
+              Nossos especialistas estão prontos para ajudar sua empresa a implementar um SOC eficiente e personalizado.
             </h2>
-            <p className="text-white/90 text-base md:text-lg mb-4 md:mb-8 px-3 leading-relaxed">
+            <p className="text-white/90 text-base md:text-lg mb-3 md:mb-8 px-3 leading-relaxed">
               Entre em contato conosco e descubra como podemos fortalecer a segurança da sua empresa.
             </p>
-            <h3 className="text-white text-lg md:text-2xl font-semibold mb-3 md:mb-4 px-2">
+            <h3 className="text-white text-xl md:text-2xl font-semibold mb-2 md:mb-4 px-2">
               Solicite uma Avaliação Gratuita
             </h3>
-            <p className="text-white/90 text-sm md:text-lg mb-6 md:mb-8 px-4 leading-relaxed">
+            <p className="text-white/90 text-base md:text-lg mb-4 md:mb-8 px-4 leading-relaxed max-w-2xl mx-auto">
               Preencha o formulário e nossa equipe entrará em contato para agendar uma 
               avaliação especializada para sua empresa.
             </p>

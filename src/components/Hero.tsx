@@ -12,16 +12,16 @@ const Hero = () => {
   };
 
   return (
-    <section className="gradient-bg py-8 md:py-28 min-h-screen md:min-h-0 flex items-center">
+    <section className="gradient-bg py-4 md:py-28 min-h-screen md:min-h-0 flex items-center">
       <div className="container mx-auto px-4 w-full">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
-            <h1 className="font-montserrat text-2xl md:text-5xl font-bold leading-tight mb-4 md:mb-6">
+            <h1 className="font-montserrat text-3xl md:text-5xl font-bold leading-tight mb-3 md:mb-6">
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
-            <p className="text-base md:text-xl font-light opacity-90 leading-relaxed mb-6 md:mb-8">
+            <h2 className="text-lg md:text-xl font-light opacity-90 leading-relaxed mb-4 md:mb-8">
               Ataques cibernéticos não têm hora para acontecer. A sua proteção também não <span className="text-security-red font-bold">!</span>
-            </p>
+            </h2>
             <div>
               <Button 
                 onClick={scrollToForm}
