@@ -2,7 +2,6 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { PhoneCall } from 'lucide-react';
-import { Link } from 'react-router-dom';
 
 const Header = () => {
   const scrollToForm = () => {
@@ -17,20 +16,17 @@ const Header = () => {
     <header className="bg-white sticky top-0 z-40 shadow-sm">
       <div className="container mx-auto py-4 px-4 flex justify-between items-center">
         <div className="flex items-center">
-          <Link to="/">
-            <img 
-              src="/lovable-uploads/359006b6-e80f-4854-9503-167db1c6429d.png" 
-              alt="Security First Logo" 
-              className="h-12" 
-            />
-          </Link>
+          <img 
+            src="/lovable-uploads/359006b6-e80f-4854-9503-167db1c6429d.png" 
+            alt="Security First Logo" 
+            className="h-12" 
+          />
         </div>
         <div className="hidden md:flex items-center space-x-6">
           <nav>
             <ul className="flex space-x-6">
               <li><a href="#beneficios" className="text-security-blue hover:text-security-red font-medium transition-colors">Benefícios</a></li>
               <li><a href="#como-funciona" className="text-security-blue hover:text-security-red font-medium transition-colors">Como Funciona</a></li>
-              <li><Link to="/materiais" className="text-security-blue hover:text-security-red font-medium transition-colors">Materiais</Link></li>
               <li><a href="#formulario" className="text-security-blue hover:text-security-red font-medium transition-colors">Contato</a></li>
             </ul>
           </nav>
