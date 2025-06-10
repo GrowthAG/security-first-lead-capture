@@ -8,13 +8,55 @@ const CertificationBadges = () => {
   const isMobile = useIsMobile();
   
   const certificates = [
-    { name: "ISO 27001", type: "security", icon: Shield, description: "Gestão de Segurança da Informação" },
-    { name: "ISO 22301", type: "business", icon: Shield, description: "Continuidade de Negócios" },
-    { name: "CISSP", type: "professional", icon: Award, description: "Certified Information Systems Security Professional" },
-    { name: "CEH", type: "professional", icon: Award, description: "Certified Ethical Hacker" },
-    { name: "CISM", type: "professional", icon: Award, description: "Certified Information Security Manager" },
-    { name: "C-CISO", type: "executive", icon: Star, description: "Chief Information Security Officer" },
-    { name: "EWPTX", type: "technical", icon: Award, description: "Extreme Web Penetration Testing" }
+    { 
+      name: "ISO 27001", 
+      type: "security", 
+      icon: Shield, 
+      description: "Gestão de Segurança da Informação",
+      badgeUrl: "https://images.unsplash.com/photo-1606868306217-dbf5046868d2?w=200&h=200&fit=crop&crop=center"
+    },
+    { 
+      name: "ISO 22301", 
+      type: "business", 
+      icon: Shield, 
+      description: "Continuidade de Negócios",
+      badgeUrl: "https://images.unsplash.com/photo-1606868306217-dbf5046868d2?w=200&h=200&fit=crop&crop=center"
+    },
+    { 
+      name: "CISSP", 
+      type: "professional", 
+      icon: Award, 
+      description: "Certified Information Systems Security Professional",
+      badgeUrl: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=200&h=200&fit=crop&crop=center"
+    },
+    { 
+      name: "CEH", 
+      type: "professional", 
+      icon: Award, 
+      description: "Certified Ethical Hacker",
+      badgeUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=200&h=200&fit=crop&crop=center"
+    },
+    { 
+      name: "CISM", 
+      type: "professional", 
+      icon: Award, 
+      description: "Certified Information Security Manager",
+      badgeUrl: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=200&h=200&fit=crop&crop=center"
+    },
+    { 
+      name: "C-CISO", 
+      type: "executive", 
+      icon: Star, 
+      description: "Chief Information Security Officer",
+      badgeUrl: "https://images.unsplash.com/photo-1551808525-51a94da548ce?w=200&h=200&fit=crop&crop=center"
+    },
+    { 
+      name: "EWPTX", 
+      type: "technical", 
+      icon: Award, 
+      description: "Extreme Web Penetration Testing",
+      badgeUrl: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=200&h=200&fit=crop&crop=center"
+    }
   ];
 
   const getBadgeStyles = (type: string) => {
@@ -68,16 +110,29 @@ const CertificationBadges = () => {
           <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-2 lg:grid-cols-3 gap-6'} mb-8`}>
             {certificates.map((cert, index) => {
               const styles = getBadgeStyles(cert.type);
-              const IconComponent = cert.icon;
               
               return (
                 <div 
                   key={index} 
-                  className={`${styles.container} border-2 rounded-lg p-4 transition-all duration-300 hover:shadow-lg bg-white/10 backdrop-blur-sm border-white/20`}
+                  className="bg-white/10 backdrop-blur-sm border-white/20 border-2 rounded-lg p-6 transition-all duration-300 hover:shadow-lg hover:bg-white/15"
                 >
-                  <div className="flex flex-col items-center text-center space-y-3">
-                    <div className="p-3 bg-white/20 rounded-full">
-                      <IconComponent className="w-6 h-6 text-white" />
+                  <div className="flex flex-col items-center text-center space-y-4">
+                    <div className="relative">
+                      <img 
+                        src={cert.badgeUrl} 
+                        alt={`${cert.name} Certification Badge`}
+                        className="w-20 h-20 rounded-full object-cover border-4 border-white/30 shadow-lg"
+                        onError={(e) => {
+                          // Fallback para ícone se a imagem não carregar
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const iconDiv = target.nextElementSibling as HTMLElement;
+                          if (iconDiv) iconDiv.style.display = 'flex';
+                        }}
+                      />
+                      <div className="w-20 h-20 rounded-full bg-white/20 border-4 border-white/30 shadow-lg hidden items-center justify-center">
+                        <cert.icon className="w-8 h-8 text-white" />
+                      </div>
                     </div>
                     <Badge className={`${styles.badge} text-sm font-bold px-4 py-2 min-w-0`}>
                       {cert.name}
