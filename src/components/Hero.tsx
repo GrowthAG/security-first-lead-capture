@@ -57,8 +57,8 @@ const Hero = () => {
           <div className="hidden md:flex justify-center">
             <div className="relative w-full max-w-lg">
               <img 
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1000&q=80" 
-                alt="SOC Cybersecurity - Centro de Operações de Segurança com múltiplos monitores" 
+                src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80" 
+                alt="Cibersegurança - Proteção contra ataques hackers e ameaças digitais" 
                 className="w-full h-auto object-cover rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300" 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-security-blue/20 to-transparent rounded-lg"></div>
