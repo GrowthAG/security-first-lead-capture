@@ -30,7 +30,7 @@ const Benefits = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section id="beneficios" className="py-20 bg-white">
+    <section id="beneficios" className={`bg-white ${isMobile ? 'py-12' : 'py-20'}`}>
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className={`section-title text-security-blue ${isMobile ? 'text-2xl' : ''}`}>Por que escolher nosso SOC 24x7</h2>
