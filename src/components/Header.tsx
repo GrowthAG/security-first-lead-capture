@@ -14,12 +14,12 @@ const Header = () => {
 
   return (
     <header className="bg-white sticky top-0 z-40 shadow-sm">
-      <div className="container mx-auto py-4 px-4 flex justify-between items-center">
+      <div className="container mx-auto py-3 px-4 flex justify-between items-center">
         <div className="flex items-center">
           <img 
             src="/lovable-uploads/359006b6-e80f-4854-9503-167db1c6429d.png" 
             alt="Security First Logo" 
-            className="h-12" 
+            className="h-10" 
           />
         </div>
         <div className="hidden md:flex items-center space-x-6">

@@ -11,33 +11,33 @@ const FormSection = () => {
 
   return (
     <>
-      <section id="formulario" className={`gradient-bg ${isMobile ? 'py-8 min-h-screen' : 'py-20 min-h-0'} flex items-center`}>
+      <section id="formulario" className={`gradient-bg ${isMobile ? 'py-6 min-h-[90vh]' : 'py-20 min-h-0'} flex items-center`}>
         <div className="container mx-auto px-4 w-full">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className={`font-montserrat font-bold text-white leading-tight ${
               isMobile 
-                ? 'text-xl mb-4 px-2 max-w-full' 
+                ? 'text-lg mb-3 px-2 max-w-full leading-[1.3]' 
                 : 'text-4xl mb-6 max-w-3xl'
             } mx-auto`}>
               Nossos especialistas estão prontos para ajudar sua empresa a implementar um SOC eficiente e personalizado.
             </h2>
             <p className={`text-white/90 leading-relaxed ${
               isMobile 
-                ? 'text-sm mb-4 px-3' 
+                ? 'text-xs mb-3 px-3 leading-[1.4]' 
                 : 'text-lg mb-8 px-3'
             }`}>
               Entre em contato conosco e descubra como podemos fortalecer a segurança da sua empresa.
             </p>
             <h3 className={`text-white font-semibold ${
               isMobile 
-                ? 'text-lg mb-3 px-2' 
+                ? 'text-base mb-2 px-2' 
                 : 'text-2xl mb-4 px-2'
             }`}>
               Solicite uma Avaliação Gratuita
             </h3>
             <p className={`text-white/90 leading-relaxed max-w-2xl mx-auto ${
               isMobile 
-                ? 'text-sm mb-6 px-4' 
+                ? 'text-xs mb-4 px-4 leading-[1.4]' 
                 : 'text-lg mb-8 px-4'
             }`}>
               Preencha o formulário e nossa equipe entrará em contato para agendar uma 
@@ -48,12 +48,12 @@ const FormSection = () => {
                 onClick={() => setIsFormOpen(true)}
                 className={`bg-security-red hover:bg-security-red/90 text-white shadow-lg rounded-lg font-medium ${
                   isMobile 
-                    ? 'text-base py-4 px-6 w-full max-w-sm' 
+                    ? 'text-sm py-3 px-5 w-full max-w-xs' 
                     : 'text-lg py-6 px-8 w-auto'
                 }`}
                 size="lg"
               >
-                <ShieldCheck className={`mr-2 ${isMobile ? 'h-5 w-5' : 'h-6 w-6'}`} />
+                <ShieldCheck className={`mr-2 ${isMobile ? 'h-4 w-4' : 'h-6 w-6'}`} />
                 Solicitar um Diagnóstico
               </Button>
             </div>
