@@ -7,7 +7,6 @@ import Authority from '@/components/Authority';
 import TechnologiesIntegration from '@/components/TechnologiesIntegration';
 import HowItWorks from '@/components/HowItWorks';
 import TechnicalEvents from '@/components/TechnicalEvents';
-import MediaPresence from '@/components/MediaPresence';
 import FormSection from '@/components/FormSection';
 import FloatingCTA from '@/components/FloatingCTA';
 
@@ -21,7 +20,6 @@ const Index = () => {
       <TechnologiesIntegration />
       <HowItWorks />
       <TechnicalEvents />
-      <MediaPresence />
       <FormSection />
       <FloatingCTA />
     </div>
