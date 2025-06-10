@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -21,7 +20,7 @@ const formSchema = z.object({
 });
 
 const WEBHOOK_URL = "https://services.leadconnectorhq.com/hooks/5C2Mxuu479dGArGRG36G/webhook-trigger/53bba7ba-599a-4c29-afa3-2a82930af303";
-const BOOKING_URL = "https://pages.securityfirst.com.br/booking";
+const AGENDA_URL = "https://pages.securityfirst.com.br/agenda-diagnostico";
 
 const sectorOptions = [
   { value: "bancos-instituicoes-financeiras", label: "🏦 Bancos e Instituições Financeiras" },
@@ -92,8 +91,8 @@ const LeadForm = () => {
       
       console.log('Dados enviados com sucesso:', finalValues);
       
-      // Redirect to the booking page without appending parameters
-      window.location.href = BOOKING_URL;
+      // Redirect to the agenda page
+      window.location.href = AGENDA_URL;
     } catch (error) {
       console.error('Erro ao enviar dados para o CRM:', error);
       toast.error("Erro ao enviar formulário. Por favor, tente novamente.");
