@@ -11,7 +11,7 @@ const FormSection = () => {
 
   return (
     <>
-      <section id="formulario" className={`gradient-bg ${isMobile ? 'py-8' : 'py-20 min-h-0'} flex items-center`}>
+      <section id="formulario" className={`gradient-bg ${isMobile ? 'py-6 pb-12' : 'py-20 min-h-0'} flex items-center`}>
         <div className={`container mx-auto w-full ${isMobile ? 'px-6' : 'px-4'}`}>
           <div className="max-w-4xl mx-auto text-center">
             <h2 className={`font-montserrat font-bold text-white leading-tight ${
@@ -26,7 +26,7 @@ const FormSection = () => {
               )}
             </h2>
             
-            <div className={`flex justify-center ${isMobile ? 'px-4 mb-6' : 'mb-8'}`}>
+            <div className={`flex justify-center ${isMobile ? 'px-4 mb-8' : 'mb-8'}`}>
               <Button 
                 onClick={() => setIsFormOpen(true)}
                 className={`bg-security-red hover:bg-security-red/90 text-white shadow-lg rounded-lg font-medium ${
