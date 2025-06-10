@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import { Button } from '@/components/ui/button';
@@ -12,7 +11,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="gradient-bg pt-1 pb-4 md:py-28 min-h-screen md:min-h-0 flex items-center">
+    <section className="gradient-bg pt-0 pb-4 md:py-28 min-h-screen md:min-h-0 flex items-center">
       <div className="container mx-auto px-4 w-full">
         <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
