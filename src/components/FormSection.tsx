@@ -25,14 +25,16 @@ const FormSection = () => {
               Preencha o formulário e nossa equipe entrará em contato para agendar uma 
               avaliação especializada para sua empresa.
             </p>
-            <Button 
-              onClick={() => setIsFormOpen(true)}
-              className="bg-security-red hover:bg-security-red/90 text-white text-base md:text-lg py-4 md:py-6 px-6 md:px-8"
-              size="lg"
-            >
-              <ShieldCheck className="mr-2 h-5 w-5 md:h-6 md:w-6" />
-              Solicitar um Diagnóstico
-            </Button>
+            <div className="flex justify-center">
+              <Button 
+                onClick={() => setIsFormOpen(true)}
+                className="bg-security-red hover:bg-security-red/90 text-white text-base md:text-lg py-4 md:py-6 px-6 md:px-8 w-full max-w-xs md:w-auto"
+                size="lg"
+              >
+                <ShieldCheck className="mr-2 h-5 w-5 md:h-6 md:w-6" />
+                Solicitar um Diagnóstico
+              </Button>
+            </div>
           </div>
         </div>
       </section>
