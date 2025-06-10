@@ -12,7 +12,7 @@ const FormSection = () => {
       <section id="formulario" className="py-20 gradient-bg">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="section-title text-white mb-6">
+            <h2 className="font-montserrat font-bold text-2xl md:text-4xl text-white mb-6">
               Nossos especialistas estão prontos para ajudar sua empresa a implementar um SOC eficiente e personalizado para as necessidades do seu negócio.
             </h2>
             <p className="text-white/90 text-lg mb-8">
