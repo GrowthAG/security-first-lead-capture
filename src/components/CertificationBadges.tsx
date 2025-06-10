@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Award, Shield, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Award, Shield, Star } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Carousel,
@@ -27,49 +27,49 @@ const CertificationBadges = () => {
       type: "business", 
       icon: Shield, 
       description: "Continuidade de Negócios",
-      badgeUrl: "https://images.credly.com/size/340x340/images/e7da8c96-b3d8-4a3b-9cfa-0ebad1cc2a1c/ISO_22301_Lead_Implementer.png"
+      badgeUrl: "/lovable-uploads/3c111a33-b999-4b0a-9be8-834ce5f636dc.png"
     },
     { 
       name: "CISSP", 
       type: "professional", 
       icon: Award, 
       description: "Certified Information Systems Security Professional",
-      badgeUrl: "https://images.credly.com/size/340x340/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cisscp.png"
+      badgeUrl: "/lovable-uploads/69d46bda-a946-4e2e-be14-8cb05f1bc3a9.png"
     },
     { 
       name: "CEH", 
       type: "professional", 
       icon: Award, 
       description: "Certified Ethical Hacker",
-      badgeUrl: "https://images.credly.com/size/340x340/images/9c24335b-76b7-4f91-b96b-68a70d9a56e0/ceh.png"
+      badgeUrl: "/lovable-uploads/8f9c79d7-346f-4557-9046-af0c2b903830.png"
     },
     { 
       name: "CISM", 
       type: "professional", 
       icon: Award, 
       description: "Certified Information Security Manager",
-      badgeUrl: "https://images.credly.com/size/340x340/images/ae2f5bae-b110-4ea1-8e26-77cf5f76c81e/CISM.png"
+      badgeUrl: "/lovable-uploads/6ffd55be-a836-4ff1-af47-e76d065c22b2.png"
     },
     { 
       name: "C-CISO", 
       type: "executive", 
       icon: Star, 
       description: "Chief Information Security Officer",
-      badgeUrl: "https://images.credly.com/size/340x340/images/8b8ed108-e77d-4396-ac59-2504583b9d54/cciso.png"
+      badgeUrl: "/lovable-uploads/bcd4666d-7c4e-4002-9190-dbedc31d5b6d.png"
     },
     { 
       name: "EWPTX", 
       type: "technical", 
       icon: Award, 
       description: "Extreme Web Penetration Testing",
-      badgeUrl: "https://images.credly.com/size/340x340/images/ec81134d-e80b-4eb5-ae07-0eb8e1a60fcd/elearnsecurity.png"
+      badgeUrl: "/lovable-uploads/41d6c16f-9a4c-4269-9072-dcec875f7b62.png"
     },
     { 
       name: "GCIH", 
       type: "professional", 
       icon: Award, 
       description: "GIAC Certified Incident Handler",
-      badgeUrl: "https://images.credly.com/size/340x340/images/024d0122-724d-4c5a-bd83-cfe3c4b7a073/image.png"
+      badgeUrl: "/lovable-uploads/1d5509d5-eaae-4781-9e09-7691a7d56113.png"
     }
   ];
 
@@ -140,7 +140,7 @@ const CertificationBadges = () => {
                           <img 
                             src={cert.badgeUrl} 
                             alt={`${cert.name} Certification Badge`}
-                            className="w-24 h-24 object-contain drop-shadow-lg"
+                            className="w-32 h-32 object-contain drop-shadow-lg"
                             onError={(e) => {
                               const target = e.target as HTMLImageElement;
                               target.style.display = 'none';
@@ -148,8 +148,8 @@ const CertificationBadges = () => {
                               if (iconDiv) iconDiv.style.display = 'flex';
                             }}
                           />
-                          <div className="w-24 h-24 rounded-full bg-white/20 border-4 border-white/30 shadow-lg hidden items-center justify-center">
-                            <cert.icon className="w-8 h-8 text-white" />
+                          <div className="w-32 h-32 rounded-full bg-white/20 border-4 border-white/30 shadow-lg hidden items-center justify-center">
+                            <cert.icon className="w-12 h-12 text-white" />
                           </div>
                         </div>
                         <Badge className={`${styles.badge} text-sm font-bold px-4 py-2 min-w-0`}>
@@ -164,8 +164,8 @@ const CertificationBadges = () => {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="text-white border-white/30 hover:bg-white/10 hover:text-white -left-12" />
-            <CarouselNext className="text-white border-white/30 hover:bg-white/10 hover:text-white -right-12" />
+            <CarouselPrevious className="bg-white/90 text-security-blue border-white/50 hover:bg-white hover:text-security-blue shadow-lg -left-12 h-12 w-12" />
+            <CarouselNext className="bg-white/90 text-security-blue border-white/50 hover:bg-white hover:text-security-blue shadow-lg -right-12 h-12 w-12" />
           </Carousel>
 
           <div className="text-center">
