@@ -28,9 +28,9 @@ const TechnicalEvents = () => {
   const isMobile = useIsMobile();
 
   return (
-    <section className={`${isMobile ? 'py-6' : 'py-20'} bg-white`}>
+    <section className={`${isMobile ? 'py-3' : 'py-20'} bg-white`}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className={`text-center ${isMobile ? 'mb-8' : 'mb-16'}`}>
           <div className="bg-security-red text-white py-2 px-4 inline-block rounded mb-4">
             <h2 className="font-montserrat font-bold text-lg">Security First na mídia</h2>
           </div>
@@ -65,7 +65,7 @@ const TechnicalEvents = () => {
           })}
         </div>
         
-        <div className="mt-16 bg-security-red text-white p-6 rounded-lg text-center">
+        <div className={`${isMobile ? 'mt-8' : 'mt-16'} bg-security-red text-white p-6 rounded-lg text-center`}>
           <p className="font-medium mb-4">
             Reconhecimento técnico em eventos de destaque na área de cybersecurity e infraestrutura crítica.
           </p>
