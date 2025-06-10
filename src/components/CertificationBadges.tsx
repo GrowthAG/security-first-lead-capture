@@ -1,30 +1,54 @@
 
 import React from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Award, Shield } from 'lucide-react';
+import { Award, Shield, Star } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const CertificationBadges = () => {
   const isMobile = useIsMobile();
   
   const certificates = [
-    { name: "ISO 27001", type: "security" },
-    { name: "ISO 22301", type: "business" },
-    { name: "CISSP", type: "professional" },
-    { name: "CEH", type: "professional" },
-    { name: "CISM", type: "professional" },
-    { name: "C-CISO", type: "executive" },
-    { name: "EWPTX", type: "technical" }
+    { name: "ISO 27001", type: "security", icon: Shield, description: "Gestão de Segurança da Informação" },
+    { name: "ISO 22301", type: "business", icon: Shield, description: "Continuidade de Negócios" },
+    { name: "CISSP", type: "professional", icon: Award, description: "Certified Information Systems Security Professional" },
+    { name: "CEH", type: "professional", icon: Award, description: "Certified Ethical Hacker" },
+    { name: "CISM", type: "professional", icon: Award, description: "Certified Information Security Manager" },
+    { name: "C-CISO", type: "executive", icon: Star, description: "Chief Information Security Officer" },
+    { name: "EWPTX", type: "technical", icon: Award, description: "Extreme Web Penetration Testing" }
   ];
 
-  const getBadgeColor = (type: string) => {
+  const getBadgeStyles = (type: string) => {
     switch (type) {
-      case 'security': return 'bg-security-blue text-white';
-      case 'business': return 'bg-green-600 text-white';
-      case 'professional': return 'bg-purple-600 text-white';
-      case 'executive': return 'bg-security-red text-white';
-      case 'technical': return 'bg-orange-600 text-white';
-      default: return 'bg-gray-600 text-white';
+      case 'security': 
+        return {
+          badge: 'bg-blue-700 text-white border-blue-800 hover:bg-blue-800',
+          container: 'bg-blue-50 border-blue-200'
+        };
+      case 'business': 
+        return {
+          badge: 'bg-green-700 text-white border-green-800 hover:bg-green-800',
+          container: 'bg-green-50 border-green-200'
+        };
+      case 'professional': 
+        return {
+          badge: 'bg-purple-700 text-white border-purple-800 hover:bg-purple-800',
+          container: 'bg-purple-50 border-purple-200'
+        };
+      case 'executive': 
+        return {
+          badge: 'bg-red-700 text-white border-red-800 hover:bg-red-800',
+          container: 'bg-red-50 border-red-200'
+        };
+      case 'technical': 
+        return {
+          badge: 'bg-orange-700 text-white border-orange-800 hover:bg-orange-800',
+          container: 'bg-orange-50 border-orange-200'
+        };
+      default: 
+        return {
+          badge: 'bg-gray-700 text-white border-gray-800 hover:bg-gray-800',
+          container: 'bg-gray-50 border-gray-200'
+        };
     }
   };
 
@@ -40,24 +64,44 @@ const CertificationBadges = () => {
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className={`flex ${isMobile ? 'flex-col items-center space-y-4' : 'flex-wrap justify-center'} gap-4 mb-8`}>
-            {certificates.map((cert, index) => (
-              <div key={index} className="flex items-center">
-                <Badge className={`${getBadgeColor(cert.type)} text-sm font-medium px-4 py-2 ${isMobile ? 'text-base' : ''}`}>
-                  <Award className="w-4 h-4 mr-2" />
-                  {cert.name}
-                </Badge>
-              </div>
-            ))}
+        <div className="max-w-6xl mx-auto">
+          <div className={`grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-2 lg:grid-cols-3 gap-6'} mb-8`}>
+            {certificates.map((cert, index) => {
+              const styles = getBadgeStyles(cert.type);
+              const IconComponent = cert.icon;
+              
+              return (
+                <div 
+                  key={index} 
+                  className={`${styles.container} border-2 rounded-lg p-4 transition-all duration-300 hover:shadow-lg bg-white/10 backdrop-blur-sm border-white/20`}
+                >
+                  <div className="flex flex-col items-center text-center space-y-3">
+                    <div className="p-3 bg-white/20 rounded-full">
+                      <IconComponent className="w-6 h-6 text-white" />
+                    </div>
+                    <Badge className={`${styles.badge} text-sm font-bold px-4 py-2 min-w-0`}>
+                      {cert.name}
+                    </Badge>
+                    <p className="text-xs text-white/80 leading-tight">
+                      {cert.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           <div className="text-center">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm text-white px-6 py-3 rounded-lg">
-              <Shield className="w-5 h-5 mr-3" />
-              <span className="font-medium">
-                {isMobile ? '20+ anos de experiência' : 'Mais de 20 anos de experiência combinada em segurança cibernética'}
-              </span>
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm text-white px-6 py-4 rounded-lg border border-white/20">
+              <Shield className="w-6 h-6 mr-3 text-security-red" />
+              <div className="text-left">
+                <div className="font-bold text-lg">
+                  {isMobile ? '20+ anos de experiência' : 'Mais de 20 anos de experiência combinada'}
+                </div>
+                <div className="text-sm text-white/80">
+                  em segurança cibernética e proteção de dados
+                </div>
+              </div>
             </div>
           </div>
         </div>
