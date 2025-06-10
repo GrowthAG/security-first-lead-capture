@@ -16,6 +16,13 @@ const Hero = () => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className={`text-white ${isMobile ? 'text-center' : ''}`}>
+            <div className="mb-8">
+              <img 
+                src="/lovable-uploads/021f51b5-1f46-480a-9325-bf2dc11324ce.png" 
+                alt="Security First Logo" 
+                className="h-16 md:h-20 mx-auto md:mx-0"
+              />
+            </div>
             <h1 className="font-montserrat text-2xl md:text-5xl font-bold leading-tight">
               Proteja sua Empresa com o SOC 24x7 Mais Ágil e Eficiente do Brasil.
             </h1>
@@ -34,7 +41,7 @@ const Hero = () => {
           <div className="hidden md:flex justify-center">
             <div className="relative w-full max-w-lg animate-float">
               <img 
-                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1000&q=80" 
+                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1000&q=80" 
                 alt="Cybersecurity Technology" 
                 className="w-full h-auto object-cover rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300" 
               />
