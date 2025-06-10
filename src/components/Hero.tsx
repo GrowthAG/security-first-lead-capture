@@ -34,11 +34,11 @@ const Hero = () => {
           <div className="hidden md:flex justify-center">
             <div className="relative w-full max-w-lg animate-float">
               <img 
-                src="/lovable-uploads/8994cf0b-3ecc-47f7-a0b8-6b8912da4e3e.png" 
-                alt="Cybersecurity Interface" 
-                className="w-full h-auto object-cover shadow-2xl transform hover:scale-105 transition-transform duration-300" 
+                src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1000&q=80" 
+                alt="Cybersecurity Technology" 
+                className="w-full h-auto object-cover rounded-lg shadow-2xl transform hover:scale-105 transition-transform duration-300" 
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-lg"></div>
             </div>
           </div>
         </div>
