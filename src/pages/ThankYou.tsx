@@ -8,18 +8,6 @@ const ThankYou = () => {
   const location = useLocation();
   const userName = location.state?.userName || '';
 
-  useEffect(() => {
-    // Load the script dynamically
-    const script = document.createElement('script');
-    script.src = "https://api.leadconnectorhq.com/js/form_embed.js";
-    script.async = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   return (
     <div className="min-h-screen py-2 gradient-bg">
       <div className="container mx-auto px-4">
@@ -53,7 +41,7 @@ const ThankYou = () => {
             </div>
           </div>
 
-          {/* Calendário otimizado */}
+          {/* Calendário GoHighLevel otimizado */}
           <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-4">
             <div className="bg-security-blue text-white p-3 text-center">
               <h2 className="text-base font-bold">📅 Selecione Data e Horário</h2>
@@ -62,16 +50,17 @@ const ThankYou = () => {
             <div className="p-2">
               <div className="calendar-container">
                 <iframe 
-                  src="https://api.leadconnectorhq.com/widget/booking/aEhg9U7IoYjD9J0xdGKH" 
+                  src="https://app.gohighlevel.com/widget/bookings/securityfirst-diagnostico" 
+                  width="100%" 
+                  height="800" 
                   style={{ 
-                    width: '100%', 
                     border: 'none', 
-                    overflow: 'hidden', 
-                    height: '280px',
+                    overflow: 'hidden',
                     borderRadius: '6px'
                   }} 
                   scrolling="no" 
-                  id="aEhg9U7IoYjD9J0xdGKH_1745871964043"
+                  frameBorder="0"
+                  allowFullScreen
                   ref={iframeRef}
                 ></iframe>
               </div>
