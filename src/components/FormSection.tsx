@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { ShieldCheck } from 'lucide-react';
@@ -36,7 +37,7 @@ const FormSection = () => {
                 size="lg"
               >
                 <ShieldCheck className={`mr-2 ${isMobile ? 'h-5 w-5' : 'h-6 w-6'}`} />
-                Solicitar Diagnóstico
+                Solicitar Diagnóstico Gratuito
               </Button>
             </div>
 
@@ -58,6 +59,12 @@ const FormSection = () => {
                 'Preencha o formulário e nossa equipe entrará em contato para agendar uma avaliação especializada para sua empresa.'
               )}
             </p>
+            
+            <div className="mt-4">
+              <p className="text-white/80 text-sm">
+                ✓ Não enviamos spam • ✓ Relatório em 24h • ✓ 100% gratuito
+              </p>
+            </div>
           </div>
         </div>
       </section>

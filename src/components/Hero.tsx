@@ -50,7 +50,7 @@ const Hero = () => {
                 size="lg"
               >
                 <ShieldCheck className={`mr-2 ${isMobile ? 'h-6 w-6' : 'h-6 w-6'}`} />
-                Solicitar um Diagnóstico
+                Solicitar Diagnóstico Gratuito
               </Button>
             </div>
           </div>

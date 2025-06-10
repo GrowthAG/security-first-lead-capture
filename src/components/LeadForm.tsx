@@ -330,10 +330,10 @@ const LeadForm = () => {
               disabled={isSubmitting || !hasMinimumInfo}
               className="w-full bg-security-red hover:bg-security-red/90 text-white font-semibold py-3 text-lg"
             >
-              {isSubmitting ? "Enviando..." : "Solicitar Atendimento"}
+              {isSubmitting ? "Enviando..." : "Solicitar Diagnóstico Gratuito"}
             </Button>
             <p className="text-center text-sm text-gray-500 mt-2">
-              Sem compromisso • 100% gratuito
+              Sem compromisso • 100% gratuito • Não enviamos spam
             </p>
           </div>
         </form>
