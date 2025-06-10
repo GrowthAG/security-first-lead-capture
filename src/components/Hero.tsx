@@ -18,8 +18,13 @@ const Hero = () => {
             </p>
           </div>
           <div className="hidden md:flex justify-center">
-            <div className="bg-white/10 p-8 rounded-lg border border-white/20 backdrop-blur-sm animate-float">
-              <img src="/lovable-uploads/8994cf0b-3ecc-47f7-a0b8-6b8912da4e3e.png" alt="Cybersecurity Interface" className="rounded-lg shadow-lg w-full max-w-md" />
+            <div className="relative w-full max-w-lg animate-float">
+              <img 
+                src="/lovable-uploads/8994cf0b-3ecc-47f7-a0b8-6b8912da4e3e.png" 
+                alt="Cybersecurity Interface" 
+                className="w-full h-auto object-cover rounded-2xl shadow-2xl transform hover:scale-105 transition-transform duration-300" 
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
             </div>
           </div>
         </div>
