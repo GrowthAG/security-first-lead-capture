@@ -15,9 +15,24 @@ const ThankYou = () => {
     script.async = true;
     document.body.appendChild(script);
 
+    // Auto resize para evitar corte de conteúdo
+    const handleMessage = (event) => {
+      if (event.data?.type === "setHeight" && event.data?.height) {
+        const iframe = document.getElementById("calendly-iframe");
+        if (iframe) {
+          iframe.style.height = event.data.height + "px";
+        }
+      }
+    };
+
+    window.addEventListener("message", handleMessage);
+
     return () => {
-      // Cleanup: remover o script quando o componente for desmontado
-      document.body.removeChild(script);
+      // Cleanup: remover o script e event listener quando o componente for desmontado
+      if (document.body.contains(script)) {
+        document.body.removeChild(script);
+      }
+      window.removeEventListener("message", handleMessage);
     };
   }, []);
 
@@ -60,10 +75,10 @@ const ThankYou = () => {
           {/* GoHighLevel Calendar */}
           <div className="bg-white rounded-lg shadow-lg p-4 mb-6">
             <iframe 
+              id="calendly-iframe"
               src="https://api.leadconnectorhq.com/widget/booking/aEhg9U7IoYjD9J0xdGKH" 
-              style={{width: '100%', height: '950px', border: 'none', overflow: 'hidden'}} 
-              scrolling="no" 
-              id="aEhg9U7IoYjD9J0xdGKH_1749600345326"
+              style={{width: '100%', minHeight: '1200px', border: 'none', overflow: 'hidden'}} 
+              scrolling="no"
             />
           </div>
 
