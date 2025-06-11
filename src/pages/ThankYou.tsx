@@ -15,17 +15,28 @@ const ThankYou = () => {
     script.async = true;
     document.body.appendChild(script);
 
-    // Auto resize para evitar corte de conteúdo
+    // Auto resize melhorado para garantir que todo o conteúdo apareça
     const handleMessage = (event) => {
+      if (event.origin !== 'https://api.leadconnectorhq.com') return;
+      
       if (event.data?.type === "setHeight" && event.data?.height) {
         const iframe = document.getElementById("calendly-iframe");
         if (iframe) {
-          iframe.style.height = event.data.height + "px";
+          // Adiciona um padding extra para garantir que nada seja cortado
+          iframe.style.height = (event.data.height + 50) + "px";
         }
       }
     };
 
     window.addEventListener("message", handleMessage);
+
+    // Força um refresh do iframe após o carregamento
+    setTimeout(() => {
+      const iframe = document.getElementById("calendly-iframe");
+      if (iframe) {
+        iframe.src = iframe.src;
+      }
+    }, 1000);
 
     return () => {
       // Cleanup: remover o script e event listener quando o componente for desmontado
@@ -39,7 +50,7 @@ const ThankYou = () => {
   return (
     <div className="min-h-screen py-2 gradient-bg">
       <div className="container mx-auto px-2">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="bg-white rounded-lg shadow-lg p-4 mb-4 text-center">
             <div className="flex justify-center mb-3">
@@ -73,12 +84,19 @@ const ThankYou = () => {
           </div>
 
           {/* GoHighLevel Calendar */}
-          <div className="bg-white rounded-lg shadow-lg p-2 mb-4">
+          <div className="bg-white rounded-lg shadow-lg p-1 mb-4">
             <iframe 
               id="calendly-iframe"
               src="https://api.leadconnectorhq.com/widget/booking/aEhg9U7IoYjD9J0xdGKH" 
-              style={{width: '100%', minHeight: '800px', border: 'none', overflow: 'hidden'}} 
-              scrolling="no"
+              style={{
+                width: '100%', 
+                minHeight: '1000px', 
+                height: 'auto',
+                border: 'none', 
+                overflow: 'visible'
+              }} 
+              scrolling="yes"
+              allow="fullscreen"
             />
           </div>
 
