@@ -1,11 +1,25 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Calendar, CheckCircle } from 'lucide-react';
 
 const ThankYou = () => {
   const location = useLocation();
   const userName = location.state?.userName || '';
+
+  useEffect(() => {
+    // Carregar o script do GoHighLevel
+    const script = document.createElement('script');
+    script.src = 'https://link.msgsndr.com/js/form_embed.js';
+    script.type = 'text/javascript';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup: remover o script quando o componente for desmontado
+      document.body.removeChild(script);
+    };
+  }, []);
 
   return (
     <div className="min-h-screen py-4 gradient-bg">
@@ -46,13 +60,10 @@ const ThankYou = () => {
           {/* GoHighLevel Calendar */}
           <div className="bg-white rounded-lg shadow-lg p-4 mb-6">
             <iframe 
-              src="https://app.gohighlevel.com/widget/bookings/securityfirst-diagnostico" 
-              width="100%" 
-              height="950" 
-              style={{border: 'none', overflow: 'hidden'}} 
+              src="https://api.leadconnectorhq.com/widget/booking/aEhg9U7IoYjD9J0xdGKH" 
+              style={{width: '100%', height: '950px', border: 'none', overflow: 'hidden'}} 
               scrolling="no" 
-              frameBorder="0"
-              allowFullScreen
+              id="aEhg9U7IoYjD9J0xdGKH_1749600345326"
             />
           </div>
 
