@@ -2,8 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, Zap, Activity, TrendingUp } from 'lucide-react';
 import Card3D from './Card3D';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const RealTimeStats = () => {
+  const isMobile = useIsMobile();
   const [threatsBlocked, setThreatsBlocked] = useState(2847);
   const [systemsMonitored, setSystemsMonitored] = useState(12456);
   const [responseTime, setResponseTime] = useState(12);
@@ -65,12 +67,14 @@ const RealTimeStats = () => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto perspective-1000">
       {stats.map((stat, index) => (
-        <Card3D key={index} intensity={0.8} className="transform-gpu">
+        <Card3D key={index} intensity={isMobile ? 0.3 : 0.6} className="transform-gpu">
           <div
-            className={`${stat.bgColor} ${stat.borderColor} rounded-xl p-4 border hover:border-gray-300 transition-all duration-300 hover:scale-102 hover:shadow-lg group stats-card-enhanced relative overflow-hidden`}
+            className={`${stat.bgColor} ${stat.borderColor} rounded-xl p-4 border hover:border-gray-300 transition-all duration-300 hover:scale-102 hover:shadow-lg group stats-card-mobile-optimized relative overflow-hidden`}
             style={{
               transformStyle: 'preserve-3d',
-              animation: `subtleFloat ${6 + index * 0.5}s ease-in-out infinite`,
+              animation: isMobile 
+                ? `mobileSubtleFloat ${8 + index * 0.5}s ease-in-out infinite`
+                : `subtleFloat ${6 + index * 0.5}s ease-in-out infinite`,
               animationDelay: `${index * 0.2}s`
             }}
           >
@@ -84,7 +88,7 @@ const RealTimeStats = () => {
 
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-2">
-                <div className="gentle-icon-3d">
+                <div className={isMobile ? "mobile-gentle-icon" : "gentle-icon-3d"}>
                   <stat.icon className={`w-5 h-5 ${stat.color} group-hover:scale-110 transition-all duration-300`} />
                 </div>
                 <span className={`text-xs font-medium ${stat.color} bg-white/50 backdrop-blur-sm px-2 py-1 rounded-full group-hover:bg-white/70 transition-all duration-300`}>
@@ -99,8 +103,10 @@ const RealTimeStats = () => {
               </div>
             </div>
 
-            {/* Subtle depth layers */}
-            <div className="absolute -inset-1 rounded-xl border border-current/3 transform translateZ(-2px) group-hover:border-current/8 transition-all duration-300"></div>
+            {/* Subtle depth layers - only on desktop */}
+            {!isMobile && (
+              <div className="absolute -inset-1 rounded-xl border border-current/3 transform translateZ(-2px) group-hover:border-current/8 transition-all duration-300"></div>
+            )}
           </div>
         </Card3D>
       ))}

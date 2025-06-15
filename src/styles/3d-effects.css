@@ -107,6 +107,26 @@
     opacity: 0.2;
   }
 
+  /* Mobile Gentle Icon - Versão ainda mais estável para mobile */
+  .mobile-gentle-icon {
+    position: relative;
+    animation: mobileGentleFloat 6s ease-in-out infinite;
+  }
+
+  .mobile-gentle-icon::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    opacity: 0.05;
+    transition: opacity 0.3s ease;
+  }
+
+  .mobile-gentle-icon:hover::after {
+    opacity: 0.1;
+  }
+
   /* Hexagon 3D */
   .hexagon-3d {
     position: relative;
@@ -199,6 +219,30 @@
     opacity: 1;
   }
 
+  /* Mobile-optimized Stats Card - Sem efeitos 3D complexos */
+  .stats-card-mobile-optimized {
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .stats-card-mobile-optimized:hover {
+    transform: translateY(-2px);
+  }
+
+  .stats-card-mobile-optimized::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .stats-card-mobile-optimized:hover::before {
+    opacity: 1;
+  }
+
   /* Enhanced Icon 3D Effects */
   .enhanced-icon-3d {
     position: relative;
@@ -272,5 +316,25 @@
   /* Escala mais sutil para hover */
   .hover-scale-102:hover {
     transform: scale(1.02);
+  }
+
+  /* Media query para dispositivos móveis - desabilita alguns efeitos 3D */
+  @media (max-width: 768px) {
+    .card-3d-hover:hover {
+      transform: translateY(-2px);
+    }
+    
+    .floating-icon-3d {
+      animation: mobileGentleFloat 6s ease-in-out infinite;
+    }
+    
+    .ring-3d::before,
+    .ring-3d::after {
+      display: none;
+    }
+    
+    .holographic-grid {
+      animation: none;
+    }
   }
 }
