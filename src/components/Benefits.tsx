@@ -8,25 +8,29 @@ const benefitItems = [
     icon: Shield,
     title: "SOC 24x7 sem cobrança por PPS",
     description: "Monitoramento contínuo sem custos adicionais por evento, garantindo previsibilidade orçamentária.",
-    color: "from-security-blue to-cyan-500"
+    color: "from-security-blue to-cyan-500",
+    image: "/lovable-uploads/1c0f6be2-afb8-496c-90a6-68450512adc0.png" // Security/monitoring themed
   },
   {
     icon: Code,
     title: "Integração com qualquer dispositivo IP",
     description: "Compatibilidade total com sua infraestrutura existente, sem necessidade de trocas de equipamentos.",
-    color: "from-purple-500 to-security-blue"
+    color: "from-purple-500 to-security-blue",
+    image: "/lovable-uploads/461ff149-d8fb-467f-ad9a-a8012b7866fa.png" // Network/integration themed
   },
   {
     icon: Users,
     title: "Especialistas com mais de 20 anos de mercado",
     description: "Time sênior de profissionais certificados com vasta experiência em cibersegurança.",
-    color: "from-green-500 to-teal-500"
+    color: "from-green-500 to-teal-500",
+    image: "/lovable-uploads/69d46bda-a946-4e2e-be14-8cb05f1bc3a9.png" // Team/expertise themed
   },
   {
     icon: Zap,
     title: "Tecnologia opensource para melhor custo-benefício",
     description: "Soluções eficientes sem custos de licenciamento, reduzindo o TCO em até 40%.",
-    color: "from-orange-500 to-security-red"
+    color: "from-orange-500 to-security-red",
+    image: "/lovable-uploads/c1957844-81b6-4e34-adcf-7ae6f096b135.png" // Technology/performance themed
   }
 ];
 
@@ -59,13 +63,11 @@ const Benefits = () => {
         <div className="absolute top-1/4 right-0 w-96 h-96 bg-security-blue rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-security-red rounded-full blur-3xl animate-pulse delay-1000"></div>
         
-        {/* Digital grid pattern */}
         <div className="absolute inset-0" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23003366' fill-opacity='0.1'%3E%3Cpath d='M20 20h20v20H20V20zm-20 0h20v20H0V20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}></div>
       </div>
 
-      {/* Floating tech particles */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(15)].map((_, i) => (
           <div
@@ -105,19 +107,34 @@ const Benefits = () => {
               }`}
               style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Enhanced gradient overlay on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-500`}></div>
               
-              {/* Enhanced icon container with improved visual design */}
               <div className={`relative mb-6 ${isMobile ? 'mb-4' : 'mb-6'}`}>
                 <div className={`relative ${isMobile ? 'w-20 h-20' : 'w-24 h-24'} rounded-full bg-gradient-to-br ${item.color} p-0.5 group-hover:scale-110 transition-all duration-300`}>
                   <div className={`w-full h-full bg-white rounded-full flex items-center justify-center relative overflow-hidden group-hover:transform group-hover:rotate-6 transition-transform duration-300`}>
-                    <item.icon size={isMobile ? 32 : 40} className="text-gray-700 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                    {/* Image for mobile, icon for desktop */}
+                    {isMobile ? (
+                      <img 
+                        src={item.image} 
+                        alt={item.title}
+                        className="w-10 h-10 object-cover rounded-full relative z-10 group-hover:scale-110 transition-transform duration-300"
+                        onError={(e) => {
+                          // Fallback to icon if image fails to load
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          const iconContainer = target.nextElementSibling as HTMLElement;
+                          if (iconContainer) iconContainer.style.display = 'block';
+                        }}
+                      />
+                    ) : null}
                     
-                    {/* Animated background effect */}
+                    {/* Icon (always present as fallback, hidden on mobile if image loads) */}
+                    <div className={`${isMobile ? 'hidden' : 'block'} relative z-10 group-hover:scale-110 transition-transform duration-300`}>
+                      <item.icon size={isMobile ? 32 : 40} className="text-gray-700" />
+                    </div>
+                    
                     <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300`}></div>
                     
-                    {/* Subtle pulse ring */}
                     <div className={`absolute inset-0 rounded-full border-2 border-transparent group-hover:border-current opacity-0 group-hover:opacity-30 animate-pulse`} style={{
                       borderColor: item.color.includes('security-blue') ? '#003366' : 
                                   item.color.includes('purple') ? '#8b5cf6' : 
@@ -126,7 +143,6 @@ const Benefits = () => {
                     }}></div>
                   </div>
                   
-                  {/* Outer glow ring */}
                   <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 blur-sm animate-pulse`}></div>
                 </div>
               </div>
@@ -151,14 +167,12 @@ const Benefits = () => {
                 {item.description}
               </p>
 
-              {/* Enhanced hover effect indicator */}
               <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
                 <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:shadow-xl`}>
                   <span className="text-white text-sm animate-pulse">→</span>
                 </div>
               </div>
 
-              {/* Subtle border glow on hover */}
               <div className="absolute inset-0 rounded-lg border border-transparent group-hover:border-security-blue/20 transition-colors duration-500"></div>
             </div>
           ))}
