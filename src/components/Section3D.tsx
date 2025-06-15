@@ -1,6 +1,7 @@
 
 import React, { useRef, useEffect } from 'react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 interface Section3DProps {
   children: React.ReactNode;
@@ -20,13 +21,14 @@ const Section3D: React.FC<Section3DProps> = ({
   intensity = 'medium'
 }) => {
   const isMobile = useIsMobile();
+  const prefersReducedMotion = useReducedMotion();
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const particleCount = intensity === 'light' ? 6 : intensity === 'medium' ? 12 : 18;
   const shapeCount = intensity === 'light' ? 3 : intensity === 'medium' ? 6 : 9;
 
   useEffect(() => {
-    if (isMobile || !withParallax) return;
+    if (isMobile || !withParallax || prefersReducedMotion) return;
 
     const handleScroll = () => {
       if (!sectionRef.current) return;
@@ -45,7 +47,18 @@ const Section3D: React.FC<Section3DProps> = ({
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [isMobile, withParallax]);
+  }, [isMobile, withParallax, prefersReducedMotion]);
+
+  // Se o usuário prefere movimento reduzido, renderiza sem efeitos 3D
+  if (prefersReducedMotion) {
+    return (
+      <div ref={sectionRef} className={`relative ${className}`}>
+        <div className="relative z-10">
+          {children}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div ref={sectionRef} className={`relative ${className}`}>

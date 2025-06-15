@@ -1,8 +1,15 @@
-
 import React from 'react';
 import { Shield, Zap, Lock, Eye, Server, Wifi, Globe, Database, Network } from 'lucide-react';
+import { useReducedMotion } from '@/hooks/use-reduced-motion';
 
 const FloatingElements3D = () => {
+  const prefersReducedMotion = useReducedMotion();
+  
+  // Se o usuário prefere movimento reduzido, não renderiza animações
+  if (prefersReducedMotion) {
+    return null;
+  }
+
   const elements = [
     { Icon: Shield, color: 'text-cyan-400', size: 'w-8 h-8', delay: '0s' },
     { Icon: Zap, color: 'text-yellow-400', size: 'w-6 h-6', delay: '1s' },

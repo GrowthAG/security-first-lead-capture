@@ -1,5 +1,6 @@
 
 import React, { lazy, Suspense } from 'react';
+import ErrorBoundary from './ErrorBoundary';
 
 const LazySection: React.FC<{ 
   children: React.ReactNode; 
@@ -12,9 +13,11 @@ const LazySection: React.FC<{
   );
 
   return (
-    <Suspense fallback={fallback || defaultFallback}>
-      {children}
-    </Suspense>
+    <ErrorBoundary>
+      <Suspense fallback={fallback || defaultFallback}>
+        {children}
+      </Suspense>
+    </ErrorBoundary>
   );
 };
 
