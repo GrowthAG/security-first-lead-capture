@@ -53,27 +53,33 @@ const Section3D: React.FC<Section3DProps> = ({
       {(withParticles || withGeometry) && !isMobile && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {/* Multi-layered Floating Particles */}
-          {withParticles && [...Array(particleCount)].map((_, i) => (
-            <div
-              key={`section-particle-${i}`}
-              className="absolute rounded-full animate-float-3d parallax-3d"
-              style={{
-                left: `${5 + i * 8}%`,
-                top: `${15 + (i % 4) * 25}%`,
-                width: `${1 + (i % 3)}px`,
-                height: `${1 + (i % 3)}px`,
-                animationDelay: `${i * 0.3}s`,
-                animationDuration: `${4 + Math.random() * 3}s`,
-                zIndex: Math.floor(i / 4) + 1
-              }}
-              className={`absolute rounded-full animate-float-3d parallax-3d ${
-                i % 5 === 0 ? 'bg-cyan-400/25' :
-                i % 5 === 1 ? 'bg-purple-400/20' :
-                i % 5 === 2 ? 'bg-blue-400/15' :
-                i % 5 === 3 ? 'bg-pink-400/22' : 'bg-indigo-400/18'
-              }`}
-            />
-          ))}
+          {withParticles && [...Array(particleCount)].map((_, i) => {
+            const particleColors = [
+              'bg-cyan-400/25',
+              'bg-purple-400/20',
+              'bg-blue-400/15',
+              'bg-pink-400/22',
+              'bg-indigo-400/18'
+            ];
+            
+            return (
+              <div
+                key={`section-particle-${i}`}
+                className={`absolute rounded-full animate-float-3d parallax-3d ${
+                  particleColors[i % 5]
+                }`}
+                style={{
+                  left: `${5 + i * 8}%`,
+                  top: `${15 + (i % 4) * 25}%`,
+                  width: `${1 + (i % 3)}px`,
+                  height: `${1 + (i % 3)}px`,
+                  animationDelay: `${i * 0.3}s`,
+                  animationDuration: `${4 + Math.random() * 3}s`,
+                  zIndex: Math.floor(i / 4) + 1
+                }}
+              />
+            );
+          })}
           
           {/* Enhanced 3D Geometric Shapes with depth */}
           {withGeometry && [...Array(shapeCount)].map((_, i) => (

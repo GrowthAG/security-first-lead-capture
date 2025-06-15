@@ -57,26 +57,32 @@ const FloatingElements3D = () => {
       ))}
 
       {/* Enhanced Holographic Particles with depth */}
-      {[...Array(25)].map((_, i) => (
-        <div
-          key={`particle-${i}`}
-          className="absolute animate-float-3d hidden lg:block"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
-            width: `${2 + (i % 3)}px`,
-            height: `${2 + (i % 3)}px`,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${3 + Math.random() * 3}s`,
-            zIndex: Math.floor(i / 8) + 1
-          }}
-          className={`absolute rounded-full animate-float-3d hidden lg:block ${
-            i % 4 === 0 ? 'bg-cyan-400/60' :
-            i % 4 === 1 ? 'bg-purple-400/50' :
-            i % 4 === 2 ? 'bg-blue-400/40' : 'bg-pink-400/45'
-          }`}
-        />
-      ))}
+      {[...Array(25)].map((_, i) => {
+        const particleColors = [
+          'bg-cyan-400/60',
+          'bg-purple-400/50', 
+          'bg-blue-400/40',
+          'bg-pink-400/45'
+        ];
+        
+        return (
+          <div
+            key={`particle-${i}`}
+            className={`absolute rounded-full animate-float-3d hidden lg:block ${
+              particleColors[i % 4]
+            }`}
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              width: `${2 + (i % 3)}px`,
+              height: `${2 + (i % 3)}px`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 3}s`,
+              zIndex: Math.floor(i / 8) + 1
+            }}
+          />
+        );
+      })}
 
       {/* 3D Geometric Shapes with multiple layers */}
       {[...Array(8)].map((_, i) => (
