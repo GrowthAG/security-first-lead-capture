@@ -10,7 +10,6 @@ import Comparison from '@/components/Comparison';
 import CertificationBadges from '@/components/CertificationBadges';
 import TechnologiesIntegration from '@/components/TechnologiesIntegration';
 import FormSection from '@/components/FormSection';
-import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
 
 const Index = () => {
@@ -26,7 +25,6 @@ const Index = () => {
       <CertificationBadges />
       <TechnologiesIntegration />
       <FormSection />
-      <Footer />
       <FloatingCTA />
     </div>
   );
