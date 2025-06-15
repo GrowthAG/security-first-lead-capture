@@ -1,7 +1,7 @@
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Award, Shield, Star } from 'lucide-react';
+import { Award, Shield, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Carousel,
@@ -9,10 +9,14 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 
 const CertificationBadges = () => {
   const isMobile = useIsMobile();
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+  const [count, setCount] = useState(0);
   
   const certificates = [
     { 
@@ -72,6 +76,30 @@ const CertificationBadges = () => {
       color: "pink"
     }
   ];
+
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+
+    setCount(api.scrollSnapList().length);
+    setCurrent(api.selectedScrollSnap() + 1);
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+
+    // Auto-play functionality
+    const interval = setInterval(() => {
+      if (api.canScrollNext()) {
+        api.scrollNext();
+      } else {
+        api.scrollTo(0);
+      }
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [api]);
 
   const getColorClasses = (color: string) => {
     const colorMap = {
@@ -139,6 +167,7 @@ const CertificationBadges = () => {
 
         <div className="max-w-6xl mx-auto">
           <Carousel
+            setApi={setApi}
             opts={{
               align: "start",
               loop: true,
@@ -175,9 +204,54 @@ const CertificationBadges = () => {
                 );
               })}
             </CarouselContent>
-            <CarouselPrevious className="bg-white/90 text-security-blue border-white/50 hover:bg-white hover:text-security-blue shadow-lg -left-12 h-12 w-12" />
-            <CarouselNext className="bg-white/90 text-security-blue border-white/50 hover:bg-white hover:text-security-blue shadow-lg -right-12 h-12 w-12" />
+            
+            {/* Controles customizados para desktop */}
+            {!isMobile && (
+              <>
+                <button
+                  onClick={() => api?.scrollPrev()}
+                  className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-security-blue rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 z-10"
+                >
+                  <ChevronLeft className="w-6 h-6" />
+                </button>
+                <button
+                  onClick={() => api?.scrollNext()}
+                  className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-security-blue rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 z-10"
+                >
+                  <ChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
           </Carousel>
+
+          {/* Indicadores de navegação */}
+          <div className="flex justify-center space-x-2 mb-6">
+            {Array.from({ length: count }).map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === current - 1 
+                    ? 'bg-white w-8' 
+                    : 'bg-white/40 hover:bg-white/70'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Indicador de movimento no mobile */}
+          {isMobile && (
+            <div className="flex justify-center mb-6">
+              <div className="flex items-center space-x-3 text-white/80 text-sm bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
+                <div className="flex space-x-1">
+                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                </div>
+                <span>Carrossel automático</span>
+              </div>
+            </div>
+          )}
 
           <div className="text-center">
             <div className="inline-flex items-center bg-white/10 backdrop-blur-sm text-white px-6 py-4 rounded-lg border border-white/20 hover:bg-white/15 transition-all duration-300">
