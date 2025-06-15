@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Award, Shield, Star } from 'lucide-react';
@@ -85,17 +84,17 @@ const CertificationBadges = () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
 
-    // Auto-play otimizado
+    // Auto-play otimizado para mobile
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
         api.scrollTo(0);
       }
-    }, 3500);
+    }, isMobile ? 3000 : 3500); // Timing diferente para mobile
 
     return () => clearInterval(interval);
-  }, [api]);
+  }, [api, isMobile]);
 
   const getColorClasses = (color: string) => {
     const colorMap = {
@@ -170,9 +169,10 @@ const CertificationBadges = () => {
             opts={{
               align: "start",
               loop: true,
-              duration: 30,
-              dragFree: false,
-              containScroll: "trimSnaps"
+              duration: isMobile ? 20 : 30,
+              dragFree: true,
+              containScroll: "trimSnaps",
+              startIndex: 0
             }}
             className="w-full mb-8"
           >
@@ -208,7 +208,7 @@ const CertificationBadges = () => {
             </CarouselContent>
           </Carousel>
 
-          {/* Indicadores de navegação simplificados */}
+          {/* Indicadores de navegação */}
           <div className="flex justify-center space-x-2 mb-8">
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button

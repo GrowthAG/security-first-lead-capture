@@ -81,21 +81,20 @@ const TechnologiesIntegration = () => {
     };
   }, [api, updateCurrent]);
 
-  // Optimized auto-play with pause on hover
+  // Auto-play com melhor performance para mobile
   useEffect(() => {
-    if (!api || isHovered) return;
+    if (!api || (!isMobile && isHovered)) return;
 
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
-        // Smooth transition back to start
         api.scrollTo(0);
       }
-    }, 3000);
+    }, isMobile ? 2500 : 3000); // Mais rápido no mobile
 
     return () => clearInterval(interval);
-  }, [api, isHovered]);
+  }, [api, isHovered, isMobile]);
 
   const itemsPerView = isMobile ? 2 : 4;
   const totalSlides = Math.ceil(technologies.length / itemsPerView);
@@ -118,18 +117,19 @@ const TechnologiesIntegration = () => {
         
         <div className="max-w-6xl mx-auto">
           <div
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseEnter={() => !isMobile && setIsHovered(true)}
+            onMouseLeave={() => !isMobile && setIsHovered(false)}
           >
             <Carousel
               setApi={setApi}
               opts={{
                 align: "start",
                 loop: true,
-                duration: 25,
-                dragFree: false,
+                duration: isMobile ? 20 : 25,
+                dragFree: true,
                 containScroll: "trimSnaps",
-                skipSnaps: false
+                skipSnaps: false,
+                startIndex: 0
               }}
               className="w-full relative"
             >
@@ -159,7 +159,7 @@ const TechnologiesIntegration = () => {
             </Carousel>
           </div>
           
-          {/* Enhanced navigation indicators */}
+          {/* Indicadores de navegação */}
           <div className="flex justify-center space-x-2 mt-8">
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
