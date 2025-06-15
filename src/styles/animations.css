@@ -1,0 +1,188 @@
+
+@layer utilities {
+  /* Base Animation Classes */
+  .animate-fade-in {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-3d {
+    animation: float3d 8s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .animate-gradient-shift {
+    animation: gradientShift 3s ease infinite;
+  }
+
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .reveal-on-scroll.animate-fade-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .slide-in-right {
+    animation: slideInFromRight 0.5s ease-out forwards;
+  }
+
+  /* Keyframes */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px) translateZ(-20px) scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) translateZ(0) scale(1);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.8) rotate(-5deg) translateZ(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(0deg) translateZ(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg) translateZ(0px);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg) translateZ(10px);
+    }
+  }
+
+  @keyframes float3d {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) rotateZ(0deg) translateZ(0px);
+    }
+    25% {
+      transform: translateY(-15px) translateX(10px) rotateZ(5deg) translateZ(15px);
+    }
+    50% {
+      transform: translateY(-30px) translateX(0px) rotateZ(0deg) translateZ(25px);
+    }
+    75% {
+      transform: translateY(-15px) translateX(-10px) rotateZ(-5deg) translateZ(15px);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(220, 38, 127, 0.3), 0 0 40px rgba(0, 188, 212, 0.1);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(220, 38, 127, 0.6), 0 0 60px rgba(0, 188, 212, 0.2);
+    }
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes spin3d {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+  }
+
+  @keyframes gridMove {
+    0% { transform: translate(0, 0) translateZ(0); }
+    100% { transform: translate(50px, 50px) translateZ(10px); }
+  }
+
+  @keyframes iconFloat {
+    0%, 100% {
+      transform: translateY(0px) rotateX(0deg) rotateY(0deg) translateZ(0px);
+    }
+    50% {
+      transform: translateY(-20px) rotateX(15deg) rotateY(15deg) translateZ(20px);
+    }
+  }
+
+  @keyframes indicatorPulse {
+    0%, 100% {
+      transform: translateY(0px) scale(1) translateZ(0px);
+    }
+    50% {
+      transform: translateY(-5px) scale(1.1) translateZ(10px);
+    }
+  }
+
+  @keyframes depthFloat {
+    0%, 100% {
+      transform: translateZ(0px) rotateX(0deg) rotateY(0deg);
+    }
+    33% {
+      transform: translateZ(20px) rotateX(10deg) rotateY(5deg);
+    }
+    66% {
+      transform: translateZ(35px) rotateX(-5deg) rotateY(10deg);
+    }
+  }
+
+  @keyframes geometricSpin {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0px); }
+    25% { transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg) translateZ(15px); }
+    50% { transform: rotateX(90deg) rotateY(90deg) rotateZ(0deg) translateZ(25px); }
+    75% { transform: rotateX(90deg) rotateY(90deg) rotateZ(90deg) translateZ(15px); }
+    100% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0px); }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200px 0;
+    }
+    100% {
+      background-position: calc(200px + 100%) 0;
+    }
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(4);
+      opacity: 0;
+    }
+  }
+
+  @keyframes slideInFromRight {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+}
