@@ -1,4 +1,3 @@
-
 @layer utilities {
   /* 3D Perspective and Transform */
   .perspective-1000 {
@@ -120,5 +119,131 @@
 
   .card-3d:hover {
     transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
+  }
+
+  /* Enhanced Card 3D Depth Effects */
+  .card-3d-depth {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+
+  .card-3d-depth::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    border-radius: inherit;
+    transform: translateZ(-15px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  .card-3d-depth:hover::before {
+    opacity: 1;
+  }
+
+  .card-3d-depth::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    background: linear-gradient(45deg, rgba(0,0,0,0.02), transparent);
+    border-radius: inherit;
+    transform: translateZ(-8px);
+  }
+
+  /* Enhanced Stats Card Specific Effects */
+  .stats-card-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  .stats-card-3d:hover {
+    transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(30px) scale(1.05);
+  }
+
+  .stats-card-3d::before {
+    content: '';
+    position: absolute;
+    inset: -6px;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.15) 0%, transparent 70%);
+    border-radius: 20px;
+    transform: translateZ(-12px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .stats-card-3d:hover::before {
+    opacity: 1;
+  }
+
+  /* Enhanced Icon 3D Effects */
+  .enhanced-icon-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: all 0.5s ease;
+  }
+
+  .enhanced-icon-3d::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    opacity: 0.1;
+    transform: translateZ(-5px) scale(0.8);
+    transition: all 0.5s ease;
+  }
+
+  .enhanced-icon-3d:hover::before {
+    opacity: 0.3;
+    transform: translateZ(-5px) scale(1.2);
+  }
+
+  .enhanced-icon-3d::after {
+    content: '';
+    position: absolute;
+    inset: -12px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    opacity: 0.05;
+    transform: translateZ(-8px) scale(0.6);
+    transition: all 0.5s ease;
+  }
+
+  .enhanced-icon-3d:hover::after {
+    opacity: 0.15;
+    transform: translateZ(-8px) scale(1.4);
+  }
+
+  /* Multi-layer Glow Effect */
+  .multi-glow {
+    filter: 
+      drop-shadow(0 0 4px currentColor) 
+      drop-shadow(0 0 8px rgba(59, 130, 246, 0.3))
+      drop-shadow(0 0 12px rgba(139, 92, 246, 0.2))
+      drop-shadow(0 0 16px rgba(236, 72, 153, 0.1));
+  }
+
+  /* Depth Shadow Layers */
+  .depth-shadow-1 {
+    box-shadow: 
+      0 4px 8px rgba(0,0,0,0.1),
+      0 8px 16px rgba(0,0,0,0.06),
+      0 16px 24px rgba(0,0,0,0.04);
+  }
+
+  .depth-shadow-2 {
+    box-shadow: 
+      0 8px 16px rgba(0,0,0,0.15),
+      0 16px 32px rgba(0,0,0,0.1),
+      0 24px 48px rgba(0,0,0,0.08);
+  }
+
+  .depth-shadow-3 {
+    box-shadow: 
+      0 12px 24px rgba(0,0,0,0.2),
+      0 24px 48px rgba(0,0,0,0.15),
+      0 36px 72px rgba(0,0,0,0.12);
   }
 }
