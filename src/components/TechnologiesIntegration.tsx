@@ -63,31 +63,32 @@ const TechnologiesIntegration = () => {
   const isMobile = useIsMobile();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!api) {
       return;
     }
 
-    setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
 
-    // Auto-play functionality com transição mais suave
+    // Auto-play com transição mais suave e estável
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
         api.scrollTo(0);
       }
-    }, 4000); // Aumentei o tempo para 4s para reduzir tremores
+    }, 3500);
 
     return () => clearInterval(interval);
   }, [api]);
+
+  const itemsPerView = isMobile ? 2 : 4;
+  const totalSlides = Math.ceil(technologies.length / itemsPerView);
 
   return (
     <section className="py-16 bg-white">
@@ -105,7 +106,9 @@ const TechnologiesIntegration = () => {
             opts={{
               align: "start",
               loop: true,
-              duration: 25, // Transição mais suave
+              duration: 30,
+              dragFree: false,
+              containScroll: "trimSnaps"
             }}
             className="w-full relative"
           >
@@ -121,6 +124,7 @@ const TechnologiesIntegration = () => {
                         style={{
                           minHeight: '40px'
                         }}
+                        loading="lazy"
                       />
                     </div>
                     <span className="text-xs font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-500 text-center leading-tight">
@@ -132,31 +136,20 @@ const TechnologiesIntegration = () => {
             </CarouselContent>
           </Carousel>
           
-          {/* Indicadores de navegação melhorados */}
-          <div className="flex justify-center space-x-2 mt-6 mb-4">
-            {Array.from({ length: Math.ceil(technologies.length / (isMobile ? 2 : 4)) }).map((_, index) => (
+          {/* Indicadores de navegação simplificados */}
+          <div className="flex justify-center space-x-2 mt-8">
+            {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`h-2 rounded-full transition-all duration-500 ${
-                  Math.floor((current - 1) / (isMobile ? 2 : 4)) === index
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  Math.floor((current - 1) / itemsPerView) === index
                     ? 'bg-security-blue w-8' 
                     : 'bg-gray-300 hover:bg-security-blue/50 w-2'
                 }`}
+                aria-label={`Ir para grupo ${index + 1} de parceiros`}
               />
             ))}
-          </div>
-
-          {/* Indicador de rotação automática melhorado */}
-          <div className="flex justify-center mt-4">
-            <div className="flex items-center space-x-3 text-gray-500 text-sm bg-gray-100 px-4 py-2 rounded-full border border-gray-200">
-              <div className="flex space-x-1">
-                <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse"></div>
-                <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-              </div>
-              <span>Carrossel automático</span>
-            </div>
           </div>
         </div>
       </div>

@@ -14,7 +14,6 @@ const CertificationBadges = () => {
   const isMobile = useIsMobile();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
-  const [count, setCount] = useState(0);
   
   const certificates = [
     { 
@@ -80,21 +79,20 @@ const CertificationBadges = () => {
       return;
     }
 
-    setCount(api.scrollSnapList().length);
     setCurrent(api.selectedScrollSnap() + 1);
 
     api.on("select", () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
 
-    // Auto-play functionality com transição mais suave
+    // Auto-play otimizado
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
         api.scrollTo(0);
       }
-    }, 4500); // Aumentei o tempo para 4.5s para reduzir tremores
+    }, 3500);
 
     return () => clearInterval(interval);
   }, [api]);
@@ -145,6 +143,9 @@ const CertificationBadges = () => {
     return colorMap[color] || colorMap.blue;
   };
 
+  const itemsPerView = isMobile ? 1 : 3;
+  const totalSlides = Math.ceil(certificates.length / itemsPerView);
+
   return (
     <section className={`py-16 bg-security-blue relative overflow-hidden ${isMobile ? 'py-12' : ''}`}>
       {/* Background decoration */}
@@ -169,7 +170,9 @@ const CertificationBadges = () => {
             opts={{
               align: "start",
               loop: true,
-              duration: 25, // Transição mais suave
+              duration: 30,
+              dragFree: false,
+              containScroll: "trimSnaps"
             }}
             className="w-full mb-8"
           >
@@ -205,31 +208,20 @@ const CertificationBadges = () => {
             </CarouselContent>
           </Carousel>
 
-          {/* Indicadores de navegação melhorados */}
-          <div className="flex justify-center space-x-2 mb-6">
-            {Array.from({ length: count }).map((_, index) => (
+          {/* Indicadores de navegação simplificados */}
+          <div className="flex justify-center space-x-2 mb-8">
+            {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`h-2 rounded-full transition-all duration-500 ${
-                  index === current - 1 
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  Math.floor((current - 1) / itemsPerView) === index 
                     ? 'bg-white w-8' 
                     : 'bg-white/40 hover:bg-white/70 w-2'
                 }`}
+                aria-label={`Ver certificações ${index + 1}`}
               />
             ))}
-          </div>
-
-          {/* Indicador de rotação automática melhorado */}
-          <div className="flex justify-center mb-6">
-            <div className="flex items-center space-x-3 text-white/80 text-sm bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
-              <div className="flex space-x-1">
-                <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
-                <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-              </div>
-              <span>Carrossel automático</span>
-            </div>
           </div>
 
           <div className="text-center">
