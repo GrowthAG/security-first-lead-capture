@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Shield, Users, Code, Zap } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -7,29 +8,25 @@ const benefitItems = [
     icon: Shield,
     title: "SOC 24x7 sem cobrança por PPS",
     description: "Monitoramento contínuo sem custos adicionais por evento, garantindo previsibilidade orçamentária.",
-    color: "from-security-blue to-cyan-500",
-    image: "/lovable-uploads/1c0f6be2-afb8-496c-90a6-68450512adc0.png" // Security/monitoring themed
+    color: "from-security-blue to-cyan-500"
   },
   {
     icon: Code,
     title: "Integração com qualquer dispositivo IP",
     description: "Compatibilidade total com sua infraestrutura existente, sem necessidade de trocas de equipamentos.",
-    color: "from-purple-500 to-security-blue",
-    image: "/lovable-uploads/461ff149-d8fb-467f-ad9a-a8012b7866fa.png" // Network/integration themed
+    color: "from-purple-500 to-security-blue"
   },
   {
     icon: Users,
     title: "Especialistas com mais de 20 anos de mercado",
     description: "Time sênior de profissionais certificados com vasta experiência em cibersegurança.",
-    color: "from-green-500 to-teal-500",
-    image: "/lovable-uploads/69d46bda-a946-4e2e-be14-8cb05f1bc3a9.png" // Team/expertise themed
+    color: "from-green-500 to-teal-500"
   },
   {
     icon: Zap,
     title: "Tecnologia opensource para melhor custo-benefício",
     description: "Soluções eficientes sem custos de licenciamento, reduzindo o TCO em até 40%.",
-    color: "from-orange-500 to-security-red",
-    image: "/lovable-uploads/c1957844-81b6-4e34-adcf-7ae6f096b135.png" // Technology/performance themed
+    color: "from-orange-500 to-security-red"
   }
 ];
 
@@ -54,16 +51,6 @@ const Benefits = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  const getColorClasses = (color: string) => {
-    const colorMap = {
-      'from-security-blue to-cyan-500': 'bg-security-blue',
-      'from-purple-500 to-security-blue': 'bg-purple-500',
-      'from-green-500 to-teal-500': 'bg-green-500',
-      'from-orange-500 to-security-red': 'bg-orange-500'
-    };
-    return colorMap[color as keyof typeof colorMap] || 'bg-security-blue';
-  };
 
   return (
     <section id="beneficios" ref={sectionRef} className={`bg-white relative overflow-hidden ${isMobile ? 'py-12' : 'py-20'}`}>
@@ -121,22 +108,8 @@ const Benefits = () => {
               <div className={`relative mb-6 ${isMobile ? 'mb-4' : 'mb-6'}`}>
                 <div className={`relative ${isMobile ? 'w-20 h-20' : 'w-24 h-24'} rounded-full bg-gradient-to-br ${item.color} p-0.5 group-hover:scale-110 transition-all duration-300`}>
                   <div className={`w-full h-full bg-white rounded-full flex items-center justify-center relative overflow-hidden group-hover:transform group-hover:rotate-6 transition-transform duration-300`}>
-                    {/* Sempre usar imagem, tanto no mobile quanto no desktop */}
-                    <img 
-                      src={item.image} 
-                      alt={item.title}
-                      className="w-10 h-10 object-cover rounded-full relative z-10 group-hover:scale-110 transition-transform duration-300"
-                      onError={(e) => {
-                        // Fallback para ícone se a imagem não carregar
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                        const iconContainer = target.nextElementSibling as HTMLElement;
-                        if (iconContainer) iconContainer.style.display = 'block';
-                      }}
-                    />
-                    
-                    {/* Ícone como fallback (oculto por padrão) */}
-                    <div className="hidden relative z-10 group-hover:scale-110 transition-transform duration-300">
+                    {/* Usar ícones do Lucide React em ambas as versões */}
+                    <div className="relative z-10 group-hover:scale-110 transition-transform duration-300">
                       <item.icon size={isMobile ? 32 : 40} className="text-gray-700" />
                     </div>
                     
