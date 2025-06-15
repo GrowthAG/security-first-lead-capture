@@ -65,34 +65,33 @@ const RealTimeStats = () => {
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto perspective-1000">
       {stats.map((stat, index) => (
-        <Card3D key={index} intensity={1.2} className="transform-gpu">
+        <Card3D key={index} intensity={0.8} className="transform-gpu">
           <div
-            className={`${stat.bgColor} ${stat.borderColor} rounded-xl p-4 border hover:border-gray-300 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-current/20 group card-3d-hover mouse-3d relative overflow-hidden`}
+            className={`${stat.bgColor} ${stat.borderColor} rounded-xl p-4 border hover:border-gray-300 transition-all duration-300 hover:scale-102 hover:shadow-lg group stats-card-enhanced relative overflow-hidden`}
             style={{
               transformStyle: 'preserve-3d',
-              animation: `float3d ${8 + index}s ease-in-out infinite`,
-              animationDelay: `${index * 0.5}s`
+              animation: `subtleFloat ${6 + index * 0.5}s ease-in-out infinite`,
+              animationDelay: `${index * 0.2}s`
             }}
           >
-            {/* Enhanced 3D Background Effect */}
-            <div className="absolute inset-0 opacity-10">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent transform rotate-12 scale-110"></div>
-              <div className="absolute inset-0 bg-gradient-to-tl from-current/5 to-transparent transform -rotate-12 scale-110"></div>
+            {/* Subtle background gradient */}
+            <div className="absolute inset-0 opacity-5 rounded-xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-transparent"></div>
             </div>
 
-            {/* Holographic Border Effect */}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-current/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-gradient-shift"></div>
+            {/* Gentle hover effect */}
+            <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-transparent via-current/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
             <div className="relative z-10">
               <div className="flex items-center justify-between mb-2">
-                <div className="floating-icon-3d">
-                  <stat.icon className={`w-5 h-5 ${stat.color} group-hover:scale-125 group-hover:drop-shadow-glow transition-all duration-500`} />
+                <div className="gentle-icon-3d">
+                  <stat.icon className={`w-5 h-5 ${stat.color} group-hover:scale-110 transition-all duration-300`} />
                 </div>
-                <span className={`text-xs font-medium ${stat.color} bg-white/60 backdrop-blur-sm px-2 py-1 rounded-full hover:bg-white/80 transition-all duration-300 group-hover:scale-110 transform-gpu`}>
+                <span className={`text-xs font-medium ${stat.color} bg-white/50 backdrop-blur-sm px-2 py-1 rounded-full group-hover:bg-white/70 transition-all duration-300`}>
                   {stat.trend}
                 </span>
               </div>
-              <div className={`text-2xl font-bold text-gray-900 mb-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-${stat.color.split('-')[1]}-600 group-hover:to-${stat.color.split('-')[1]}-800 transition-all duration-500`}>
+              <div className={`text-2xl font-bold text-gray-900 mb-1 transition-colors duration-300`}>
                 {stat.value}
               </div>
               <div className="text-xs text-gray-600 leading-tight group-hover:text-gray-700 transition-colors duration-300">
@@ -100,9 +99,8 @@ const RealTimeStats = () => {
               </div>
             </div>
 
-            {/* Enhanced 3D Depth Indicators */}
-            <div className="absolute -inset-2 rounded-xl border border-current/5 transform translateZ(-5px) group-hover:border-current/15 transition-all duration-500"></div>
-            <div className="absolute -inset-4 rounded-xl border border-current/3 transform translateZ(-10px) group-hover:border-current/8 transition-all duration-500"></div>
+            {/* Subtle depth layers */}
+            <div className="absolute -inset-1 rounded-xl border border-current/3 transform translateZ(-2px) group-hover:border-current/8 transition-all duration-300"></div>
           </div>
         </Card3D>
       ))}
