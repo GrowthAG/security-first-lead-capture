@@ -54,8 +54,8 @@ const TechnicalEvents = () => {
 
   return (
     <section ref={sectionRef} className={`${isMobile ? 'py-16' : 'py-24'} bg-gradient-to-b from-gray-50 to-white relative overflow-hidden`}>
-      {/* Enhanced Background with premium feel */}
-      <div className="absolute inset-0 opacity-5">
+      {/* Enhanced Background with premium feel - adjusted z-index */}
+      <div className="absolute inset-0 opacity-5 -z-10">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-security-blue rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-security-red rounded-full blur-3xl animate-pulse delay-1000"></div>
         
@@ -65,15 +65,15 @@ const TechnicalEvents = () => {
         }}></div>
       </div>
 
-      {/* Premium floating elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(12)].map((_, i) => (
+      {/* Premium floating elements - moved behind content */}
+      <div className="absolute inset-0 overflow-hidden -z-5">
+        {[...Array(8)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 bg-gradient-to-br from-security-blue/20 to-security-red/20 rounded-full animate-float blur-sm"
+            className="absolute w-1 h-1 bg-gradient-to-br from-security-blue/10 to-security-red/10 rounded-full animate-float blur-sm"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${20 + Math.random() * 60}%`,
+              top: `${20 + Math.random() * 60}%`,
               animationDelay: `${Math.random() * 8}s`,
               animationDuration: `${10 + Math.random() * 6}s`
             }}
@@ -109,8 +109,8 @@ const TechnicalEvents = () => {
           </p>
         </div>
         
-        {/* Premium events grid */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16">
+        {/* Premium events grid - increased z-index */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-16 relative z-20">
           {events.map((event, index) => {
             const IconComponent = event.icon;
             return (
@@ -126,7 +126,7 @@ const TechnicalEvents = () => {
                   <div className="absolute inset-0 bg-gradient-to-br from-security-blue/5 via-transparent to-security-red/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-700"></div>
                   
                   {/* Category badge */}
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-security-blue to-security-red text-white text-xs font-medium px-3 py-1 rounded-full opacity-90">
+                  <div className="absolute top-4 right-4 bg-gradient-to-r from-security-blue to-security-red text-white text-xs font-medium px-3 py-1 rounded-full opacity-90 z-10">
                     {event.category}
                   </div>
                   
@@ -180,7 +180,7 @@ const TechnicalEvents = () => {
         </div>
         
         {/* Premium footer section */}
-        <div className={`${isMobile ? 'mt-12' : 'mt-20'} reveal-on-scroll`}>
+        <div className={`${isMobile ? 'mt-12' : 'mt-20'} reveal-on-scroll relative z-20`}>
           <div className="bg-gradient-to-br from-security-red via-security-red/95 to-security-red/90 text-white p-10 rounded-3xl text-center hover:from-security-red hover:via-security-red/98 hover:to-security-red/95 hover:scale-105 hover:shadow-2xl hover:shadow-security-red/30 transition-all duration-700 group relative overflow-hidden">
             
             {/* Premium background pattern */}
