@@ -85,11 +85,14 @@ const TechnologiesIntegration = () => {
               {technologies.map((tech, index) => (
                 <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-1/2' : 'basis-1/2 md:basis-1/3 lg:basis-1/4'}`}>
                   <div className="security-card text-center p-6 h-44 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 hover:border-security-blue/20">
-                    <div className="w-full h-16 flex items-center justify-center mb-3">
+                    <div className="w-full h-20 flex items-center justify-center mb-3">
                       <img 
                         src={tech.logo} 
                         alt={tech.name}
-                        className="max-h-12 max-w-[120px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                        className="max-h-16 max-w-[140px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                        style={{
+                          minHeight: '40px'
+                        }}
                       />
                     </div>
                     <span className="text-xs font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-300 text-center leading-tight">
