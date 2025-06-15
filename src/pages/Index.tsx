@@ -7,7 +7,7 @@ import HowItWorks from '@/components/HowItWorks';
 import Authority from '@/components/Authority';
 import Comparison from '@/components/Comparison';
 import CertificationBadges from '@/components/CertificationBadges';
-import Testimonials from '@/components/Testimonials';
+import TechnologiesIntegration from '@/components/TechnologiesIntegration';
 import FormSection from '@/components/FormSection';
 import Footer from '@/components/Footer';
 import FloatingCTA from '@/components/FloatingCTA';
@@ -22,7 +22,7 @@ const Index = () => {
       <Authority />
       <Comparison />
       <CertificationBadges />
-      <Testimonials />
+      <TechnologiesIntegration />
       <FormSection />
       <Footer />
       <FloatingCTA />
