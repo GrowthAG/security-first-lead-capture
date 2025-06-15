@@ -22,35 +22,35 @@ const Index = () => {
       <EnhancedHeader />
       <Hero3D />
       
-      <Section3D withParticles>
+      <Section3D withParticles withGeometry intensity="heavy">
         <Benefits />
       </Section3D>
       
-      <Section3D withParallax>
+      <Section3D withParallax withParticles intensity="medium">
         <HowItWorks />
       </Section3D>
       
-      <Section3D withParticles>
+      <Section3D withParticles withGeometry withParallax intensity="heavy">
         <Authority />
       </Section3D>
       
-      <Section3D withParallax withParticles>
+      <Section3D withParallax withParticles withGeometry intensity="heavy">
         <TechnicalEvents />
       </Section3D>
       
-      <Section3D>
+      <Section3D withGeometry intensity="light">
         <Comparison />
       </Section3D>
       
-      <Section3D withParticles>
+      <Section3D withParticles withGeometry intensity="medium">
         <CertificationBadges />
       </Section3D>
       
-      <Section3D withParallax>
+      <Section3D withParallax withParticles intensity="medium">
         <TechnologiesIntegration />
       </Section3D>
       
-      <Section3D withParticles>
+      <Section3D withParticles withGeometry withParallax intensity="heavy">
         <FormSection />
       </Section3D>
       
