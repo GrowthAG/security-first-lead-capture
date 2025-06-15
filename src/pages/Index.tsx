@@ -1,6 +1,5 @@
 
-import React, { useState, useEffect, lazy } from 'react';
-import Preloader from '@/components/Preloader';
+import React, { lazy } from 'react';
 import ScrollProgress from '@/components/ScrollProgress';
 import LazySection from '@/components/LazySection';
 import EnhancedHeader from '@/components/EnhancedHeader';
@@ -21,16 +20,6 @@ const TechnologiesIntegration = lazy(() => import('@/components/TechnologiesInte
 const FormSection = lazy(() => import('@/components/FormSection'));
 
 const Index = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const handlePreloadComplete = () => {
-    setIsLoading(false);
-  };
-
-  if (isLoading) {
-    return <Preloader onComplete={handlePreloadComplete} />;
-  }
-
   return (
     <div className="min-h-screen bg-white overflow-x-hidden relative">
       <ScrollProgress />
