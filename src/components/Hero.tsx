@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Shield, Zap, Eye } from 'lucide-react';
@@ -35,7 +36,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="hero" ref={heroRef} className="relative gradient-bg text-white py-20 overflow-hidden">
+    <section id="hero" ref={heroRef} className="relative gradient-bg text-white py-16 sm:py-20 overflow-hidden min-h-screen flex items-center">
       {/* Enhanced Background Pattern with futuristic elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -101,62 +102,48 @@ const Hero = () => {
         ))}
       </div>
 
-      <div className={`container mx-auto ${isMobile ? 'px-6' : 'px-4'} relative z-10`}>
-        <div className={`max-w-5xl mx-auto text-center ${isMobile ? 'pt-8' : 'pt-16'}`}>
-          <div className="reveal-on-scroll mb-8">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-white/20 hover:bg-white/15 hover:border-security-red/30 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-security-red/20">
-              <Shield className="w-5 h-5 mr-2 text-security-red animate-pulse" />
-              <span className="text-sm font-medium">SOC 24x7 • Proteção Contínua</span>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10 w-full">
+        <div className="max-w-5xl mx-auto text-center">
+          <div className="reveal-on-scroll mb-6 sm:mb-8">
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm rounded-full px-4 sm:px-6 py-2 sm:py-3 mb-4 sm:mb-6 border border-white/20 hover:bg-white/15 hover:border-security-red/30 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-security-red/20">
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5 mr-2 text-security-red animate-pulse" />
+              <span className="text-xs sm:text-sm font-medium">SOC 24x7 • Proteção Contínua</span>
               <div className="w-2 h-2 bg-green-400 rounded-full ml-2 animate-pulse"></div>
             </div>
           </div>
 
-          <h1 className={`reveal-on-scroll font-montserrat font-bold leading-tight mb-6 ${
-            isMobile 
-              ? 'text-3xl' 
-              : 'text-5xl lg:text-6xl'
-          }`}>
+          <h1 className="reveal-on-scroll font-montserrat font-bold leading-tight mb-4 sm:mb-6 text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl px-2">
             <span className="block mb-2">Proteja sua empresa com</span>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-security-red via-pink-500 to-security-red animate-pulse">
               SOC 24x7 Inteligente
             </span>
           </h1>
 
-          <p className={`reveal-on-scroll text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto ${
-            isMobile 
-              ? 'text-lg px-2' 
-              : 'text-xl'
-          }`}>
+          <p className="reveal-on-scroll text-white/90 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto text-base sm:text-lg md:text-xl px-4">
             Monitoramento contínuo, detecção avançada de ameaças e resposta imediata. 
             Nossa equipe de especialistas protege seu negócio 24 horas por dia, 7 dias por semana.
           </p>
 
-          <div className={`reveal-on-scroll flex ${isMobile ? 'flex-col space-y-4' : 'flex-row'} justify-center items-center space-x-0 ${!isMobile && 'space-x-4'} mb-12`}>
+          <div className="reveal-on-scroll flex flex-col sm:flex-row justify-center items-center gap-4 mb-8 sm:mb-12 px-4">
             <Button 
               onClick={scrollToForm}
-              className={`group bg-security-red hover:bg-security-red/90 text-white font-semibold shadow-lg hover:shadow-xl hover:shadow-security-red/30 transition-all duration-500 hover:scale-105 hover:animate-pulse-glow ${
-                isMobile 
-                  ? 'w-full max-w-sm py-4 text-lg' 
-                  : 'py-4 px-8 text-lg'
-              }`}
+              className="group bg-security-red hover:bg-security-red/90 text-white font-semibold shadow-lg hover:shadow-xl hover:shadow-security-red/30 transition-all duration-500 hover:scale-105 hover:animate-pulse-glow w-full sm:w-auto py-3 sm:py-4 px-6 sm:px-8 text-base sm:text-lg"
             >
-              <Zap className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+              <Zap className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:animate-pulse" />
               Diagnóstico Gratuito
             </Button>
             
-            {!isMobile && (
-              <button 
-                onClick={scrollToNextSection}
-                className="text-white/80 hover:text-white transition-all duration-300 font-medium flex items-center group hover:scale-105"
-              >
-                <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300" />
-                Ver como funciona
-              </button>
-            )}
+            <button 
+              onClick={scrollToNextSection}
+              className="text-white/80 hover:text-white transition-all duration-300 font-medium flex items-center group hover:scale-105 text-sm sm:text-base"
+            >
+              <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300" />
+              Ver como funciona
+            </button>
           </div>
 
           {/* Real-time Stats */}
-          <div className="reveal-on-scroll mb-8">
+          <div className="reveal-on-scroll mb-6 sm:mb-8 px-4">
             <RealTimeStats />
           </div>
         </div>
@@ -165,7 +152,7 @@ const Hero = () => {
       {/* Enhanced scroll indicator */}
       <button 
         onClick={scrollToNextSection}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-110 transition-transform duration-300 group"
+        className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-110 transition-transform duration-300 group"
       >
         <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center hover:border-security-red/60 transition-colors duration-300 group-hover:shadow-lg group-hover:shadow-white/20">
           <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse group-hover:bg-security-red/80"></div>
