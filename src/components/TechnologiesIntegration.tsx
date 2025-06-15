@@ -81,7 +81,7 @@ const TechnologiesIntegration = () => {
     };
   }, [api, updateCurrent]);
 
-  // Auto-play com melhor performance para mobile
+  // Auto-play otimizado
   useEffect(() => {
     if (!api || (!isMobile && isHovered)) return;
 
@@ -91,7 +91,7 @@ const TechnologiesIntegration = () => {
       } else {
         api.scrollTo(0);
       }
-    }, isMobile ? 2500 : 3000); // Mais rápido no mobile
+    }, isMobile ? 2000 : 3000);
 
     return () => clearInterval(interval);
   }, [api, isHovered, isMobile]);
@@ -125,8 +125,8 @@ const TechnologiesIntegration = () => {
               opts={{
                 align: "start",
                 loop: true,
-                duration: isMobile ? 20 : 25,
-                dragFree: true,
+                duration: isMobile ? 15 : 25,
+                dragFree: false,
                 containScroll: "trimSnaps",
                 skipSnaps: false,
                 startIndex: 0
@@ -136,12 +136,16 @@ const TechnologiesIntegration = () => {
               <CarouselContent className="-ml-2 md:-ml-4">
                 {technologies.map((tech, index) => (
                   <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-1/2' : 'basis-1/2 md:basis-1/3 lg:basis-1/4'}`}>
-                    <div className="security-card text-center p-6 h-44 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-500 group border border-gray-100 hover:border-security-blue/20 will-change-transform">
+                    <div className={`security-card text-center p-6 h-44 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg border border-gray-100 transition-all duration-300 ${
+                      isMobile ? 'hover:shadow-md' : 'hover:shadow-xl hover:border-security-blue/20'
+                    }`}>
                       <div className="w-full h-20 flex items-center justify-center mb-3">
                         <img 
                           src={tech.logo} 
                           alt={tech.name}
-                          className="max-h-16 max-w-[140px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 will-change-transform"
+                          className={`max-h-16 max-w-[140px] w-auto h-auto object-contain transition-all duration-300 ${
+                            isMobile ? 'filter grayscale-0' : 'filter grayscale group-hover:grayscale-0 group-hover:scale-110'
+                          }`}
                           style={{
                             minHeight: '40px'
                           }}
@@ -149,7 +153,9 @@ const TechnologiesIntegration = () => {
                           decoding="async"
                         />
                       </div>
-                      <span className="text-xs font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-500 text-center leading-tight">
+                      <span className={`text-xs font-medium text-gray-700 transition-colors duration-300 text-center leading-tight ${
+                        !isMobile ? 'group-hover:text-security-blue' : ''
+                      }`}>
                         {tech.name}
                       </span>
                     </div>
@@ -159,23 +165,23 @@ const TechnologiesIntegration = () => {
             </Carousel>
           </div>
           
-          {/* Indicadores de navegação */}
+          {/* Indicadores simplificados */}
           <div className="flex justify-center space-x-2 mt-8">
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => handleDotClick(index)}
-                className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-security-blue/30 ${
+                className={`h-2 rounded-full transition-all duration-200 focus:outline-none ${
                   Math.floor((current - 1) / itemsPerView) === index
-                    ? 'bg-security-blue w-8 scale-110' 
-                    : 'bg-gray-300 hover:bg-security-blue/50 w-2 hover:scale-110'
+                    ? 'bg-security-blue w-8' 
+                    : 'bg-gray-300 hover:bg-security-blue/50 w-2'
                 }`}
                 aria-label={`Ir para grupo ${index + 1} de parceiros`}
               />
             ))}
           </div>
 
-          {/* Progress indicator */}
+          {/* Progress indicator simplificado */}
           <div className="flex justify-center mt-4">
             <div className="text-xs text-gray-500">
               {current} de {technologies.length} parceiros
