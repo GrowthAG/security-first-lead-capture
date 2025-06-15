@@ -4,12 +4,9 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { useIsMobile } from '@/hooks/use-mobile';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const technologies = [
   {
@@ -80,14 +77,14 @@ const TechnologiesIntegration = () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
 
-    // Auto-play functionality
+    // Auto-play functionality com transição mais suave
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
         api.scrollTo(0);
       }
-    }, 3500);
+    }, 4000); // Aumentei o tempo para 4s para reduzir tremores
 
     return () => clearInterval(interval);
   }, [api]);
@@ -108,78 +105,59 @@ const TechnologiesIntegration = () => {
             opts={{
               align: "start",
               loop: true,
+              duration: 25, // Transição mais suave
             }}
             className="w-full relative"
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {technologies.map((tech, index) => (
                 <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-1/2' : 'basis-1/2 md:basis-1/3 lg:basis-1/4'}`}>
-                  <div className="security-card text-center p-6 h-44 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 hover:border-security-blue/20">
+                  <div className="security-card text-center p-6 h-44 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-500 group border border-gray-100 hover:border-security-blue/20">
                     <div className="w-full h-20 flex items-center justify-center mb-3">
                       <img 
                         src={tech.logo} 
                         alt={tech.name}
-                        className="max-h-16 max-w-[140px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                        className="max-h-16 max-w-[140px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
                         style={{
                           minHeight: '40px'
                         }}
                       />
                     </div>
-                    <span className="text-xs font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-300 text-center leading-tight">
+                    <span className="text-xs font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-500 text-center leading-tight">
                       {tech.name}
                     </span>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            
-            {/* Controles customizados para desktop */}
-            {!isMobile && (
-              <>
-                <button
-                  onClick={() => api?.scrollPrev()}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-security-blue border border-security-blue/20 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl z-10"
-                >
-                  <ChevronLeft className="w-5 h-5" />
-                </button>
-                <button
-                  onClick={() => api?.scrollNext()}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 bg-white hover:bg-gray-50 text-security-blue border border-security-blue/20 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-xl z-10"
-                >
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              </>
-            )}
           </Carousel>
           
-          {/* Indicadores de navegação */}
+          {/* Indicadores de navegação melhorados */}
           <div className="flex justify-center space-x-2 mt-6 mb-4">
             {Array.from({ length: Math.ceil(technologies.length / (isMobile ? 2 : 4)) }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-500 ${
                   Math.floor((current - 1) / (isMobile ? 2 : 4)) === index
                     ? 'bg-security-blue w-8' 
-                    : 'bg-gray-300 hover:bg-security-blue/50'
+                    : 'bg-gray-300 hover:bg-security-blue/50 w-2'
                 }`}
               />
             ))}
           </div>
 
-          {/* Indicador de movimento no mobile */}
-          {isMobile && (
-            <div className="flex justify-center mt-4">
-              <div className="flex items-center space-x-3 text-gray-500 text-sm bg-gray-100 px-4 py-2 rounded-full">
-                <div className="flex space-x-1">
-                  <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse"></div>
-                  <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                </div>
-                <span>Carrossel automático</span>
+          {/* Indicador de rotação automática melhorado */}
+          <div className="flex justify-center mt-4">
+            <div className="flex items-center space-x-3 text-gray-500 text-sm bg-gray-100 px-4 py-2 rounded-full border border-gray-200">
+              <div className="flex space-x-1">
+                <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse"></div>
+                <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <div className="w-1 h-1 bg-security-blue/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
               </div>
+              <span>Carrossel automático</span>
             </div>
-          )}
+          </div>
         </div>
       </div>
     </section>

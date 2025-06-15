@@ -1,14 +1,12 @@
 
 import React, { useEffect, useState } from 'react';
 import { Badge } from '@/components/ui/badge';
-import { Award, Shield, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Award, Shield, Star } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
 
@@ -89,14 +87,14 @@ const CertificationBadges = () => {
       setCurrent(api.selectedScrollSnap() + 1);
     });
 
-    // Auto-play functionality
+    // Auto-play functionality com transição mais suave
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
         api.scrollTo(0);
       }
-    }, 4000);
+    }, 4500); // Aumentei o tempo para 4.5s para reduzir tremores
 
     return () => clearInterval(interval);
   }, [api]);
@@ -171,6 +169,7 @@ const CertificationBadges = () => {
             opts={{
               align: "start",
               loop: true,
+              duration: 25, // Transição mais suave
             }}
             className="w-full mb-8"
           >
@@ -180,22 +179,22 @@ const CertificationBadges = () => {
                 
                 return (
                   <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-full' : 'basis-1/2 lg:basis-1/3'}`}>
-                    <div className={`${colors.background} backdrop-blur-sm border-2 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:scale-105 h-full group`}>
+                    <div className={`${colors.background} backdrop-blur-sm border-2 rounded-xl p-6 transition-all duration-500 hover:shadow-lg hover:scale-105 h-full group`}>
                       <div className="flex flex-col items-center text-center space-y-4">
                         {/* Icon Circle */}
                         <div className="relative">
-                          <div className="w-20 h-20 rounded-full bg-white/20 border-2 border-white/30 shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                          <div className="w-20 h-20 rounded-full bg-white/20 border-2 border-white/30 shadow-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                             <cert.icon className={`w-10 h-10 ${colors.icon} group-hover:animate-pulse`} />
                           </div>
                           {/* Glow effect on hover */}
-                          <div className={`absolute inset-0 w-20 h-20 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300 ${colors.background} blur-md`}></div>
+                          <div className={`absolute inset-0 w-20 h-20 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-500 ${colors.background} blur-md`}></div>
                         </div>
                         
-                        <Badge className={`${colors.badge} text-sm font-bold px-4 py-2 min-w-0 group-hover:scale-105 transition-transform duration-300`}>
+                        <Badge className={`${colors.badge} text-sm font-bold px-4 py-2 min-w-0 group-hover:scale-105 transition-transform duration-500`}>
                           {cert.name}
                         </Badge>
                         
-                        <p className="text-xs text-white/80 leading-tight group-hover:text-white transition-colors duration-300">
+                        <p className="text-xs text-white/80 leading-tight group-hover:text-white transition-colors duration-500">
                           {cert.description}
                         </p>
                       </div>
@@ -204,57 +203,37 @@ const CertificationBadges = () => {
                 );
               })}
             </CarouselContent>
-            
-            {/* Controles customizados para desktop */}
-            {!isMobile && (
-              <>
-                <button
-                  onClick={() => api?.scrollPrev()}
-                  className="absolute left-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-security-blue rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 z-10"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  onClick={() => api?.scrollNext()}
-                  className="absolute right-0 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-security-blue rounded-full p-3 shadow-lg transition-all duration-300 hover:scale-110 z-10"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </>
-            )}
           </Carousel>
 
-          {/* Indicadores de navegação */}
+          {/* Indicadores de navegação melhorados */}
           <div className="flex justify-center space-x-2 mb-6">
             {Array.from({ length: count }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => api?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                className={`h-2 rounded-full transition-all duration-500 ${
                   index === current - 1 
                     ? 'bg-white w-8' 
-                    : 'bg-white/40 hover:bg-white/70'
+                    : 'bg-white/40 hover:bg-white/70 w-2'
                 }`}
               />
             ))}
           </div>
 
-          {/* Indicador de movimento no mobile */}
-          {isMobile && (
-            <div className="flex justify-center mb-6">
-              <div className="flex items-center space-x-3 text-white/80 text-sm bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
-                <div className="flex space-x-1">
-                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
-                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                </div>
-                <span>Carrossel automático</span>
+          {/* Indicador de rotação automática melhorado */}
+          <div className="flex justify-center mb-6">
+            <div className="flex items-center space-x-3 text-white/80 text-sm bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm border border-white/20">
+              <div className="flex space-x-1">
+                <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+                <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <div className="w-1 h-1 bg-white/60 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
               </div>
+              <span>Carrossel automático</span>
             </div>
-          )}
+          </div>
 
           <div className="text-center">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm text-white px-6 py-4 rounded-lg border border-white/20 hover:bg-white/15 transition-all duration-300">
+            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm text-white px-6 py-4 rounded-lg border border-white/20 hover:bg-white/15 transition-all duration-500">
               <Shield className="w-6 h-6 mr-3 text-security-red animate-pulse" />
               <div className="text-left">
                 <div className="font-bold text-lg">
