@@ -53,32 +53,16 @@ const TechnicalEvents = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className={`${isMobile ? 'py-16' : 'py-24'} bg-gradient-to-b from-gray-50 to-white relative overflow-hidden`}>
-      {/* Enhanced Background with premium feel - adjusted z-index */}
-      <div className="absolute inset-0 opacity-5 -z-10">
+    <section ref={sectionRef} className={`${isMobile ? 'py-16' : 'py-24'} bg-gradient-to-b from-gray-50 to-white relative`}>
+      {/* Clean Background with subtle pattern */}
+      <div className="absolute inset-0 opacity-3">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-security-blue rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/3 w-80 h-80 bg-security-red rounded-full blur-3xl animate-pulse delay-1000"></div>
         
-        {/* Sophisticated grid pattern */}
+        {/* Subtle grid pattern */}
         <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23003366' fill-opacity='0.08'%3E%3Cpath d='M30 30h30v30H30V30zm-30 0h30v30H0V30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23003366' fill-opacity='0.04'%3E%3Cpath d='M30 30h30v30H30V30zm-30 0h30v30H0V30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
         }}></div>
-      </div>
-
-      {/* Premium floating elements - moved behind content */}
-      <div className="absolute inset-0 overflow-hidden -z-5">
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-gradient-to-br from-security-blue/10 to-security-red/10 rounded-full animate-float blur-sm"
-            style={{
-              left: `${20 + Math.random() * 60}%`,
-              top: `${20 + Math.random() * 60}%`,
-              animationDelay: `${Math.random() * 8}s`,
-              animationDuration: `${10 + Math.random() * 6}s`
-            }}
-          ></div>
-        ))}
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -109,8 +93,8 @@ const TechnicalEvents = () => {
           </p>
         </div>
         
-        {/* Premium events grid - increased z-index */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-16 relative z-20">
+        {/* Clean events grid - no interfering elements */}
+        <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {events.map((event, index) => {
             const IconComponent = event.icon;
             return (
@@ -119,18 +103,18 @@ const TechnicalEvents = () => {
                 className="reveal-on-scroll group relative"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
-                {/* Main card with premium styling */}
+                {/* Main card with clean styling */}
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 h-full border border-gray-100 hover:border-security-blue/20 transition-all duration-700 hover:transform hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
                   
-                  {/* Gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-security-blue/5 via-transparent to-security-red/5 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-700"></div>
+                  {/* Clean gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-security-blue/3 via-transparent to-security-red/3 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-700"></div>
                   
-                  {/* Category badge */}
+                  {/* Category badge - properly positioned */}
                   <div className="absolute top-4 right-4 bg-gradient-to-r from-security-blue to-security-red text-white text-xs font-medium px-3 py-1 rounded-full opacity-90 z-10">
                     {event.category}
                   </div>
                   
-                  {/* Header section */}
+                  {/* Header section - clean spacing */}
                   <div className="flex items-start mb-6 relative z-10">
                     <div className="bg-gradient-to-br from-security-red/10 to-security-blue/10 p-4 rounded-xl mr-4 flex-shrink-0 group-hover:from-security-red/20 group-hover:to-security-blue/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                       <IconComponent className="h-7 w-7 text-security-red group-hover:animate-pulse" />
@@ -145,18 +129,18 @@ const TechnicalEvents = () => {
                     </div>
                   </div>
                   
-                  {/* Highlight section with better styling */}
+                  {/* Highlight section with clean styling */}
                   <div className="bg-gradient-to-r from-security-red via-security-red/90 to-security-red text-white p-6 rounded-xl mb-6 group-hover:from-security-red group-hover:via-security-red/95 group-hover:to-security-red/90 group-hover:shadow-lg group-hover:shadow-security-red/30 transition-all duration-500 relative overflow-hidden">
-                    {/* Subtle pattern overlay */}
-                    <div className="absolute inset-0 opacity-10" style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.2'%3E%3Cpath d='M10 10h10v10H10V10zm-10 0h10v10H0V10z'/%3E%3C/g%3E%3C/svg%3E")`
+                    {/* Clean pattern overlay */}
+                    <div className="absolute inset-0 opacity-5" style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M10 10h10v10H10V10zm-10 0h10v10H0V10z'/%3E%3C/g%3E%3C/svg%3E")`
                     }}></div>
                     <p className="text-sm font-medium leading-relaxed relative z-10">
                       {event.highlight}
                     </p>
                   </div>
                   
-                  {/* Description */}
+                  {/* Description with proper spacing */}
                   <p className="text-gray-700 text-sm leading-relaxed relative z-10 group-hover:text-gray-600 transition-colors duration-300 mb-4">
                     {event.description}
                   </p>
@@ -171,8 +155,8 @@ const TechnicalEvents = () => {
                     </div>
                   </div>
 
-                  {/* Glow effect border */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:from-security-blue/30 group-hover:to-security-red/30 transition-colors duration-700"></div>
+                  {/* Clean border effect */}
+                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-gradient-to-r group-hover:from-security-blue/20 group-hover:to-security-red/20 transition-colors duration-700"></div>
                 </div>
               </div>
             );
@@ -180,13 +164,13 @@ const TechnicalEvents = () => {
         </div>
         
         {/* Premium footer section */}
-        <div className={`${isMobile ? 'mt-12' : 'mt-20'} reveal-on-scroll relative z-20`}>
+        <div className={`${isMobile ? 'mt-12' : 'mt-20'} reveal-on-scroll`}>
           <div className="bg-gradient-to-br from-security-red via-security-red/95 to-security-red/90 text-white p-10 rounded-3xl text-center hover:from-security-red hover:via-security-red/98 hover:to-security-red/95 hover:scale-105 hover:shadow-2xl hover:shadow-security-red/30 transition-all duration-700 group relative overflow-hidden">
             
-            {/* Premium background pattern */}
-            <div className="absolute inset-0 opacity-10">
+            {/* Clean background pattern */}
+            <div className="absolute inset-0 opacity-5">
               <div className="absolute inset-0" style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.15'%3E%3Cpath d='M20 20h20v20H20V20zm-20 0h20v20H0V20z'/%3E%3C/g%3E%3C/svg%3E")`
+                backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M20 20h20v20H20V20zm-20 0h20v20H0V20z'/%3E%3C/g%3E%3C/svg%3E")`
               }}></div>
             </div>
             
@@ -211,8 +195,8 @@ const TechnicalEvents = () => {
               ))}
             </div>
 
-            {/* Enhanced glow effect */}
-            <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"></div>
+            {/* Clean glow effect */}
+            <div className="absolute inset-0 bg-white/3 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl"></div>
           </div>
         </div>
       </div>
