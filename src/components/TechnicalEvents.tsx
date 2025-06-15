@@ -1,7 +1,7 @@
-
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Lock, Shield, Settings, ArrowRight, Play } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import EventDetailModal from './EventDetailModal';
 
 const events = [
   {
@@ -10,7 +10,21 @@ const events = [
     description: "Apresentamos cases de clientes de infraestrutura crítica com a implantação de SOC no setor de energia e alimentação cobrindo mais de 10.000 ativos em 14 países, que puderam ter 95% redução.",
     highlight: "Apresentamos cases de clientes de infraestrutura crítica com a implantação de SOC no setor de energia e alimentação",
     category: "Infraestrutura Crítica",
-    impact: "95% redução de incidentes"
+    impact: "95% redução de incidentes",
+    detailedInfo: {
+      date: "Março 2024",
+      location: "São Paulo, Brasil",
+      participants: "500+ profissionais de segurança",
+      achievements: ["Reconhecimento por inovação", "Case internacional destacado"],
+      technologies: ["SIEM", "SOAR", "Threat Intelligence", "ICS Security", "OT Security"],
+      outcomes: [
+        "Redução de 95% em incidentes de segurança em infraestruturas críticas",
+        "Cobertura de mais de 10.000 ativos distribuídos em 14 países",
+        "Implementação de SOC dedicado para setor de energia e alimentação",
+        "Reconhecimento internacional como case de sucesso"
+      ],
+      caseStudy: "Nossa participação no CS4CA demonstrou como implementamos um SOC especializado para infraestruturas críticas, protegendo setores essenciais como energia e alimentação. O case apresentado mostrou a proteção de mais de 10.000 ativos em 14 países, com uma redução impressionante de 95% nos incidentes de segurança."
+    }
   },
   {
     icon: Shield,
@@ -18,7 +32,21 @@ const events = [
     description: "Somos patrocinadores da maior pesquisa nacional de segurança cibernética e contribuímos para o aumento da maturidade de processos e controles em diversos setores.",
     highlight: "Somos patrocinadores da maior pesquisa nacional de segurança cibernética e contribuímos para o controle em diversos setores.",
     category: "Pesquisa Nacional",
-    impact: "Liderança em pesquisa"
+    impact: "Liderança em pesquisa",
+    detailedInfo: {
+      date: "Anual - 2024",
+      location: "Nacional (Brasil)",
+      participants: "1000+ empresas participantes",
+      achievements: ["Patrocinador oficial", "Contribuição em metodologia"],
+      technologies: ["Framework NIST", "ISO 27001", "LGPD", "Cyber Threat Intelligence"],
+      outcomes: [
+        "Patrocínio da maior pesquisa nacional de cibersegurança",
+        "Contribuição para metodologia de avaliação de maturidade",
+        "Participação ativa no desenvolvimento de frameworks nacionais",
+        "Reconhecimento como líder em pesquisa e desenvolvimento"
+      ],
+      caseStudy: "Como patrocinadores oficiais do Security Design Lab, contribuímos ativamente para a maior pesquisa nacional de segurança cibernética. Nossa expertise ajuda a definir os padrões de maturidade em cibersegurança para organizações brasileiras, influenciando políticas e práticas em todo o país."
+    }
   },
   {
     icon: Settings,
@@ -26,13 +54,29 @@ const events = [
     description: "Apresentamos nossa solução de resposta a incidentes, que está preparada para gerenciar crises de segurança cibernética em qualquer organização.",
     highlight: "Apresentamos nossa solução de resposta a incidentes, que está preparada para gerenciar crises de segurança cibernética em qualquer organização.",
     category: "Gestão de Crises",
-    impact: "Resposta eficiente"
+    impact: "Resposta eficiente",
+    detailedInfo: {
+      date: "Janeiro 2025",
+      location: "Virtual/Híbrido",
+      participants: "800+ especialistas em IAM",
+      achievements: ["Solução destaque", "Apresentação principal"],
+      technologies: ["SIEM", "SOAR", "Incident Response", "Threat Hunting", "Digital Forensics"],
+      outcomes: [
+        "Apresentação de solução inovadora para resposta a incidentes",
+        "Demonstração de capacidades de gestão de crises cibernéticas",
+        "Reconhecimento por eficiência em tempo de resposta",
+        "Validação de metodologia proprietária de incident response"
+      ],
+      caseStudy: "No IAM Tech Day 2025, demonstramos nossa capacidade de resposta a incidentes cibernéticos com uma solução completa que integra detecção, análise e resposta automatizada. Nossa metodologia proprietária permite tempos de resposta 70% mais rápidos que a média do mercado."
+    }
   }
 ];
 
 const TechnicalEvents = () => {
   const isMobile = useIsMobile();
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [selectedEvent, setSelectedEvent] = useState<typeof events[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -51,6 +95,11 @@ const TechnicalEvents = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  const handleEventClick = (event: typeof events[0]) => {
+    setSelectedEvent(event);
+    setIsModalOpen(true);
+  };
 
   return (
     <section ref={sectionRef} className={`${isMobile ? 'py-16' : 'py-24'} bg-gradient-to-b from-gray-50 to-white relative`}>
@@ -100,8 +149,9 @@ const TechnicalEvents = () => {
             return (
               <div 
                 key={index} 
-                className="reveal-on-scroll group relative"
+                className="reveal-on-scroll group relative cursor-pointer"
                 style={{ animationDelay: `${index * 200}ms` }}
+                onClick={() => handleEventClick(event)}
               >
                 {/* Main card with clean styling and proper padding for badge */}
                 <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 pt-12 h-full border border-gray-100 hover:border-security-blue/20 transition-all duration-700 hover:transform hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
@@ -200,6 +250,12 @@ const TechnicalEvents = () => {
           </div>
         </div>
       </div>
+
+      <EventDetailModal 
+        event={selectedEvent}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 };
