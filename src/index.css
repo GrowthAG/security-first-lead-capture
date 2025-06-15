@@ -10,34 +10,24 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
     --primary: 210 100% 12%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 0 84% 50%;
     --secondary-foreground: 0 0% 100%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-
     --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -53,7 +43,7 @@
   }
 
   body {
-    @apply bg-gray-900 text-foreground font-inter overflow-x-hidden;
+    @apply bg-background text-foreground font-inter overflow-x-hidden;
   }
 
   .gradient-bg {
@@ -61,11 +51,11 @@
   }
 
   .security-card {
-    @apply bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300;
+    @apply bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-gray-200 relative overflow-hidden;
   }
 
   .cta-button {
-    @apply bg-security-red text-white font-medium px-6 py-3 rounded-md hover:bg-opacity-90 transition-colors duration-300;
+    @apply bg-security-red text-white font-medium px-6 py-3 rounded-md hover:bg-opacity-90 transition-all duration-300 hover:scale-105 hover:shadow-lg;
   }
 
   .section-title {
@@ -80,23 +70,27 @@
     @apply fixed bottom-8 right-8 z-50;
   }
 
-  /* New Modern Animations */
+  /* Enhanced Animations */
   .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+    animation: fadeInUp 0.8s ease-out forwards;
   }
 
   .animate-scale-in {
-    animation: scaleIn 0.3s ease-out forwards;
+    animation: scaleIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
   .animate-float {
     animation: float 6s ease-in-out infinite;
   }
 
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
   .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease-out;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .reveal-on-scroll.animate-fade-in {
@@ -104,80 +98,145 @@
     transform: translateY(0);
   }
 
-  @keyframes fadeIn {
+  /* Enhanced Keyframes */
+  @keyframes fadeInUp {
     from {
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(40px) scale(0.95);
     }
     to {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 
   @keyframes scaleIn {
     from {
       opacity: 0;
-      transform: scale(0.9);
+      transform: scale(0.8) rotate(-5deg);
     }
     to {
       opacity: 1;
-      transform: scale(1);
+      transform: scale(1) rotate(0deg);
     }
   }
 
   @keyframes float {
     0%, 100% {
-      transform: translateY(0px);
+      transform: translateY(0px) rotate(0deg);
     }
     50% {
-      transform: translateY(-20px);
+      transform: translateY(-20px) rotate(5deg);
     }
   }
 
-  /* Particle Animation */
-  @keyframes particle-float {
-    0% {
-      transform: translateY(0px) translateX(0px);
-      opacity: 0;
+  @keyframes pulseGlow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(220, 38, 127, 0.3);
     }
     50% {
-      opacity: 1;
+      box-shadow: 0 0 40px rgba(220, 38, 127, 0.6);
+    }
+  }
+
+  /* 3D Card Effects */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+
+  .card-3d:hover {
+    transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
+  }
+
+  /* Gradient Text Animation */
+  .gradient-text-animated {
+    background: linear-gradient(-45deg, #DC267F, #648FFF, #785EF0, #DC267F);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Particle Effects */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.7;
+    animation: particleFloat 8s infinite linear;
+  }
+
+  @keyframes particleFloat {
+    0% {
+      transform: translateY(100vh) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.7;
+    }
+    90% {
+      opacity: 0.7;
     }
     100% {
-      transform: translateY(-100px) translateX(50px);
+      transform: translateY(-10vh) translateX(100px) rotate(360deg);
       opacity: 0;
     }
   }
 
-  .animate-particle {
-    animation: particle-float 4s infinite linear;
+  /* Enhanced Hover Effects */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
-  /* Glow Effects */
-  .glow-cyan {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.3);
+  .hover-lift:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   }
 
-  .glow-blue {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  /* Smooth Scrolling */
+  html {
+    scroll-behavior: smooth;
   }
 
-  /* Custom Scrollbar */
+  /* Custom Scrollbar with Style */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #1f2937;
+    background: #f1f1f1;
+    border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #06b6d4, #3b82f6);
-    border-radius: 4px;
+    background: linear-gradient(45deg, #DC267F, #648FFF);
+    border-radius: 10px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(to bottom, #0891b2, #2563eb);
+    background: linear-gradient(45deg, #b91c5c, #3b82f6);
+  }
+
+  /* Loading Animation */
+  .loading-spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #DC267F;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 }

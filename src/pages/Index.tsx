@@ -1,23 +1,31 @@
 
 import React from 'react';
-import ModernHeader from '@/components/ModernHeader';
-import CinematicHero from '@/components/CinematicHero';
-import SOCProcess from '@/components/SOCProcess';
-import InteractiveBenefits from '@/components/InteractiveBenefits';
-import TrustSection from '@/components/TrustSection';
-import ModernFAQ from '@/components/ModernFAQ';
-import FloatingChat from '@/components/FloatingChat';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Benefits from '@/components/Benefits';
+import HowItWorks from '@/components/HowItWorks';
+import Authority from '@/components/Authority';
+import Comparison from '@/components/Comparison';
+import CertificationBadges from '@/components/CertificationBadges';
+import Testimonials from '@/components/Testimonials';
+import FormSection from '@/components/FormSection';
+import Footer from '@/components/Footer';
+import FloatingCTA from '@/components/FloatingCTA';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-gray-900 font-inter overflow-x-hidden">
-      <ModernHeader />
-      <CinematicHero />
-      <SOCProcess />
-      <InteractiveBenefits />
-      <TrustSection />
-      <ModernFAQ />
-      <FloatingChat />
+    <div className="min-h-screen bg-white overflow-x-hidden">
+      <Header />
+      <Hero />
+      <Benefits />
+      <HowItWorks />
+      <Authority />
+      <Comparison />
+      <CertificationBadges />
+      <Testimonials />
+      <FormSection />
+      <Footer />
+      <FloatingCTA />
     </div>
   );
 };
