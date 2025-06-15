@@ -8,13 +8,13 @@ const benefitItems = [
     icon: Shield,
     title: "SOC 24x7 sem cobrança por PPS",
     description: "Monitoramento contínuo sem custos adicionais por evento, garantindo previsibilidade orçamentária.",
-    color: "from-blue-500 to-cyan-500"
+    color: "from-security-blue to-cyan-500"
   },
   {
     icon: Code,
     title: "Integração com qualquer dispositivo IP",
     description: "Compatibilidade total com sua infraestrutura existente, sem necessidade de trocas de equipamentos.",
-    color: "from-purple-500 to-blue-500"
+    color: "from-purple-500 to-security-blue"
   },
   {
     icon: Users,
@@ -26,7 +26,7 @@ const benefitItems = [
     icon: Zap,
     title: "Tecnologia opensource para melhor custo-benefício",
     description: "Soluções eficientes sem custos de licenciamento, reduzindo o TCO em até 40%.",
-    color: "from-orange-500 to-red-500"
+    color: "from-orange-500 to-security-red"
   }
 ];
 
@@ -54,10 +54,31 @@ const Benefits = () => {
 
   return (
     <section id="beneficios" ref={sectionRef} className={`bg-white relative overflow-hidden ${isMobile ? 'py-12' : 'py-20'}`}>
-      {/* Background decoration */}
+      {/* Enhanced Background decoration with digital elements */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-security-blue rounded-full blur-3xl"></div>
-        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-security-red rounded-full blur-3xl"></div>
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-security-blue rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-security-red rounded-full blur-3xl animate-pulse delay-1000"></div>
+        
+        {/* Digital grid pattern */}
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23003366' fill-opacity='0.1'%3E%3Cpath d='M20 20h20v20H20V20zm-20 0h20v20H0V20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }}></div>
+      </div>
+
+      {/* Floating tech particles */}
+      <div className="absolute inset-0 overflow-hidden">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-security-blue/20 rounded-full animate-float"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${8 + Math.random() * 4}s`
+            }}
+          ></div>
+        ))}
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -79,34 +100,38 @@ const Benefits = () => {
           {benefitItems.map((item, index) => (
             <div 
               key={index} 
-              className={`reveal-on-scroll group security-card flex flex-col items-center text-center hover:transform hover:scale-105 hover:shadow-xl transition-all duration-500 ${
+              className={`reveal-on-scroll group security-card flex flex-col items-center text-center hover:transform hover:scale-105 hover:shadow-xl hover:shadow-security-blue/20 transition-all duration-500 hover-lift card-3d ${
                 isMobile ? 'p-6' : ''
               }`}
-              style={{ animationDelay: `${index * 100}ms` }}
+              style={{ animationDelay: `${index * 150}ms` }}
             >
-              {/* Gradient overlay on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-5 rounded-lg transition-opacity duration-500`}></div>
+              {/* Enhanced gradient overlay on hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-500`}></div>
               
-              <div className={`relative mb-4 bg-gradient-to-br ${item.color} rounded-full p-1 ${
+              {/* Enhanced icon container */}
+              <div className={`relative mb-4 bg-gradient-to-br ${item.color} rounded-full p-1 group-hover:scale-110 transition-all duration-300 ${
                 isMobile ? 'p-1' : 'p-1'
               }`}>
-                <div className={`bg-white rounded-full ${isMobile ? 'p-4' : 'p-3'} group-hover:transform group-hover:rotate-6 transition-transform duration-300`}>
-                  <item.icon size={isMobile ? 36 : 32} className={`text-transparent bg-gradient-to-br ${item.color} bg-clip-text`} style={{
-                    background: `linear-gradient(135deg, ${item.color.includes('blue') ? '#3b82f6, #06b6d4' : item.color.includes('purple') ? '#8b5cf6, #3b82f6' : item.color.includes('green') ? '#10b981, #14b8a6' : '#f97316, #ef4444'})`,
+                <div className={`bg-white rounded-full ${isMobile ? 'p-4' : 'p-3'} group-hover:transform group-hover:rotate-6 transition-transform duration-300 relative overflow-hidden`}>
+                  <item.icon size={isMobile ? 36 : 32} className={`text-transparent bg-gradient-to-br ${item.color} bg-clip-text relative z-10`} style={{
+                    background: `linear-gradient(135deg, ${item.color.includes('security-blue') ? '#003366, #06b6d4' : item.color.includes('purple') ? '#8b5cf6, #003366' : item.color.includes('green') ? '#10b981, #14b8a6' : '#f97316, #DC267F'})`,
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent',
                     backgroundClip: 'text'
                   }} />
+                  
+                  {/* Subtle pulse effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-security-blue/10 to-transparent rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
                 </div>
               </div>
               
               <h3 className={`font-montserrat font-semibold mb-3 text-security-blue group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300 ${
                 isMobile ? 'text-lg' : 'text-xl'
               }`} style={{
-                background: item.color.includes('blue') ? 'linear-gradient(135deg, #3b82f6, #06b6d4)' : 
-                          item.color.includes('purple') ? 'linear-gradient(135deg, #8b5cf6, #3b82f6)' : 
+                background: item.color.includes('security-blue') ? 'linear-gradient(135deg, #003366, #06b6d4)' : 
+                          item.color.includes('purple') ? 'linear-gradient(135deg, #8b5cf6, #003366)' : 
                           item.color.includes('green') ? 'linear-gradient(135deg, #10b981, #14b8a6)' : 
-                          'linear-gradient(135deg, #f97316, #ef4444)',
+                          'linear-gradient(135deg, #f97316, #DC267F)',
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text'
@@ -120,12 +145,15 @@ const Benefits = () => {
                 {item.description}
               </p>
 
-              {/* Hover effect indicator */}
+              {/* Enhanced hover effect indicator */}
               <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center`}>
-                  <span className="text-white text-sm">→</span>
+                <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:shadow-xl`}>
+                  <span className="text-white text-sm animate-pulse">→</span>
                 </div>
               </div>
+
+              {/* Subtle border glow on hover */}
+              <div className="absolute inset-0 rounded-lg border border-transparent group-hover:border-security-blue/20 transition-colors duration-500"></div>
             </div>
           ))}
         </div>
