@@ -7,6 +7,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const technologies = [
   {
@@ -60,6 +61,8 @@ const technologies = [
 ];
 
 const TechnologiesIntegration = () => {
+  const isMobile = useIsMobile();
+
   return (
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -80,25 +83,41 @@ const TechnologiesIntegration = () => {
           >
             <CarouselContent className="-ml-2 md:-ml-4">
               {technologies.map((tech, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4">
-                  <div className="security-card text-center p-8 h-48 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 hover:border-security-blue/20">
-                    <div className="w-full h-20 flex items-center justify-center mb-4">
+                <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-1/2' : 'basis-1/2 md:basis-1/3 lg:basis-1/4'}`}>
+                  <div className="security-card text-center p-6 h-44 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-300 group border border-gray-100 hover:border-security-blue/20">
+                    <div className="w-full h-16 flex items-center justify-center mb-3">
                       <img 
                         src={tech.logo} 
                         alt={tech.name}
-                        className="max-h-16 max-w-[140px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
+                        className="max-h-12 max-w-[120px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300 group-hover:scale-110"
                       />
                     </div>
-                    <span className="text-sm font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-300 text-center leading-tight">
+                    <span className="text-xs font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-300 text-center leading-tight">
                       {tech.name}
                     </span>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12 border-security-blue/20 hover:bg-security-blue hover:text-white hover:border-security-blue" />
-            <CarouselNext className="hidden md:flex -right-12 border-security-blue/20 hover:bg-security-blue hover:text-white hover:border-security-blue" />
+            {/* Mostrar setas apenas no desktop */}
+            {!isMobile && (
+              <>
+                <CarouselPrevious className="hidden md:flex -left-12 border-security-blue/20 hover:bg-security-blue hover:text-white hover:border-security-blue" />
+                <CarouselNext className="hidden md:flex -right-12 border-security-blue/20 hover:bg-security-blue hover:text-white hover:border-security-blue" />
+              </>
+            )}
           </Carousel>
+          
+          {/* Indicador de scroll no mobile */}
+          {isMobile && (
+            <div className="flex justify-center mt-6">
+              <div className="flex items-center space-x-2 text-xs text-gray-500">
+                <span>←</span>
+                <span>Deslize para ver mais</span>
+                <span>→</span>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

@@ -108,20 +108,26 @@ const Benefits = () => {
               {/* Enhanced gradient overlay on hover */}
               <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-500`}></div>
               
-              {/* Enhanced icon container */}
-              <div className={`relative mb-4 bg-gradient-to-br ${item.color} rounded-full p-1 group-hover:scale-110 transition-all duration-300 ${
-                isMobile ? 'p-1' : 'p-1'
-              }`}>
-                <div className={`bg-white rounded-full ${isMobile ? 'p-4' : 'p-3'} group-hover:transform group-hover:rotate-6 transition-transform duration-300 relative overflow-hidden`}>
-                  <item.icon size={isMobile ? 36 : 32} className={`text-transparent bg-gradient-to-br ${item.color} bg-clip-text relative z-10`} style={{
-                    background: `linear-gradient(135deg, ${item.color.includes('security-blue') ? '#003366, #06b6d4' : item.color.includes('purple') ? '#8b5cf6, #003366' : item.color.includes('green') ? '#10b981, #14b8a6' : '#f97316, #DC267F'})`,
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                    backgroundClip: 'text'
-                  }} />
+              {/* Enhanced icon container with improved visual design */}
+              <div className={`relative mb-6 ${isMobile ? 'mb-4' : 'mb-6'}`}>
+                <div className={`relative ${isMobile ? 'w-20 h-20' : 'w-24 h-24'} rounded-full bg-gradient-to-br ${item.color} p-0.5 group-hover:scale-110 transition-all duration-300`}>
+                  <div className={`w-full h-full bg-white rounded-full flex items-center justify-center relative overflow-hidden group-hover:transform group-hover:rotate-6 transition-transform duration-300`}>
+                    <item.icon size={isMobile ? 32 : 40} className="text-gray-700 relative z-10 group-hover:scale-110 transition-transform duration-300" />
+                    
+                    {/* Animated background effect */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300`}></div>
+                    
+                    {/* Subtle pulse ring */}
+                    <div className={`absolute inset-0 rounded-full border-2 border-transparent group-hover:border-current opacity-0 group-hover:opacity-30 animate-pulse`} style={{
+                      borderColor: item.color.includes('security-blue') ? '#003366' : 
+                                  item.color.includes('purple') ? '#8b5cf6' : 
+                                  item.color.includes('green') ? '#10b981' : 
+                                  '#f97316'
+                    }}></div>
+                  </div>
                   
-                  {/* Subtle pulse effect */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-security-blue/10 to-transparent rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-pulse transition-opacity duration-300"></div>
+                  {/* Outer glow ring */}
+                  <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 blur-sm animate-pulse`}></div>
                 </div>
               </div>
               
