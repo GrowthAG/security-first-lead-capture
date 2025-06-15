@@ -1,32 +1,45 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Shield, Users, Code, Zap } from 'lucide-react';
+import { Clock, Settings, Users, Shield, Zap, TrendingUp } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import Card3D from './Card3D';
 
-const benefitItems = [
+const benefits = [
   {
-    icon: Shield,
-    title: "SOC 24x7 sem cobrança por PPS",
-    description: "Monitoramento contínuo sem custos adicionais por evento, garantindo previsibilidade orçamentária.",
-    color: "from-security-blue to-cyan-500"
+    icon: Clock,
+    title: "Resposta em Tempo Real",
+    description: "Detecção e contenção de ameaças em menos de 5 minutos, 24/7.",
+    metric: "< 5 min"
   },
   {
-    icon: Code,
-    title: "Integração com qualquer dispositivo IP",
-    description: "Compatibilidade total com sua infraestrutura existente, sem necessidade de trocas de equipamentos.",
-    color: "from-purple-500 to-security-blue"
+    icon: Shield,
+    title: "Proteção Multicamada",
+    description: "Defesa integrada contra malware, ransomware e ataques avançados.",
+    metric: "99.9%"
   },
   {
     icon: Users,
-    title: "Especialistas com mais de 20 anos de mercado",
-    description: "Time sênior de profissionais certificados com vasta experiência em cibersegurança.",
-    color: "from-green-500 to-teal-500"
+    title: "Especialistas Dedicados",
+    description: "Time de analistas certificados monitorando sua infraestrutura.",
+    metric: "24/7"
+  },
+  {
+    icon: Settings,
+    title: "Automação Inteligente",
+    description: "IA que aprende e adapta as defesas conforme seu ambiente evolui.",
+    metric: "Auto IA"
   },
   {
     icon: Zap,
-    title: "Tecnologia opensource para melhor custo-benefício",
-    description: "Soluções eficientes sem custos de licenciamento, reduzindo o TCO em até 40%.",
-    color: "from-orange-500 to-security-red"
+    title: "Integração Rápida",
+    description: "Implementação sem impacto operacional em até 48 horas.",
+    metric: "48h"
+  },
+  {
+    icon: TrendingUp,
+    title: "ROI Comprovado",
+    description: "Redução média de 75% nos custos relacionados a incidentes.",
+    metric: "75% ↓"
   }
 ];
 
@@ -35,8 +48,6 @@ const Benefits = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (isMobile) return; // Desabilita animações complexas no mobile
-    
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -52,125 +63,80 @@ const Benefits = () => {
     elements?.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
-  }, [isMobile]);
+  }, []);
+
+  const scrollToForm = () => {
+    document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <section id="beneficios" ref={sectionRef} className={`bg-white relative overflow-hidden ${isMobile ? 'py-12' : 'py-20'}`}>
-      {/* Background decoration simplificado para mobile */}
-      {!isMobile && (
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-1/4 right-0 w-96 h-96 bg-security-blue rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 left-0 w-96 h-96 bg-security-red rounded-full blur-3xl animate-pulse delay-1000"></div>
-          
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23003366' fill-opacity='0.1'%3E%3Cpath d='M20 20h20v20H20V20zm-20 0h20v20H0V20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
-          }}></div>
-        </div>
-      )}
-
-      {!isMobile && (
-        <div className="absolute inset-0 overflow-hidden">
-          {[...Array(15)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-1 h-1 bg-security-blue/20 rounded-full animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${8 + Math.random() * 4}s`
-              }}
-            ></div>
-          ))}
-        </div>
-      )}
+    <section id="beneficios" ref={sectionRef} className="py-20 bg-gray-50 relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23DC267F' fill-opacity='0.1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+        }}></div>
+      </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className={`text-center mb-16 ${!isMobile ? 'reveal-on-scroll' : ''}`}>
-          <h2 className={`section-title text-security-blue ${isMobile ? 'text-2xl' : ''}`}>
-            Por que escolher nosso SOC 24x7
-          </h2>
-          <p className={`text-gray-600 max-w-3xl mx-auto ${
-            isMobile 
-              ? 'text-base leading-normal' 
-              : 'text-lg'
-          }`}>
-            Oferecemos proteção completa contra ameaças cibernéticas com foco em agilidade, 
-            eficiência e personalizada para as necessidades do seu negócio.
+        <div className="text-center mb-16 reveal-on-scroll">
+          <h2 className="section-title">Por que escolher nosso SOC?</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+            Tecnologia de ponta combinada com expertise humana para garantir a máxima proteção do seu negócio.
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {benefitItems.map((item, index) => (
-            <div 
-              key={index} 
-              className={`${!isMobile ? 'reveal-on-scroll group' : 'group'} security-card flex flex-col items-center text-center transition-all duration-300 ${
-                isMobile ? 'p-6 hover:shadow-lg' : 'hover:transform hover:scale-105 hover:shadow-xl hover:shadow-security-blue/20 hover-lift card-3d'
-              }`}
-              style={!isMobile ? { animationDelay: `${index * 150}ms` } : {}}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {benefits.map((benefit, index) => (
+            <div
+              key={index}
+              className="reveal-on-scroll"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-10 rounded-lg transition-opacity duration-300`}></div>
-              
-              <div className={`relative mb-6 ${isMobile ? 'mb-4' : 'mb-6'}`}>
-                <div className={`relative ${isMobile ? 'w-16 h-16' : 'w-24 h-24'} rounded-full bg-gradient-to-br ${item.color} p-0.5 ${!isMobile ? 'group-hover:scale-110' : ''} transition-all duration-300`}>
-                  <div className={`w-full h-full bg-white rounded-full flex items-center justify-center relative overflow-hidden ${!isMobile ? 'group-hover:transform group-hover:rotate-6' : ''} transition-transform duration-300`}>
-                    <div className={`relative z-10 ${!isMobile ? 'group-hover:scale-110' : ''} transition-transform duration-300`}>
-                      <item.icon size={isMobile ? 24 : 40} className="text-gray-700" />
+              <Card3D intensity={isMobile ? 0 : 0.5}>
+                <div className="security-card text-center h-full flex flex-col justify-between group hover:shadow-2xl hover:shadow-security-red/10 transition-all duration-500">
+                  <div>
+                    <div className="w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-security-red to-pink-600 rounded-full flex items-center justify-center text-white group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                      <benefit.icon size={28} />
                     </div>
-                    
-                    {!isMobile && (
-                      <>
-                        <div className={`absolute inset-0 bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 rounded-full transition-opacity duration-300`}></div>
-                        
-                        <div className={`absolute inset-0 rounded-full border-2 border-transparent group-hover:border-current opacity-0 group-hover:opacity-30 animate-pulse`} style={{
-                          borderColor: item.color.includes('security-blue') ? '#003366' : 
-                                      item.color.includes('purple') ? '#8b5cf6' : 
-                                      item.color.includes('green') ? '#10b981' : 
-                                      '#f97316'
-                        }}></div>
-                      </>
-                    )}
+                    <div className="mb-4">
+                      <div className="text-2xl font-bold text-security-red mb-2 group-hover:text-pink-600 transition-colors duration-300">
+                        {benefit.metric}
+                      </div>
+                      <h3 className="text-xl font-montserrat font-semibold text-security-blue mb-3 group-hover:text-security-red transition-colors duration-300">
+                        {benefit.title}
+                      </h3>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed">
+                      {benefit.description}
+                    </p>
                   </div>
                   
-                  {!isMobile && (
-                    <div className={`absolute inset-0 rounded-full bg-gradient-to-br ${item.color} opacity-0 group-hover:opacity-20 blur-sm animate-pulse`}></div>
-                  )}
-                </div>
-              </div>
-              
-              <h3 className={`font-montserrat font-semibold mb-3 text-security-blue ${!isMobile ? 'group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r' : ''} transition-all duration-300 ${
-                isMobile ? 'text-lg' : 'text-xl'
-              }`} style={!isMobile ? {
-                background: item.color.includes('security-blue') ? 'linear-gradient(135deg, #003366, #06b6d4)' : 
-                          item.color.includes('purple') ? 'linear-gradient(135deg, #8b5cf6, #003366)' : 
-                          item.color.includes('green') ? 'linear-gradient(135deg, #10b981, #14b8a6)' : 
-                          'linear-gradient(135deg, #f97316, #DC267F)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text'
-              } : {}}>
-                {item.title}
-              </h3>
-              
-              <p className={`text-gray-600 relative z-10 ${
-                isMobile ? 'text-sm leading-relaxed' : ''
-              }`}>
-                {item.description}
-              </p>
-
-              {!isMobile && (
-                <>
-                  <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-2 group-hover:translate-x-0">
-                    <div className={`w-8 h-8 rounded-full bg-gradient-to-br ${item.color} flex items-center justify-center shadow-lg group-hover:shadow-xl`}>
-                      <span className="text-white text-sm animate-pulse">→</span>
-                    </div>
+                  {/* Hover effect indicator */}
+                  <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="w-full h-1 bg-gradient-to-r from-security-red to-pink-600 rounded-full"></div>
                   </div>
-
-                  <div className="absolute inset-0 rounded-lg border border-transparent group-hover:border-security-blue/20 transition-colors duration-500"></div>
-                </>
-              )}
+                </div>
+              </Card3D>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 text-center reveal-on-scroll">
+          <h3 className="text-2xl font-montserrat font-semibold text-security-blue mb-4">
+            Transforme sua segurança hoje mesmo
+          </h3>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Junte-se a mais de 300 empresas que já confiam na nossa solução de SOC para proteger seus ativos digitais.
+          </p>
+          <Card3D intensity={0.3}>
+            <button 
+              onClick={scrollToForm}
+              className="cta-button text-lg px-8 py-4 hover:scale-105 hover:shadow-xl hover:shadow-security-red/30 transition-all duration-500 group ripple"
+            >
+              <span className="group-hover:animate-pulse">Quero Proteger Minha Empresa</span>
+            </button>
+          </Card3D>
         </div>
       </div>
     </section>
