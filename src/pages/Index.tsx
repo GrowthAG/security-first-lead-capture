@@ -13,6 +13,7 @@ import FormSection from '@/components/FormSection';
 import FloatingCTA from '@/components/FloatingCTA';
 import SectionNavigator from '@/components/SectionNavigator';
 import FloatingElements3D from '@/components/FloatingElements3D';
+import Section3D from '@/components/Section3D';
 
 const Index = () => {
   return (
@@ -20,14 +21,39 @@ const Index = () => {
       <FloatingElements3D />
       <EnhancedHeader />
       <Hero3D />
-      <Benefits />
-      <HowItWorks />
-      <Authority />
-      <TechnicalEvents />
-      <Comparison />
-      <CertificationBadges />
-      <TechnologiesIntegration />
-      <FormSection />
+      
+      <Section3D withParticles>
+        <Benefits />
+      </Section3D>
+      
+      <Section3D withParallax>
+        <HowItWorks />
+      </Section3D>
+      
+      <Section3D withParticles>
+        <Authority />
+      </Section3D>
+      
+      <Section3D withParallax withParticles>
+        <TechnicalEvents />
+      </Section3D>
+      
+      <Section3D>
+        <Comparison />
+      </Section3D>
+      
+      <Section3D withParticles>
+        <CertificationBadges />
+      </Section3D>
+      
+      <Section3D withParallax>
+        <TechnologiesIntegration />
+      </Section3D>
+      
+      <Section3D withParticles>
+        <FormSection />
+      </Section3D>
+      
       <FloatingCTA />
       <SectionNavigator />
     </div>

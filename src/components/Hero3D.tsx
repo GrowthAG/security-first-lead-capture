@@ -25,9 +25,9 @@ const Hero3D = () => {
     const elements = heroRef.current?.querySelectorAll('.mouse-3d');
     elements?.forEach((el, index) => {
       const element = el as HTMLElement;
-      const depth = (index + 1) * 10;
-      const rotateX = mouseRef.current.y * depth * 0.1;
-      const rotateY = mouseRef.current.x * depth * 0.1;
+      const depth = (index + 1) * 5;
+      const rotateX = mouseRef.current.y * depth * 0.05;
+      const rotateY = mouseRef.current.x * depth * 0.05;
       
       element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
     });
@@ -70,42 +70,18 @@ const Hero3D = () => {
 
   return (
     <section id="hero" ref={heroRef} className="relative gradient-bg text-white py-16 sm:py-20 overflow-hidden min-h-screen flex items-center">
-      {/* 3D Background Elements */}
+      {/* 3D Background Elements - No Cubes */}
       <div className="absolute inset-0 perspective-1000">
-        {/* Floating 3D Cubes */}
-        {!isMobile && [...Array(8)].map((_, i) => (
-          <div
-            key={`cube-${i}`}
-            className="absolute w-16 h-16 mouse-3d"
-            style={{
-              left: `${20 + (i % 4) * 20}%`,
-              top: `${20 + Math.floor(i / 4) * 40}%`,
-              transformStyle: 'preserve-3d',
-              animation: `float 8s ease-in-out infinite`,
-              animationDelay: `${i * 0.5}s`
-            }}
-          >
-            <div className="cube-3d">
-              <div className="cube-face cube-front bg-gradient-to-br from-cyan-500/20 to-blue-500/20"></div>
-              <div className="cube-face cube-back bg-gradient-to-br from-purple-500/20 to-pink-500/20"></div>
-              <div className="cube-face cube-right bg-gradient-to-br from-blue-500/20 to-purple-500/20"></div>
-              <div className="cube-face cube-left bg-gradient-to-br from-pink-500/20 to-red-500/20"></div>
-              <div className="cube-face cube-top bg-gradient-to-br from-cyan-400/20 to-blue-400/20"></div>
-              <div className="cube-face cube-bottom bg-gradient-to-br from-red-400/20 to-pink-400/20"></div>
-            </div>
-          </div>
-        ))}
-
         {/* 3D Ring Elements */}
-        {!isMobile && [...Array(5)].map((_, i) => (
+        {!isMobile && [...Array(8)].map((_, i) => (
           <div
             key={`ring-${i}`}
             className="absolute mouse-3d"
             style={{
-              left: `${10 + i * 20}%`,
-              top: `${30 + (i % 2) * 30}%`,
-              width: '60px',
-              height: '60px',
+              left: `${10 + i * 12}%`,
+              top: `${20 + (i % 2) * 40}%`,
+              width: '80px',
+              height: '80px',
               transformStyle: 'preserve-3d',
               animation: `spin3d 15s linear infinite`,
               animationDelay: `${i * 1}s`
@@ -115,10 +91,41 @@ const Hero3D = () => {
           </div>
         ))}
 
+        {/* Floating 3D Geometric Shapes */}
+        {!isMobile && [...Array(6)].map((_, i) => (
+          <div
+            key={`shape-${i}`}
+            className="absolute mouse-3d"
+            style={{
+              left: `${15 + (i * 20) % 70}%`,
+              top: `${25 + (i % 3) * 30}%`,
+              transformStyle: 'preserve-3d',
+              animation: `float3d 10s ease-in-out infinite`,
+              animationDelay: `${i * 0.8}s`
+            }}
+          >
+            <div className="w-12 h-12 border border-purple-400/30 rotate-45 backdrop-blur-sm bg-gradient-to-br from-cyan-500/10 to-purple-500/10"></div>
+          </div>
+        ))}
+
         {/* Holographic Grid */}
         <div className="absolute inset-0 opacity-20">
           <div className="holographic-grid"></div>
         </div>
+
+        {/* Floating Particles */}
+        {!isMobile && [...Array(25)].map((_, i) => (
+          <div
+            key={`particle-${i}`}
+            className="absolute w-1 h-1 bg-cyan-400/60 rounded-full animate-float-3d"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${6 + Math.random() * 3}s`
+            }}
+          />
+        ))}
       </div>
 
       {/* Enhanced Circuit Lines with 3D Effect */}

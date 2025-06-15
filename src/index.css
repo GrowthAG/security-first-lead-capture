@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -106,7 +105,7 @@
     transform: translateY(0);
   }
 
-  /* 3D CSS Classes */
+  /* Enhanced 3D CSS Classes */
   .perspective-1000 {
     perspective: 1000px;
   }
@@ -125,31 +124,13 @@
     transform: perspective(1000px) rotateX(5deg) rotateY(5deg) translateZ(20px);
   }
 
-  /* 3D Cube Styles */
-  .cube-3d {
-    position: relative;
-    width: 60px;
-    height: 60px;
+  /* Parallax 3D */
+  .parallax-3d {
+    transition: transform 0.1s ease-out;
     transform-style: preserve-3d;
-    animation: rotateCube 20s infinite linear;
   }
 
-  .cube-face {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-  }
-
-  .cube-front { transform: rotateY(0deg) translateZ(30px); }
-  .cube-back { transform: rotateY(180deg) translateZ(30px); }
-  .cube-right { transform: rotateY(90deg) translateZ(30px); }
-  .cube-left { transform: rotateY(-90deg) translateZ(30px); }
-  .cube-top { transform: rotateX(90deg) translateZ(30px); }
-  .cube-bottom { transform: rotateX(-90deg) translateZ(30px); }
-
-  /* 3D Ring Styles */
+  /* Enhanced 3D Ring Styles */
   .ring-3d {
     transform-style: preserve-3d;
     position: relative;
@@ -173,7 +154,7 @@
     transform: rotateY(60deg);
   }
 
-  /* Holographic Grid */
+  /* Enhanced Holographic Grid */
   .holographic-grid {
     background-image: 
       linear-gradient(rgba(0, 188, 212, 0.1) 1px, transparent 1px),
@@ -182,10 +163,21 @@
     animation: gridMove 20s linear infinite;
   }
 
-  /* Floating Icon 3D */
+  /* Floating Icon 3D Enhanced */
   .floating-icon-3d {
     transform-style: preserve-3d;
     animation: iconFloat 6s ease-in-out infinite;
+    position: relative;
+  }
+
+  .floating-icon-3d::after {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 2s ease-in-out infinite;
   }
 
   /* Scroll Indicator 3D */
@@ -194,9 +186,9 @@
     animation: indicatorPulse 2s ease-in-out infinite;
   }
 
-  /* Drop Shadow Glow */
+  /* Drop Shadow Glow Enhanced */
   .drop-shadow-glow {
-    filter: drop-shadow(0 0 10px currentColor);
+    filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor);
   }
 
   /* Enhanced Keyframes */
@@ -261,14 +253,6 @@
     100% { background-position: 0% 50%; }
   }
 
-  @keyframes rotateCube {
-    0% { transform: rotateX(0deg) rotateY(0deg); }
-    25% { transform: rotateX(90deg) rotateY(0deg); }
-    50% { transform: rotateX(90deg) rotateY(90deg); }
-    75% { transform: rotateX(0deg) rotateY(90deg); }
-    100% { transform: rotateX(0deg) rotateY(0deg); }
-  }
-
   @keyframes spin3d {
     0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
     100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
@@ -295,6 +279,23 @@
     50% {
       transform: translateY(-5px) scale(1.1);
     }
+  }
+
+  /* New 3D Depth Animations */
+  @keyframes depthFloat {
+    0%, 100% {
+      transform: translateZ(0px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+      transform: translateZ(30px) rotateX(10deg) rotateY(10deg);
+    }
+  }
+
+  @keyframes geometricSpin {
+    0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+    33% { transform: rotateX(120deg) rotateY(0deg) rotateZ(0deg); }
+    66% { transform: rotateX(120deg) rotateY(120deg) rotateZ(0deg); }
+    100% { transform: rotateX(120deg) rotateY(120deg) rotateZ(120deg); }
   }
 
   /* New Microinteraction Animations */

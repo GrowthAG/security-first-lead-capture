@@ -14,6 +14,7 @@ const FloatingElements3D = () => {
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Floating Icons */}
       {elements.map(({ Icon, color, size, delay }, index) => (
         <div
           key={index}
@@ -30,6 +31,44 @@ const FloatingElements3D = () => {
           </div>
         </div>
       ))}
+
+      {/* 3D Ring Elements - Enhanced */}
+      {[...Array(8)].map((_, i) => (
+        <div
+          key={`ring-${i}`}
+          className="absolute hidden lg:block"
+          style={{
+            left: `${5 + i * 12}%`,
+            top: `${20 + (i % 3) * 25}%`,
+            width: '40px',
+            height: '40px',
+            transformStyle: 'preserve-3d',
+            animation: `spin3d 20s linear infinite`,
+            animationDelay: `${i * 1.5}s`
+          }}
+        >
+          <div className="ring-3d border border-cyan-400/20 rounded-full w-full h-full"></div>
+        </div>
+      ))}
+
+      {/* Holographic Particles */}
+      {[...Array(15)].map((_, i) => (
+        <div
+          key={`particle-${i}`}
+          className="absolute w-1 h-1 bg-cyan-400/60 rounded-full animate-float-3d hidden lg:block"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            animationDelay: `${Math.random() * 3}s`,
+            animationDuration: `${4 + Math.random() * 2}s`
+          }}
+        />
+      ))}
+
+      {/* Enhanced Holographic Grid */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="holographic-grid"></div>
+      </div>
     </div>
   );
 };
