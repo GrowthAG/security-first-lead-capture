@@ -91,13 +91,26 @@ const Benefits = () => {
                 isMobile ? 'p-1' : 'p-1'
               }`}>
                 <div className={`bg-white rounded-full ${isMobile ? 'p-4' : 'p-3'} group-hover:transform group-hover:rotate-6 transition-transform duration-300`}>
-                  <item.icon size={isMobile ? 36 : 32} className={`bg-gradient-to-br ${item.color} bg-clip-text text-transparent`} />
+                  <item.icon size={isMobile ? 36 : 32} className={`text-transparent bg-gradient-to-br ${item.color} bg-clip-text`} style={{
+                    background: `linear-gradient(135deg, ${item.color.includes('blue') ? '#3b82f6, #06b6d4' : item.color.includes('purple') ? '#8b5cf6, #3b82f6' : item.color.includes('green') ? '#10b981, #14b8a6' : '#f97316, #ef4444'})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }} />
                 </div>
               </div>
               
-              <h3 className={`font-montserrat font-semibold mb-3 text-security-blue group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:${item.color} transition-all duration-300 ${
+              <h3 className={`font-montserrat font-semibold mb-3 text-security-blue group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300 ${
                 isMobile ? 'text-lg' : 'text-xl'
-              }`}>
+              }`} style={{
+                background: item.color.includes('blue') ? 'linear-gradient(135deg, #3b82f6, #06b6d4)' : 
+                          item.color.includes('purple') ? 'linear-gradient(135deg, #8b5cf6, #3b82f6)' : 
+                          item.color.includes('green') ? 'linear-gradient(135deg, #10b981, #14b8a6)' : 
+                          'linear-gradient(135deg, #f97316, #ef4444)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>
                 {item.title}
               </h3>
               
