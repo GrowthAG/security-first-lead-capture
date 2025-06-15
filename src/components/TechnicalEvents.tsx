@@ -93,7 +93,7 @@ const TechnicalEvents = () => {
           </p>
         </div>
         
-        {/* Clean events grid - no interfering elements */}
+        {/* Clean events grid */}
         <div className="grid lg:grid-cols-3 gap-8 mb-16">
           {events.map((event, index) => {
             const IconComponent = event.icon;
@@ -103,24 +103,24 @@ const TechnicalEvents = () => {
                 className="reveal-on-scroll group relative"
                 style={{ animationDelay: `${index * 200}ms` }}
               >
-                {/* Main card with clean styling */}
-                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 h-full border border-gray-100 hover:border-security-blue/20 transition-all duration-700 hover:transform hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
+                {/* Main card with clean styling and proper padding for badge */}
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 pt-12 h-full border border-gray-100 hover:border-security-blue/20 transition-all duration-700 hover:transform hover:scale-105 hover:-translate-y-2 relative overflow-hidden">
                   
                   {/* Clean gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-br from-security-blue/3 via-transparent to-security-red/3 opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-700"></div>
                   
-                  {/* Category badge - properly positioned */}
-                  <div className="absolute top-4 right-4 bg-gradient-to-r from-security-blue to-security-red text-white text-xs font-medium px-3 py-1 rounded-full opacity-90 z-10">
+                  {/* Category badge - positioned with more space from content */}
+                  <div className="absolute top-4 right-4 bg-gradient-to-r from-security-blue to-security-red text-white text-xs font-medium px-3 py-1.5 rounded-full opacity-90 z-10 shadow-lg">
                     {event.category}
                   </div>
                   
-                  {/* Header section - clean spacing */}
-                  <div className="flex items-start mb-6 relative z-10">
+                  {/* Header section - with proper spacing from badge */}
+                  <div className="flex items-start mb-6 relative z-10 mt-2">
                     <div className="bg-gradient-to-br from-security-red/10 to-security-blue/10 p-4 rounded-xl mr-4 flex-shrink-0 group-hover:from-security-red/20 group-hover:to-security-blue/20 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                       <IconComponent className="h-7 w-7 text-security-red group-hover:animate-pulse" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-montserrat font-bold text-lg text-security-blue group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-security-blue group-hover:to-security-red transition-all duration-500 leading-tight">
+                      <h3 className="font-montserrat font-bold text-lg text-security-blue group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-security-blue group-hover:to-security-red transition-all duration-500 leading-tight pr-2">
                         {event.name}
                       </h3>
                       <div className="text-security-red/70 text-sm font-medium mt-1">
