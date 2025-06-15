@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Shield, Users, Code, Zap } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
@@ -56,6 +55,16 @@ const Benefits = () => {
     return () => observer.disconnect();
   }, []);
 
+  const getColorClasses = (color: string) => {
+    const colorMap = {
+      'from-security-blue to-cyan-500': 'bg-security-blue',
+      'from-purple-500 to-security-blue': 'bg-purple-500',
+      'from-green-500 to-teal-500': 'bg-green-500',
+      'from-orange-500 to-security-red': 'bg-orange-500'
+    };
+    return colorMap[color as keyof typeof colorMap] || 'bg-security-blue';
+  };
+
   return (
     <section id="beneficios" ref={sectionRef} className={`bg-white relative overflow-hidden ${isMobile ? 'py-12' : 'py-20'}`}>
       {/* Enhanced Background decoration with digital elements */}
@@ -112,24 +121,22 @@ const Benefits = () => {
               <div className={`relative mb-6 ${isMobile ? 'mb-4' : 'mb-6'}`}>
                 <div className={`relative ${isMobile ? 'w-20 h-20' : 'w-24 h-24'} rounded-full bg-gradient-to-br ${item.color} p-0.5 group-hover:scale-110 transition-all duration-300`}>
                   <div className={`w-full h-full bg-white rounded-full flex items-center justify-center relative overflow-hidden group-hover:transform group-hover:rotate-6 transition-transform duration-300`}>
-                    {/* Image for mobile, icon for desktop */}
-                    {isMobile ? (
-                      <img 
-                        src={item.image} 
-                        alt={item.title}
-                        className="w-10 h-10 object-cover rounded-full relative z-10 group-hover:scale-110 transition-transform duration-300"
-                        onError={(e) => {
-                          // Fallback to icon if image fails to load
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = 'none';
-                          const iconContainer = target.nextElementSibling as HTMLElement;
-                          if (iconContainer) iconContainer.style.display = 'block';
-                        }}
-                      />
-                    ) : null}
+                    {/* Sempre usar imagem, tanto no mobile quanto no desktop */}
+                    <img 
+                      src={item.image} 
+                      alt={item.title}
+                      className="w-10 h-10 object-cover rounded-full relative z-10 group-hover:scale-110 transition-transform duration-300"
+                      onError={(e) => {
+                        // Fallback para ícone se a imagem não carregar
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const iconContainer = target.nextElementSibling as HTMLElement;
+                        if (iconContainer) iconContainer.style.display = 'block';
+                      }}
+                    />
                     
-                    {/* Icon (always present as fallback, hidden on mobile if image loads) */}
-                    <div className={`${isMobile ? 'hidden' : 'block'} relative z-10 group-hover:scale-110 transition-transform duration-300`}>
+                    {/* Ícone como fallback (oculto por padrão) */}
+                    <div className="hidden relative z-10 group-hover:scale-110 transition-transform duration-300">
                       <item.icon size={isMobile ? 32 : 40} className="text-gray-700" />
                     </div>
                     
