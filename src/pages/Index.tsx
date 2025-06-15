@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import Benefits from '@/components/Benefits';
 import HowItWorks from '@/components/HowItWorks';
 import Authority from '@/components/Authority';
+import TechnicalEvents from '@/components/TechnicalEvents';
 import Comparison from '@/components/Comparison';
 import CertificationBadges from '@/components/CertificationBadges';
 import TechnologiesIntegration from '@/components/TechnologiesIntegration';
@@ -20,6 +21,7 @@ const Index = () => {
       <Benefits />
       <HowItWorks />
       <Authority />
+      <TechnicalEvents />
       <Comparison />
       <CertificationBadges />
       <TechnologiesIntegration />
