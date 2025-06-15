@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import {
   Carousel,
   CarouselContent,
@@ -63,32 +63,48 @@ const TechnologiesIntegration = () => {
   const isMobile = useIsMobile();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const updateCurrent = useCallback(() => {
+    if (!api) return;
+    setCurrent(api.selectedScrollSnap() + 1);
+  }, [api]);
 
   useEffect(() => {
-    if (!api) {
-      return;
-    }
+    if (!api) return;
 
-    setCurrent(api.selectedScrollSnap() + 1);
+    updateCurrent();
+    api.on("select", updateCurrent);
 
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
+    return () => {
+      api.off("select", updateCurrent);
+    };
+  }, [api, updateCurrent]);
 
-    // Auto-play com transição mais suave e estável
+  // Optimized auto-play with pause on hover
+  useEffect(() => {
+    if (!api || isHovered) return;
+
     const interval = setInterval(() => {
       if (api.canScrollNext()) {
         api.scrollNext();
       } else {
+        // Smooth transition back to start
         api.scrollTo(0);
       }
-    }, 3500);
+    }, 3000);
 
     return () => clearInterval(interval);
-  }, [api]);
+  }, [api, isHovered]);
 
   const itemsPerView = isMobile ? 2 : 4;
   const totalSlides = Math.ceil(technologies.length / itemsPerView);
+
+  const handleDotClick = useCallback((index: number) => {
+    if (api) {
+      api.scrollTo(index * itemsPerView);
+    }
+  }, [api, itemsPerView]);
 
   return (
     <section className="py-16 bg-white">
@@ -101,55 +117,69 @@ const TechnologiesIntegration = () => {
         </div>
         
         <div className="max-w-6xl mx-auto">
-          <Carousel
-            setApi={setApi}
-            opts={{
-              align: "start",
-              loop: true,
-              duration: 30,
-              dragFree: false,
-              containScroll: "trimSnaps"
-            }}
-            className="w-full relative"
+          <div
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
-            <CarouselContent className="-ml-2 md:-ml-4">
-              {technologies.map((tech, index) => (
-                <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-1/2' : 'basis-1/2 md:basis-1/3 lg:basis-1/4'}`}>
-                  <div className="security-card text-center p-6 h-44 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-500 group border border-gray-100 hover:border-security-blue/20">
-                    <div className="w-full h-20 flex items-center justify-center mb-3">
-                      <img 
-                        src={tech.logo} 
-                        alt={tech.name}
-                        className="max-h-16 max-w-[140px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110"
-                        style={{
-                          minHeight: '40px'
-                        }}
-                        loading="lazy"
-                      />
+            <Carousel
+              setApi={setApi}
+              opts={{
+                align: "start",
+                loop: true,
+                duration: 25,
+                dragFree: false,
+                containScroll: "trimSnaps",
+                skipSnaps: false
+              }}
+              className="w-full relative"
+            >
+              <CarouselContent className="-ml-2 md:-ml-4">
+                {technologies.map((tech, index) => (
+                  <CarouselItem key={index} className={`pl-2 md:pl-4 ${isMobile ? 'basis-1/2' : 'basis-1/2 md:basis-1/3 lg:basis-1/4'}`}>
+                    <div className="security-card text-center p-6 h-44 flex flex-col items-center justify-center bg-white shadow-lg rounded-lg hover:shadow-xl transition-all duration-500 group border border-gray-100 hover:border-security-blue/20 will-change-transform">
+                      <div className="w-full h-20 flex items-center justify-center mb-3">
+                        <img 
+                          src={tech.logo} 
+                          alt={tech.name}
+                          className="max-h-16 max-w-[140px] w-auto h-auto object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 will-change-transform"
+                          style={{
+                            minHeight: '40px'
+                          }}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </div>
+                      <span className="text-xs font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-500 text-center leading-tight">
+                        {tech.name}
+                      </span>
                     </div>
-                    <span className="text-xs font-medium text-gray-700 group-hover:text-security-blue transition-colors duration-500 text-center leading-tight">
-                      {tech.name}
-                    </span>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+            </Carousel>
+          </div>
           
-          {/* Indicadores de navegação simplificados */}
+          {/* Enhanced navigation indicators */}
           <div className="flex justify-center space-x-2 mt-8">
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={`h-2 rounded-full transition-all duration-300 ${
+                onClick={() => handleDotClick(index)}
+                className={`h-2 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-security-blue/30 ${
                   Math.floor((current - 1) / itemsPerView) === index
-                    ? 'bg-security-blue w-8' 
-                    : 'bg-gray-300 hover:bg-security-blue/50 w-2'
+                    ? 'bg-security-blue w-8 scale-110' 
+                    : 'bg-gray-300 hover:bg-security-blue/50 w-2 hover:scale-110'
                 }`}
                 aria-label={`Ir para grupo ${index + 1} de parceiros`}
               />
             ))}
+          </div>
+
+          {/* Progress indicator */}
+          <div className="flex justify-center mt-4">
+            <div className="text-xs text-gray-500">
+              {current} de {technologies.length} parceiros
+            </div>
           </div>
         </div>
       </div>
