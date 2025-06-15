@@ -1,8 +1,8 @@
-
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Shield, Zap, Eye } from 'lucide-react';
 import { useIsMobile } from '@/hooks/use-mobile';
+import RealTimeStats from './RealTimeStats';
 
 const Hero = () => {
   const isMobile = useIsMobile();
@@ -30,8 +30,12 @@ const Hero = () => {
     document.getElementById('formulario')?.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const scrollToNextSection = () => {
+    document.getElementById('beneficios')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
-    <section ref={heroRef} className="relative gradient-bg text-white py-20 overflow-hidden">
+    <section id="hero" ref={heroRef} className="relative gradient-bg text-white py-20 overflow-hidden">
       {/* Enhanced Background Pattern with futuristic elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -141,43 +145,32 @@ const Hero = () => {
             </Button>
             
             {!isMobile && (
-              <button className="text-white/80 hover:text-white transition-all duration-300 font-medium flex items-center group hover:scale-105">
+              <button 
+                onClick={scrollToNextSection}
+                className="text-white/80 hover:text-white transition-all duration-300 font-medium flex items-center group hover:scale-105"
+              >
                 <Eye className="w-4 h-4 mr-2 group-hover:scale-110 transition-transform duration-300" />
                 Ver como funciona
               </button>
             )}
           </div>
 
-          {/* Enhanced Stats with 3D effect and animations */}
-          <div className={`reveal-on-scroll grid ${isMobile ? 'grid-cols-1 gap-4' : 'grid-cols-3 gap-8'} max-w-4xl mx-auto`}>
-            {[
-              { value: "99.9%", label: "Uptime Garantido", icon: Shield },
-              { value: "< 15min", label: "Tempo de Resposta", icon: Zap },
-              { value: "24/7", label: "Monitoramento", icon: Eye }
-            ].map((stat, index) => (
-              <div 
-                key={index}
-                className="group bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20 hover:bg-white/15 hover:border-security-red/40 transition-all duration-500 hover:transform hover:scale-105 hover:shadow-xl hover:shadow-security-red/20 card-3d"
-                style={{ animationDelay: `${index * 200}ms` }}
-              >
-                <stat.icon className="w-8 h-8 text-security-red mx-auto mb-3 group-hover:scale-110 group-hover:animate-pulse transition-all duration-300" />
-                <div className="text-2xl font-bold mb-1 group-hover:text-security-red transition-colors duration-300">{stat.value}</div>
-                <div className="text-white/80 text-sm">{stat.label}</div>
-                
-                {/* Subtle glow effect */}
-                <div className="absolute inset-0 bg-security-red/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              </div>
-            ))}
+          {/* Real-time Stats */}
+          <div className="reveal-on-scroll mb-8">
+            <RealTimeStats />
           </div>
         </div>
       </div>
 
       {/* Enhanced scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center hover:border-security-red/60 transition-colors duration-300">
-          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+      <button 
+        onClick={scrollToNextSection}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:scale-110 transition-transform duration-300 group"
+      >
+        <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center hover:border-security-red/60 transition-colors duration-300 group-hover:shadow-lg group-hover:shadow-white/20">
+          <div className="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse group-hover:bg-security-red/80"></div>
         </div>
-      </div>
+      </button>
     </section>
   );
 };

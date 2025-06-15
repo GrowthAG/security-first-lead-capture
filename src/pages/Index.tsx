@@ -1,6 +1,6 @@
 
 import React from 'react';
-import Header from '@/components/Header';
+import EnhancedHeader from '@/components/EnhancedHeader';
 import Hero from '@/components/Hero';
 import Benefits from '@/components/Benefits';
 import HowItWorks from '@/components/HowItWorks';
@@ -11,11 +11,12 @@ import CertificationBadges from '@/components/CertificationBadges';
 import TechnologiesIntegration from '@/components/TechnologiesIntegration';
 import FormSection from '@/components/FormSection';
 import FloatingCTA from '@/components/FloatingCTA';
+import SectionNavigator from '@/components/SectionNavigator';
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      <Header />
+      <EnhancedHeader />
       <Hero />
       <Benefits />
       <HowItWorks />
@@ -26,6 +27,7 @@ const Index = () => {
       <TechnologiesIntegration />
       <FormSection />
       <FloatingCTA />
+      <SectionNavigator />
     </div>
   );
 };
