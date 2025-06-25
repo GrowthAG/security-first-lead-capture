@@ -8,8 +8,8 @@ const benefits = [
   {
     icon: Clock,
     title: "Resposta em Tempo Real",
-    description: "Detecção e contenção de ameaças em menos de 5 minutos, 24/7.",
-    metric: "< 5 min"
+    description: "Detecção e contenção de ameaças em menos de 15 minutos, 24/7.",
+    metric: "< 15 min"
   },
   {
     icon: Shield,
@@ -25,21 +25,21 @@ const benefits = [
   },
   {
     icon: Settings,
-    title: "Automação Inteligente",
-    description: "IA que aprende e adapta as defesas conforme seu ambiente evolui.",
-    metric: "Auto IA"
+    title: "Integração Completa",
+    description: "Compatível com sua infraestrutura atual sem interrupções.",
+    metric: "Seamless"
   },
   {
     icon: Zap,
-    title: "Integração Rápida",
+    title: "Implementação Rápida",
     description: "Implementação sem impacto operacional em até 48 horas.",
     metric: "48h"
   },
   {
     icon: TrendingUp,
-    title: "ROI Comprovado",
-    description: "Redução média de 75% nos custos relacionados a incidentes.",
-    metric: "75% ↓"
+    title: "Melhoria Contínua",
+    description: "Evolução constante das defesas baseada em inteligência de ameaças.",
+    metric: "Always On"
   }
 ];
 
