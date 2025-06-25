@@ -1,45 +1,27 @@
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Shield, Zap, Activity, TrendingUp } from 'lucide-react';
 import Card3D from './Card3D';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const RealTimeStats = () => {
   const isMobile = useIsMobile();
-  const [threatsBlocked, setThreatsBlocked] = useState(2847);
-  const [systemsMonitored, setSystemsMonitored] = useState(12456);
-  const [responseTime, setResponseTime] = useState(12);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // Simulate real-time updates
-      setThreatsBlocked(prev => prev + Math.floor(Math.random() * 3));
-      if (Math.random() > 0.7) {
-        setSystemsMonitored(prev => prev + Math.floor(Math.random() * 2));
-      }
-      if (Math.random() > 0.8) {
-        setResponseTime(prev => Math.max(8, prev + (Math.random() > 0.5 ? 1 : -1)));
-      }
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const stats = [
     {
       icon: Shield,
-      label: "Ameaças Bloqueadas Hoje",
-      value: threatsBlocked.toLocaleString(),
-      trend: "+12%",
+      label: "Proteção Avançada",
+      value: "24/7",
+      trend: "Ativo",
       color: "text-green-600",
       bgColor: "bg-green-50",
       borderColor: "border-green-200"
     },
     {
       icon: Activity,
-      label: "Sistemas Monitorados",
-      value: systemsMonitored.toLocaleString(),
-      trend: "24/7",
+      label: "Monitoramento",
+      value: "Contínuo",
+      trend: "Online",
       color: "text-blue-600",
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200"
@@ -47,17 +29,17 @@ const RealTimeStats = () => {
     {
       icon: Zap,
       label: "Tempo de Resposta",
-      value: `${responseTime}s`,
-      trend: "-3%",
+      value: "15min",
+      trend: "Rápido",
       color: "text-orange-600",
       bgColor: "bg-orange-50",
       borderColor: "border-orange-200"
     },
     {
       icon: TrendingUp,
-      label: "Eficiência do SOC",
-      value: "99.7%",
-      trend: "↑",
+      label: "SOC Especializado",
+      value: "Expert",
+      trend: "Ativo",
       color: "text-security-red",
       bgColor: "bg-red-50",
       borderColor: "border-red-200"
