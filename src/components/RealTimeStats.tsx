@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Shield, Zap, Activity, TrendingUp } from 'lucide-react';
+import { Shield, Users, Activity, Award } from 'lucide-react';
 import Card3D from './Card3D';
 import { useIsMobile } from '@/hooks/use-mobile';
 
@@ -27,19 +27,19 @@ const RealTimeStats = () => {
       borderColor: "border-blue-200"
     },
     {
-      icon: Zap,
-      label: "Tempo de Resposta",
-      value: "15min",
-      trend: "Rápido",
-      color: "text-orange-600",
-      bgColor: "bg-orange-50",
-      borderColor: "border-orange-200"
+      icon: Users,
+      label: "Analistas Especialistas",
+      value: "Dedicados",
+      trend: "Sempre",
+      color: "text-purple-600",
+      bgColor: "bg-purple-50",
+      borderColor: "border-purple-200"
     },
     {
-      icon: TrendingUp,
-      label: "SOC Especializado",
-      value: "Expert",
-      trend: "Ativo",
+      icon: Award,
+      label: "Certificações",
+      value: "ISO 27001",
+      trend: "Válida",
       color: "text-security-red",
       bgColor: "bg-red-50",
       borderColor: "border-red-200"
