@@ -27,7 +27,7 @@ const benefits = [
     icon: Settings,
     title: "Integração Completa",
     description: "Compatível com sua infraestrutura atual sem interrupções.",
-    metric: "Seamless"
+    metric: "100%"
   },
   {
     icon: Zap,
